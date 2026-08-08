@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="ro" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa care vinde — Arh. Alin Ionescu / Inhabit Studio</title>
+<meta name="description" content="Un tur printr-o casă pasivă în secțiune. Fiecare element din casă e un slot de parteneriat pentru un brand din construcții. Aer condiționat: NovingAIR. Restul camerelor sunt libere.">
+<meta name="theme-color" content="#1C2930">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Casa care vinde — Arh. Alin Ionescu">
+<meta property="og:description" content="Plimbă-te prin casă. Fiecare produs din ea e un parteneriat.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta property="og:locale" content="ro_RO">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231C2930'/%3E%3Cpath d='M6 15 16 7l10 8v11H6z' fill='none' stroke='%23C08A3E' stroke-width='2'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Poppins:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">INHABIT</span>
+      <span class="brand__sub">arh. alin ionescu</span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" id="navLinks">
+      <a href="#tur">Casa</a>
+      <a href="#cum">Cum funcționează</a>
+      <a href="parteneri.html">Parteneriate</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="despre.html">Despre</a>
+      <a class="btn btn--dark" href="contact.html">Rezervă o cameră</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+    <p class="eyebrow" data-reveal>Parteneriate de brand în construcții</p>
+    <h1 data-reveal style="--d:80ms">Casa care <em>vinde</em> în locul tău.</h1>
+    <p class="hero__lead" data-reveal style="--d:160ms">
+      Nu vând reclame. Construiesc o casă — în proiect, în video, în fața a zeci de mii
+      de oameni care își ridică una — și pun produsul tău exact acolo unde se ia decizia.
+    </p>
+    <div class="hero__actions" data-reveal style="--d:240ms">
+      <a class="btn btn--primary" href="#tur">Intră în casă <span class="btn__arrow">→</span></a>
+      <a class="btn btn--ghost" href="calculator.html">Calculează-ți returul</a>
+    </div>
+
+    <div class="hero__meta" data-reveal style="--d:320ms">
+      <div><b>10+</b><span>ani experiență</span></div>
+      <div><b>10.000+</b><span>mp proiectați</span></div>
+      <div><b>PHI</b><span>Darmstadt, casă pasivă</span></div>
+      <div><b>1 / 12</b><span>camere ocupate</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><i></i>Scroll</div>
+</section>
+
+<!-- ============================ TURUL CASEI ============================ -->
+<section class="tour" id="tur">
+  <div class="tour__viewport" id="tourViewport">
+
+    <div class="tour__stage" id="tourStage">
+      <!-- ---------- SECȚIUNEA PRIN CASĂ ---------- -->
+      <svg id="houseSvg" viewBox="0 0 2000 1400" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-label="Secțiune printr-o casă pasivă cu sloturile de parteneriat marcate">
+        <defs>
+          <linearGradient id="glassG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F3D9AA" stop-opacity=".5"/>
+            <stop offset="1" stop-color="#C08A3E" stop-opacity=".14"/>
+          </linearGradient>
+          <radialGradient id="glowG">
+            <stop offset="0" stop-color="#F3D9AA" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#F3D9AA" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="ins" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="14" stroke="#8FA8B4" stroke-opacity=".3" stroke-width="2"/>
+          </pattern>
+          <pattern id="conc" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="5" cy="5" r="1.8" fill="#8FA8B4" fill-opacity=".22"/>
+            <circle cx="14" cy="13" r="1.3" fill="#8FA8B4" fill-opacity=".16"/>
+          </pattern>
+          <pattern id="grav" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="5" cy="6" r="2.6" fill="none" stroke="#8FA8B4" stroke-opacity=".2" stroke-width="1.5"/>
+            <circle cx="13" cy="13" r="1.9" fill="none" stroke="#8FA8B4" stroke-opacity=".16" stroke-width="1.5"/>
+          </pattern>
+          <pattern id="clt" width="12" height="12" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="6" x2="12" y2="6" stroke="#8FA8B4" stroke-opacity=".2" stroke-width="1.6"/>
+          </pattern>
+          <clipPath id="atticClip">
+            <path d="M280 280 L1000 84 L1720 280 Z"/>
+          </clipPath>
+
+          <style>
+            .ln   { fill:none; stroke:#7E97A4; stroke-width:2.6; }
+            .ln2  { fill:none; stroke:#7E97A4; stroke-opacity:.45; stroke-width:2; }
+            .fx   { fill:none; stroke:#617986; stroke-width:2.4; stroke-linejoin:round; }
+            .wall { fill:#26373F; }
+            .room { fill:#22333B; }
+            .slab { fill:#2A3C45; }
+            .ins  { fill:#2C424C; }
+            .dev  { fill:#2E434C; stroke:#7E97A4; stroke-width:2.4; }
+            .brasl{ fill:none; stroke:#C08A3E; stroke-width:3.4; }
+            .txt  { fill:#7E97A4; fill-opacity:.55; font-family:"IBM Plex Mono",monospace;
+                    font-size:17px; letter-spacing:.18em; }
+          </style>
+        </defs>
+
+        <!-- ---- teren ---- -->
+        <g id="teren">
+          <path d="M-600 1180 H2600 V1500 H-600 Z" fill="#18262D"/>
+          <line x1="-600" y1="1180" x2="2600" y2="1180" class="ln2"/>
+          <rect x="230" y="1184" width="1540" height="52" fill="url(#grav)"/>
+        </g>
+
+        <!-- ---- fundație ---- -->
+        <g id="fundatie">
+          <rect x="268" y="1090" width="1464" height="60" class="slab"/>
+          <rect x="268" y="1090" width="1464" height="60" fill="url(#conc)"/>
+          <rect x="268" y="1090" width="1464" height="60" class="ln"/>
+          <rect x="268" y="1150" width="1464" height="34" class="ins"/>
+          <rect x="268" y="1150" width="1464" height="34" fill="url(#ins)"/>
+          <rect x="268" y="1150" width="1464" height="34" class="ln2"/>
+        </g>
+
+        <!-- ---- volume interioare ---- -->
+        <g id="volume">
+          <rect x="360" y="700" width="1280" height="390" class="room"/>   <!-- parter -->
+          <rect x="360" y="302" width="1280" height="358" class="room"/>   <!-- etaj -->
+          <path d="M280 280 L1000 84 L1720 280 Z" fill="#1D2C34"/>          <!-- pod -->
+          <g clip-path="url(#atticClip)">
+            <rect x="270" y="196" width="1460" height="84" class="ins"/>
+            <rect x="270" y="196" width="1460" height="84" fill="url(#ins)"/>
+          </g>
+        </g>
+
+        <!-- ---- pereți exteriori (tăiați) ---- -->
+        <g id="pereti-ext">
+          <!-- stânga -->
+          <rect x="280" y="280" width="12"  height="810" fill="#33474F"/>
+          <rect x="292" y="280" width="46"  height="810" class="ins"/>
+          <rect x="292" y="280" width="46"  height="810" fill="url(#ins)"/>
+          <rect x="338" y="280" width="22"  height="810" class="wall"/>
+          <rect x="338" y="280" width="22"  height="810" fill="url(#clt)"/>
+          <rect x="280" y="280" width="80"  height="810" class="ln"/>
+          <line x1="292" y1="280" x2="292" y2="1090" class="ln2"/>
+          <line x1="338" y1="280" x2="338" y2="1090" class="ln2"/>
+          <!-- dreapta -->
+          <rect x="1708" y="280" width="12" height="810" fill="#33474F"/>
+          <rect x="1662" y="280" width="46" height="810" class="ins"/>
+          <rect x="1662" y="280" width="46" height="810" fill="url(#ins)"/>
+          <rect x="1640" y="280" width="22" height="810" class="wall"/>
+          <rect x="1640" y="280" width="22" height="810" fill="url(#clt)"/>
+          <rect x="1640" y="280" width="80" height="810" class="ln"/>
+          <line x1="1708" y1="280" x2="1708" y2="1090" class="ln2"/>
+          <line x1="1662" y1="280" x2="1662" y2="1090" class="ln2"/>
+        </g>
+
+        <!-- ---- planșeu intermediar (CLT) + tavan ---- -->
+        <g id="planseu">
+          <rect x="280" y="660" width="1440" height="40" class="slab"/>
+          <rect x="280" y="660" width="1440" height="40" fill="url(#clt)"/>
+          <rect x="280" y="660" width="1440" height="40" class="ln"/>
+          <rect x="280" y="644" width="1440" height="16" fill="#31454E"/>
+          <line x1="280" y1="644" x2="1720" y2="644" class="ln2"/>
+          <!-- tavan etaj -->
+          <rect x="280" y="280" width="1440" height="22" class="slab"/>
+          <rect x="280" y="280" width="1440" height="22" class="ln"/>
+        </g>
+
+        <!-- ---- pereți interiori ---- -->
+        <g id="pereti-int" class="wall">
+          <rect x="880"  y="700" width="20" height="390"/>
+          <rect x="1230" y="700" width="20" height="390"/>
+          <rect x="1440" y="700" width="20" height="390"/>
+          <rect x="820"  y="302" width="20" height="358"/>
+          <rect x="1070" y="302" width="20" height="358"/>
+          <rect x="1440" y="302" width="20" height="358"/>
+          <g class="ln2" fill="none">
+            <rect x="880"  y="700" width="20" height="390"/>
+            <rect x="1230" y="700" width="20" height="390"/>
+            <rect x="1440" y="700" width="20" height="390"/>
+            <rect x="820"  y="302" width="20" height="358"/>
+            <rect x="1070" y="302" width="20" height="358"/>
+            <rect x="1440" y="302" width="20" height="358"/>
+          </g>
+        </g>
+
+        <!-- ---- acoperiș ---- -->
+        <g id="acoperis">
+          <!-- panta stânga -->
+          <g transform="translate(230,294) rotate(-15.26)">
+            <rect x="0" y="-22" width="798" height="22" class="slab"/>
+            <rect x="0" y="-22" width="798" height="22" fill="url(#clt)"/>
+            <rect x="0" y="-46" width="798" height="24" fill="#33474F"/>
+            <rect x="0" y="-46" width="798" height="46" class="ln"/>
+            <!-- fotovoltaice -->
+            <g id="pv">
+              <rect x="120" y="-72" width="140" height="18" class="dev"/>
+              <rect x="280" y="-72" width="140" height="18" class="dev"/>
+              <rect x="440" y="-72" width="140" height="18" class="dev"/>
+              <rect x="600" y="-72" width="140" height="18" class="dev"/>
+              <g class="ln2">
+                <line x1="120" y1="-54" x2="120" y2="-46"/>
+                <line x1="420" y1="-54" x2="420" y2="-46"/>
+                <line x1="740" y1="-54" x2="740" y2="-46"/>
+              </g>
+            </g>
+          </g>
+          <!-- panta dreapta -->
+          <g transform="translate(1770,294) scale(-1,1) rotate(-15.26)">
+            <rect x="0" y="-22" width="798" height="22" class="slab"/>
+            <rect x="0" y="-22" width="798" height="22" fill="url(#clt)"/>
+            <rect x="0" y="-46" width="798" height="24" fill="#33474F"/>
+            <rect x="0" y="-46" width="798" height="46" class="ln"/>
+          </g>
+          <!-- coamă + streșini -->
+          <path d="M986 96 L1000 78 L1014 96" class="ln"/>
+          <path d="M214 294 h32 M1754 294 h32" class="ln"/>
+        </g>
+
+        <!-- ---- ferestre & uși ---- -->
+        <g id="ferestre">
+          <!-- living: glazing pana la pardoseala -->
+          <ellipse cx="610" cy="940" rx="340" ry="260" fill="url(#glowG)"/>
+          <rect x="430" y="790" width="360" height="300" fill="url(#glassG)"/>
+          <rect x="430" y="790" width="360" height="300" class="ln"/>
+          <line x1="610" y1="790" x2="610" y2="1090" class="ln2"/>
+          <!-- bucătărie -->
+          <rect x="960" y="800" width="200" height="170" fill="url(#glassG)"/>
+          <rect x="960" y="800" width="200" height="170" class="ln"/>
+          <!-- ușă intrare -->
+          <rect x="1500" y="850" width="110" height="240" fill="#2A3C45"/>
+          <rect x="1500" y="850" width="110" height="240" class="ln"/>
+          <circle cx="1592" cy="975" r="5" fill="#C08A3E"/>
+          <!-- dormitor (slot 04) -->
+          <ellipse cx="595" cy="485" rx="250" ry="190" fill="url(#glowG)"/>
+          <rect x="470" y="390" width="250" height="190" fill="url(#glassG)"/>
+          <rect x="470" y="390" width="250" height="190" class="ln"/>
+          <g class="ln2">
+            <rect x="482" y="402" width="226" height="166"/>
+            <rect x="490" y="410" width="210" height="150"/>
+          </g>
+          <!-- baie -->
+          <rect x="900" y="400" width="110" height="130" fill="url(#glassG)"/>
+          <rect x="900" y="400" width="110" height="130" class="ln"/>
+          <!-- birou -->
+          <rect x="1150" y="390" width="230" height="190" fill="url(#glassG)"/>
+          <rect x="1150" y="390" width="230" height="190" class="ln"/>
+          <line x1="1265" y1="390" x2="1265" y2="580" class="ln2"/>
+          <!-- palier -->
+          <rect x="1510" y="400" width="90" height="150" fill="url(#glassG)"/>
+          <rect x="1510" y="400" width="90" height="150" class="ln"/>
+        </g>
+
+        <!-- ---- linia de etanșeitate (slot 03) ---- -->
+        <path id="membrana" d="M360 1090 V302 H1640 V1090" class="brasl" stroke-dasharray="16 12" stroke-opacity=".85"/>
+
+        <!-- ---- instalații ---- -->
+        <g id="instalatii">
+          <!-- aer condiționat — NovingAIR (slot 05) -->
+          <g id="ac-unit">
+            <rect x="395" y="735" width="170" height="44" rx="9" class="dev"/>
+            <line x1="410" y1="770" x2="550" y2="770" class="ln2"/>
+            <g class="fx" stroke-opacity=".7">
+              <path d="M580 762 q34 16 62 4"/>
+              <path d="M580 786 q46 22 84 6"/>
+              <path d="M580 810 q58 28 106 8"/>
+            </g>
+          </g>
+
+          <!-- VMC (slot 06) -->
+          <g id="vmc">
+            <rect x="1275" y="740" width="130" height="150" rx="6" class="dev"/>
+            <g class="ln2">
+              <line x1="1275" y1="790" x2="1405" y2="790"/>
+              <circle cx="1310" cy="845" r="20" fill="none"/>
+              <circle cx="1370" cy="845" r="20" fill="none"/>
+            </g>
+            <!-- tubulatură parter -->
+            <path d="M1340 740 V718 H430" class="ln2"/>
+            <path d="M1340 718 H1620" class="ln2"/>
+            <g class="ln2" fill="none">
+              <circle cx="620" cy="712" r="12"/>
+              <circle cx="1000" cy="712" r="12"/>
+            </g>
+            <!-- coloană + tubulatură etaj -->
+            <path d="M1450 718 V330 H480" class="ln2"/>
+            <g class="ln2" fill="none">
+              <circle cx="620"  cy="330" r="12"/>
+              <circle cx="950"  cy="330" r="12"/>
+              <circle cx="1250" cy="330" r="12"/>
+            </g>
+          </g>
+
+          <!-- termic (slot 07) -->
+          <g id="termic">
+            <rect x="1775" y="1090" width="180" height="18" class="slab"/>
+            <rect x="1775" y="1090" width="180" height="18" class="ln2"/>
+            <rect x="1790" y="975" width="150" height="115" rx="7" class="dev"/>
+            <circle cx="1865" cy="1032" r="38" class="ln2" fill="none"/>
+            <path d="M1865 1032 m-26 0 a26 26 0 0 1 52 0" class="ln2" fill="none"/>
+            <path d="M1790 1000 H1720 M1790 1050 H1720" class="ln2"/>
+            <!-- rezervor tampon -->
+            <rect x="1350" y="900" width="76" height="180" rx="38" class="dev"/>
+            <line x1="1350" y1="950" x2="1426" y2="950" class="ln2"/>
+          </g>
+
+          <!-- invertor + baterie -->
+          <g id="energie-int">
+            <rect x="1266" y="920" width="68" height="82" rx="5" class="dev"/>
+            <rect x="1266" y="1010" width="68" height="72" rx="5" class="dev"/>
+            <g class="ln2">
+              <line x1="1280" y1="1030" x2="1320" y2="1030"/>
+              <line x1="1280" y1="1052" x2="1320" y2="1052"/>
+            </g>
+            <path d="M1300 920 V860 H1240" class="ln2" stroke-dasharray="8 8"/>
+          </g>
+        </g>
+
+        <!-- ---- mobilier ---- -->
+        <g id="mobilier" class="fx">
+          <!-- living -->
+          <path d="M560 1044 h210 M560 1044 v-64 h210 v64"/>
+          <path d="M560 980 v-40 h210 v40"/>
+          <rect x="610" y="1058" width="110" height="12" rx="4"/>
+          <path d="M820 1090 v-52 M804 1038 q16 -34 32 0"/>
+          <!-- bucătărie -->
+          <path d="M920 1090 v-100 h290 v100"/>
+          <path d="M1055 990 v100"/>
+          <path d="M920 870 h190 v-80 h-190"/>
+          <!-- scară -->
+          <polyline points="1470,1090 1490,1090 1490,1036 1510,1036 1510,983 1530,983 1530,929 1550,929 1550,875 1570,875 1570,821 1590,821 1590,768 1610,768 1610,714 1630,714 1630,660"/>
+          <!-- dormitor -->
+          <rect x="420" y="560" width="230" height="100" rx="6"/>
+          <path d="M400 520 v140"/>
+          <rect x="436" y="574" width="70" height="34" rx="6"/>
+          <!-- baie -->
+          <rect x="880" y="562" width="140" height="90" rx="14"/>
+          <path d="M1030 660 v-46 h28 v46"/>
+          <!-- birou -->
+          <path d="M1130 580 h210 M1140 580 v80 M1330 580 v80"/>
+          <circle cx="1250" cy="628" r="24"/>
+          <!-- balustrada palier -->
+          <path d="M1470 660 v-70 M1520 660 v-70 M1470 590 h50"/>
+        </g>
+
+        <!-- ---- etichete camere ---- -->
+        <g class="txt">
+          <text x="382" y="1070">LIVING</text>
+          <text x="922" y="1070">BUCĂTĂRIE</text>
+          <text x="1252" y="1070">TEHNIC</text>
+          <text x="1462" y="1070">HOL</text>
+          <text x="382" y="640">DORMITOR</text>
+          <text x="862" y="640">BAIE</text>
+          <text x="1092" y="640">BIROU</text>
+          <text x="1462" y="640">PALIER</text>
+          <text x="880" y="240">POD</text>
+        </g>
+
+        <!-- ---- cote ---- -->
+        <g class="ln2" stroke-opacity=".28">
+          <path d="M180 280 V1090 M166 280 h28 M166 1090 h28"/>
+          <path d="M280 1300 H1720 M280 1286 v28 M1720 1286 v28"/>
+        </g>
+      </svg>
+
+      <!-- hotspot-urile sunt injectate de house.js -->
+      <div class="tour__hotspots" id="hotspots"></div>
+    </div>
+
+    <!-- ---------- HUD ---------- -->
+    <div class="tour__hud">
+      <div class="tour__title">
+        <p class="eyebrow" id="tourEyebrow">Turul casei</p>
+        <h2 id="tourHeading">O casă. Douăsprezece camere de vânzare.</h2>
+      </div>
+
+      <p class="tour__progress" id="tourProgress">01 / 10</p>
+
+      <article class="tour__card" id="tourCard" data-hidden="true">
+        <div class="tour__card-top">
+          <h3 id="cardTitle">—</h3>
+          <span class="chip chip--slot" id="cardChip">Slot liber</span>
+        </div>
+        <p id="cardText">—</p>
+        <div class="tour__brand">
+          <span><b id="cardBrand">—</b><small id="cardNote">—</small></span>
+          <a class="link-arrow" href="contact.html">Ocupă <span>→</span></a>
+        </div>
+      </article>
+
+      <div class="tour__rail" id="tourRail" role="tablist" aria-label="Camerele casei"></div>
+    </div>
+
+    <a class="tour__skip" href="#cum">Sari peste tur</a>
+
+    <!-- ---------- FINAL ---------- -->
+    <div class="tour__final" id="tourFinal">
+      <div>
+        <p class="eyebrow" style="justify-content:center">Ultima oprire</p>
+        <h2 style="margin:.8rem auto 0">Hai să fii și tu o parte din casă.</h2>
+        <p>Unsprezece categorii sunt încă libere. Se ocupă câte una — exclusivitate pe
+          categorie, pentru că altfel recomandarea nu mai valorează nimic.</p>
+        <a class="btn btn--primary" href="contact.html">Rezervă-ți camera <span class="btn__arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CUM FUNCȚIONEAZĂ ============================ -->
+<section class="section section--cream" id="cum">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Mecanica</p>
+      <h2 data-reveal style="--d:60ms">Produsul tău nu apare în reclamă.<br>Apare în decizie.</h2>
+      <p class="lead" data-reveal style="--d:120ms">
+        Un arhitect care explică de ce a ales ceva are altă greutate decât un banner.
+        De aia parteneriatul se construiește în proiect, nu în media kit.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step" data-reveal>
+        <span class="step__n">01</span>
+        <h4>Alegi camera</h4>
+        <p>O categorie, un partener. Exclusivitate — n-am cum să recomand două ferestre
+          diferite fără să pierd exact lucrul pe care îl cumperi.</p>
+      </div>
+      <div class="step" data-reveal style="--d:80ms">
+        <span class="step__n">02</span>
+        <h4>Intri în proiect</h4>
+        <p>Produsul e specificat într-o casă reală și apare în secțiune, în deviz, în
+          detaliul de execuție. Nu e plasare de produs, e proiectare.</p>
+      </div>
+      <div class="step" data-reveal style="--d:160ms">
+        <span class="step__n">03</span>
+        <h4>Rulează 12–24 de luni</h4>
+        <p>Conținutul educațional nu moare la finalul campaniei. Un video care explică
+          un detaliu corect e căutat și peste doi ani.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ AUDIENȚA ============================ -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Cine mă urmărește</p>
+      <h2 data-reveal style="--d:60ms">Oameni care construiesc anul ăsta.</h2>
+      <p class="lead" data-reveal style="--d:120ms">
+        Nu audiență de arhitectură contemplativă. Oameni cu teren cumpărat, cu credit
+        aprobat și cu o listă de decizii de luat în următoarele 12 luni.
+      </p>
+    </div>
+
+    <div class="stats" data-reveal>
+      <!-- TODO: înlocuiește cu cifrele reale din Insights (vezi README) -->
+      <div class="stat"><b>10+</b><span>ani de proiectare clădiri eficiente energetic</span></div>
+      <div class="stat"><b>10.000+</b><span>mp proiectați, rezidențial și comercial</span></div>
+      <div class="stat"><b>22</b><span>lecții în minicursul gratuit, zilnic pe email</span></div>
+      <div class="stat"><b>PHI</b><span>certificare casă pasivă, Darmstadt</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CAMERELE ============================ -->
+<section class="section" id="camere">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Planul casei</p>
+      <h2 data-reveal style="--d:60ms">Douăsprezece camere. Una ocupată.</h2>
+      <p class="lead" data-reveal style="--d:120ms">
+        Fiecare categorie e un slot. Când se ocupă, dispare de aici.
+      </p>
+    </div>
+    <div class="rooms-grid" id="roomsGrid" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="section cta">
+  <div class="cta__grid" aria-hidden="true"></div>
+  <div class="wrap cta__inner">
+    <p class="eyebrow" style="justify-content:center" data-reveal>Camera ta</p>
+    <h2 data-reveal style="--d:60ms">Hai să fii și tu o parte din casă.</h2>
+    <p data-reveal style="--d:120ms">
+      Un call de 30 de minute. Îți arăt cifrele audienței pe categoria ta și ieși de
+      acolo cu un scenariu de retur, nu cu un media kit.
+    </p>
+    <div class="cta__actions" data-reveal style="--d:180ms">
+      <a class="btn btn--primary" href="contact.html">Programează un call <span class="btn__arrow">→</span></a>
+      <a class="btn btn--ghost" href="calculator.html">Vezi întâi calculatorul</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand__mark">INHABIT</span>
+        </a>
+        <p style="margin-top:.9rem;max-width:30ch">
+          Birou creativ de arhitectură, design de interior și proiectare de clădiri pasive.
+        </p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <ul>
+          <li><a href="index.html#tur">Turul casei</a></li>
+          <li><a href="parteneri.html">Parteneriate</a></li>
+          <li><a href="calculator.html">Calculator retur</a></li>
+          <li><a href="despre.html">Despre Alin</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Ecosistem</h5>
+        <ul>
+          <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
+          <li><a href="despre.html#buildwise">BuildWise</a></li>
+          <li><a href="despre.html#minicurs">Minicurs gratuit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Canale</h5>
+        <ul>
+          <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
+          <li><a href="https://instagram.com/inhabit.thestudio" target="_blank" rel="noopener">@inhabit.thestudio</a></li>
+          <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Inhabit Studio · Arh. Ionescu George-Alin</span>
+      <span>Cifrele din calculator sunt estimări, nu promisiuni.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/rooms.js"></script>
+<script src="assets/js/house.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

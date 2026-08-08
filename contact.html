@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ro" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezervă o cameră — Arh. Alin Ionescu / Inhabit Studio</title>
+<meta name="description" content="Un call de 30 de minute pe categoria ta. Spune-mi ce vinzi și îți arăt dacă are sens.">
+<meta name="theme-color" content="#1C2930">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231C2930'/%3E%3Cpath d='M6 15 16 7l10 8v11H6z' fill='none' stroke='%23C08A3E' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Poppins:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+
+<header class="nav nav--solid" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">INHABIT</span>
+      <span class="brand__sub">arh. alin ionescu</span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html#tur">Casa</a>
+      <a href="index.html#cum">Cum funcționează</a>
+      <a href="parteneri.html">Parteneriate</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="despre.html">Despre</a>
+      <a class="btn btn--dark" href="contact.html">Rezervă o cameră</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Camera ta</p>
+    <h1 data-reveal style="--d:60ms">Spune-mi ce vinzi. Îți spun dacă are sens.</h1>
+    <p class="lead" data-reveal style="--d:120ms">
+      Treizeci de minute. Dacă audiența mea nu se potrivește cu ce vinzi tu,
+      afli în primele zece și nu-ți pierd restul.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="calc">
+
+      <form class="calc__panel" id="contactForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label class="field__label" for="c-name"><b>Nume</b></label>
+            <input type="text" id="c-name" name="nume" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c-company"><b>Firma</b></label>
+            <input type="text" id="c-company" name="firma" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label class="field__label" for="c-email"><b>Email</b></label>
+            <input type="email" id="c-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="c-site"><b>Site</b></label>
+            <input type="text" id="c-site" name="site" placeholder="exemplu.ro">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="c-cat"><b>Categoria care te interesează</b></label>
+          <select id="c-cat" name="categorie"></select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="c-msg"><b>Ce vrei să obții din parteneriat?</b></label>
+          <textarea id="c-msg" name="mesaj" rows="5"
+            placeholder="Ex: vindem prin distribuitori și vrem cerere directă de la beneficiari."></textarea>
+        </div>
+
+        <button class="btn btn--primary" type="submit" style="width:100%;justify-content:center">
+          Trimite <span class="btn__arrow">→</span>
+        </button>
+
+        <p class="disclaimer" style="margin-top:1rem" id="formNote">
+          Formularul deschide un email pre-completat către office@inhabitstudio.ro.
+        </p>
+      </form>
+
+      <aside class="calc__out">
+        <div class="result">
+          <p class="eyebrow" style="color:var(--brass-2)">Direct</p>
+          <p style="margin-top:1rem"><a class="link-arrow" href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></p>
+          <hr>
+          <p class="result__unit">
+            Dacă preferi să vezi întâi cifrele, treci prin calculator și vino cu
+            scenariul tău deja făcut.
+          </p>
+          <a class="btn btn--ghost" href="calculator.html" style="margin-top:1rem;justify-content:center">Calculator de retur</a>
+        </div>
+
+        <div class="calc__chain" style="font-family:var(--font-body);font-size:.88rem;line-height:1.7">
+          <b>Ce se întâmplă după:</b><br>
+          1. Îți răspund cu 2–3 intervale de call.<br>
+          2. Verific dacă mai e liberă categoria ta.<br>
+          3. Îți trimit scenariul de retur pe cifrele tale.<br>
+          4. Dacă merge, semnăm pe 12 luni. Dacă nu, îți spun de ce.
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="index.html"><span class="brand__mark">INHABIT</span></a>
+        <p style="margin-top:.9rem;max-width:30ch">
+          Birou creativ de arhitectură, design de interior și proiectare de clădiri pasive.
+        </p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <ul>
+          <li><a href="index.html#tur">Turul casei</a></li>
+          <li><a href="parteneri.html">Parteneriate</a></li>
+          <li><a href="calculator.html">Calculator retur</a></li>
+          <li><a href="despre.html">Despre Alin</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Ecosistem</h5>
+        <ul>
+          <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
+          <li><a href="despre.html#buildwise">BuildWise</a></li>
+          <li><a href="despre.html#minicurs">Minicurs gratuit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Canale</h5>
+        <ul>
+          <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
+          <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Inhabit Studio · Arh. Ionescu George-Alin</span>
+      <span>Cifrele din calculator sunt estimări, nu promisiuni.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/rooms.js"></script>
+<script src="assets/js/main.js" defer></script>
+<script>
+/* Fără backend: compune un email pre-completat.
+   Ca să primești lead-urile direct în inbox / CRM, schimbă `action` pe un
+   endpoint de formular (Formspree, Netlify Forms, Basin) — vezi README. */
+(function () {
+  var form = document.getElementById('contactForm');
+  var cat  = document.getElementById('c-cat');
+  if (!form) return;
+
+  if (window.CATEGORIES) {
+    cat.innerHTML = window.CATEGORIES.map(function (c) {
+      return '<option value="' + c.name + '"' + (c.status === 'taken' ? ' disabled' : '') + '>' +
+             c.name + (c.status === 'taken' ? ' — ocupat' : '') + '</option>';
+    }).join('');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var g = function (id) { return (document.getElementById(id).value || '').trim(); };
+    if (!g('c-name') || !g('c-email')) {
+      document.getElementById('formNote').textContent = 'Completează cel puțin numele și emailul.';
+      return;
+    }
+    var body = [
+      'Nume: ' + g('c-name'),
+      'Firma: ' + g('c-company'),
+      'Email: ' + g('c-email'),
+      'Site: ' + g('c-site'),
+      'Categorie: ' + cat.value,
+      '',
+      g('c-msg')
+    ].join('\n');
+
+    window.location.href = 'mailto:office@inhabitstudio.ro' +
+      '?subject=' + encodeURIComponent('Parteneriat — ' + cat.value + ' — ' + g('c-company')) +
+      '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
