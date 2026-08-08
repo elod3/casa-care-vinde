@@ -1,5 +1,5 @@
 /* ==========================================================================
-   main.js — nav, reveal la scroll, grila de categorii, an în footer.
+   main.js — nav, reveal la scroll, an în footer.
    ========================================================================== */
 (function () {
   'use strict';
@@ -8,10 +8,8 @@
   var nav = document.getElementById('nav');
   var toggle = document.getElementById('navToggle');
 
-  if (nav) {
-    var onScroll = function () {
-      nav.classList.toggle('nav--solid', window.scrollY > 24);
-    };
+  if (nav && !nav.classList.contains('nav--solid')) {
+    var onScroll = function () { nav.classList.toggle('nav--solid', window.scrollY > 24); };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
@@ -29,11 +27,10 @@
     });
   }
 
-  /* ---------- marchează pagina curentă ---------- */
+  /* ---------- pagina curentă ---------- */
   var here = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav__links a').forEach(function (a) {
-    var href = a.getAttribute('href');
-    if (href === here) a.setAttribute('aria-current', 'page');
+    if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page');
   });
 
   /* ---------- reveal ----------
@@ -69,20 +66,6 @@
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule, { passive: true });
     sweep();
-  }
-
-  /* ---------- grila de categorii ---------- */
-  var grid = document.getElementById('roomsGrid');
-  if (grid && window.CATEGORIES) {
-    grid.innerHTML = window.CATEGORIES.map(function (c) {
-      var taken = c.status === 'taken';
-      return '<article class="room-card">' +
-        '<h4>' + c.name + '</h4>' +
-        '<p>' + c.note + '</p>' +
-        '<span class="chip ' + (taken ? 'chip--taken' : 'chip--slot') + '">' +
-          (taken ? 'Ocupat' : 'Slot liber') + '</span>' +
-      '</article>';
-    }).join('');
   }
 
   /* ---------- an ---------- */
