@@ -107,9 +107,60 @@ prenume.
 
 Prima versiune punea casa în prim-plan, cu Alin pe fundal. Acum e invers:
 **Alin e brandul**, iar ce se vinde e accesul la oamenii lui. Casa a rămas, dar
-ca pagină secundară (`casa.html`), re-colorată pe alb/galben ca să se potrivească
-cu restul, și linkată doar din footer.
+ca pagină secundară (`casa.html`), linkată din footer și din secțiunea de sloturi.
 
-Calculatorul de retur a dispărut: era construit pe estimări inventate. Acum
-avem cifre reale din campania NovingAIR, iar argumentul de preț se face direct
-— 1.550 € pentru 154.900+ vizionări înseamnă în jur de 1 cent pe vizionare.
+---
+
+# Versiunea 3 — cinematic
+
+Solul s-a inversat: **fundalul e noaptea, galbenul de brand e lumina.** Aceleași
+culori din deck, aceleași nume de clase — paginile secundare au trecut pe tema
+nouă fără să fie rescrise.
+
+| | |
+|---|---|
+| Fundal | `#070B11` / `#0B121C` / `#0E1724` |
+| Text | `#EDF1F6`, secundar `#94A3B5`, terțiar `#5F6E80` |
+| Accent | `#E2B017` (neatins) |
+| Secțiuni „aprinse" | `#0F2A4A` → `#0C2140` |
+| Font | Poppins, acum 200 vs 800 (era 300 vs 800) |
+
+**Straturi noi:** grain de peliculă + vinietă (`.atmos`), halouri galbene
+(`.glow`), grilă de plan de arhitectură (`.blueprint`), bară de progres a
+scroll-ului (`.progress`), etichete de scenă numerotate (`.slate`), bandă
+derulantă cu categorii (`.marquee`), mockup-uri de telefon (`.phone`), sloturi
+de parteneriat (`.slot`). Reveal-ul e wipe cu blur, iar cifrele mari urcă
+animat până la valoarea finală (`data-count`).
+
+## Calculatorul de ROI — `calculator.html`
+
+Ideea din brief care lipsea. Partenerul alege categoria din 12 presetări
+(`CATS` în `assets/js/calculator.js`), mișcă sliderele și ajunge singur la
+concluzie. Ieșirile: break-even în unități, trei scenarii, lanțul de calcul
+desfășurat, costul ca procent din marjă.
+
+**Link personalizat per partener:** `calculator.html?p=ferestre` pre-selectează
+categoria; se poate adăuga și `&pachet=premium`. Trimiți fiecărei firme un link
+care pare făcut pentru ea.
+
+### Două calibrări față de brief — citește-le înainte să schimbi cifrele
+
+Brief-ul propunea 100.000 de vizionări per clip și scenarii de 0,1 / 0,3 / 0,6%.
+Le-am coborât, intenționat:
+
+- **Vizionări: 13.000, nu 100.000.** Media reală a campaniei NovingAIR
+  (154.900 / 12 materiale). Cu 100.000, retainerul dădea 9,6 milioane de
+  vizionări pe an dintr-un cont de zeci de mii de urmăritori și o proiecție de
+  10 mil. € marjă brută. Nicio firmă nu semnează după ce vede cifra aia.
+- **Cerere de ofertă: 0,05 / 0,11 / 0,25%.** Linia „realist" e **măsurată**:
+  170 de cereri la 154.900 de vizionări = 0,11%. 0,3% ar fi însemnat de trei ori
+  singurul rezultat pe care îl putem dovedi.
+
+Break-even-ul a rămas exact cel din brief: **8 vânzări pe an** la retainer de
+4.000 €/lună și 6.000 € marjă pe vânzare. Iar argumentul e mai puternic acum:
+îți trebuie 8, proiecția realistă zice 82, deci ai un ordin de mărime marjă de
+eroare.
+
+Valorile per categorie (`sale`, `marja`, `close`) sunt estimări de piață, în
+afară de cele confirmate în brief (ferestre 20.000 €, VMC 6.000 €, CLT 90.000 €).
+**De calibrat cu Alin.**
