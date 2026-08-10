@@ -3,27 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BuildWise — Brand partnership cu arh. Alin Ionescu</title>
-<meta name="description" content="80.000+ de oameni care își construiesc casa. Conținut educațional despre construcții eficiente energetic, nu reclamă. Campania NovingAIR: 154.900+ vizionări și 170+ broșuri cerute într-o lună.">
-<meta name="theme-color" content="#E2B017">
-
+<title>BuildWise — parteneriate de brand cu arh. Alin Ionescu</title>
+<meta name="description" content="Zeci de mii de oameni care își construiesc casa acum. Sunt arhitect și le explic ce să pună în ea. Când produsul tău e răspunsul corect, nu mai e reclamă — e specificație.">
+<meta name="theme-color" content="#070B11">
+<meta property="og:title" content="BuildWise — parteneriate de brand cu arh. Alin Ionescu">
+<meta property="og:description" content="Campania NovingAIR: 154.900+ vizionări și 170+ broșuri cerute, într-o lună.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="BuildWise — Brand partnership cu arh. Alin Ionescu">
-<meta property="og:description" content="80.000+ de oameni care își construiesc casa. Conținut educațional, nu reclamă.">
-<meta property="og:image" content="assets/img/alin.png">
-<meta property="og:locale" content="ro_RO">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%231E1E1E' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
-
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%230A0F16' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=3">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
 
-<!-- ================= NAV ================= -->
+<div class="atmos" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
+
 <header class="nav" id="nav">
   <div class="nav__inner">
     <a class="brand" href="index.html">
@@ -36,9 +33,10 @@
     <nav class="nav__links" id="navLinks">
       <a href="#audienta">Audiența</a>
       <a href="rezultate.html">Rezultate</a>
+      <a href="calculator.html">Calculator</a>
       <a href="pachete.html">Pachete</a>
       <a href="despre.html">Despre</a>
-      <a class="btn btn--dark" href="contact.html">Hai să vorbim</a>
+      <a class="btn btn--primary" href="contact.html">Hai să vorbim</a>
     </nav>
   </div>
 </header>
@@ -47,15 +45,25 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
+  <!-- Stratul de imagine. Pune assets/video/hero.mp4 (sau hero.jpg) și se
+       activează singur. Dacă fișierul lipsește, rămâne fundalul construit în
+       CSS — grila de plan + haloul galben — și pagina arată tot bine. -->
+  <div class="hero__media" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="blueprint" aria-hidden="true"></div>
+  <div class="glow glow--tl" aria-hidden="true"></div>
   <div class="blob blob--tr" aria-hidden="true"></div>
-  <div class="blob blob--bl" aria-hidden="true"></div>
 
   <div class="wrap">
     <div class="hero__grid">
       <div>
-        <p class="micro" data-reveal>Brand partnership</p>
+        <p class="slate" data-reveal><b>Brand partnership</b><i></i>2026</p>
         <h1 class="display" data-reveal style="--d:70ms">
-          80.000 de oameni <span>care își construiesc casa.</span>
+          Zeci de mii de oameni <span>care își</span> construiesc <span class="hl">casa.</span>
         </h1>
         <p class="lead hero__lead" data-reveal style="--d:140ms">
           Sunt arhitect și le explic, zi de zi, ce să pună în casa aia. Când produsul
@@ -63,8 +71,8 @@
           E recomandare.
         </p>
         <div class="hero__cta" data-reveal style="--d:210ms">
-          <a class="btn btn--primary" href="rezultate.html">Vezi ce a produs ultima campanie <span class="btn__a">→</span></a>
-          <a class="btn btn--ghost" href="pachete.html">Pachete și prețuri</a>
+          <a class="btn btn--primary" href="calculator.html">Calculează ce-ți aduce <span class="btn__a">→</span></a>
+          <a class="btn btn--ghost" href="rezultate.html">Vezi ultima campanie</a>
         </div>
       </div>
 
@@ -75,20 +83,36 @@
       </div>
     </div>
 
+    <!-- ⚠ DE ÎNLOCUIT cu cifrele reale din Insights. Vezi README. -->
     <div class="figures" data-reveal style="--d:340ms">
-      <div><b>80K<i>+</i></b><span>comunitate pe 4 platforme</span></div>
-      <div><b>154.900<i>+</i></b><span>vizionări, campania NovingAIR</span></div>
-      <div><b>170<i>+</i></b><span>broșuri cerute de oameni reali</span></div>
-      <div><b>10<i>+</i></b><span>ani de arhitectură eficientă energetic</span></div>
+      <div><b data-count="154900" data-suffix="+">0</b><span>vizionări, campania NovingAIR</span></div>
+      <div><b data-count="170" data-suffix="+">0</b><span>broșuri cerute de oameni reali</span></div>
+      <div><b data-count="10000" data-suffix=" mp">0</b><span>proiectați în 10+ ani</span></div>
+      <div><b>PHI<i> ✓</i></b><span>certificare casă pasivă, Darmstadt</span></div>
     </div>
   </div>
+
+  <span class="scrollcue" aria-hidden="true">Derulează<i></i></span>
 </section>
 
-<!-- ================= CINE SUNT ================= -->
-<section class="section section--tight" id="cine">
+<!-- ================= BANDA DE CATEGORII ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Tâmplărie<span></span></span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
+    <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
+    <span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span>
+    <span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
+    <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
+    <span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span>
+  </div>
+</div>
+
+<!-- ================= 01 · CINE SUNT ================= -->
+<section class="section" id="cine">
+  <div class="glow glow--br" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Cine sunt</span>
+      <span class="slate" data-reveal><b>01</b><i></i>Cine sunt</span>
       <h2 data-reveal style="--d:60ms">Arhitect. <span>Și omul pe care îl întreabă înainte să toarne placa.</span></h2>
     </div>
 
@@ -113,21 +137,21 @@
       </article>
       <article class="card" data-reveal style="--d:210ms">
         <span class="card__n">04</span>
-        <h4>Comunitatea</h4>
-        <p>80.000+ de oameni, strânși în jurul unei promisiuni simple:
-          de la confuzie la claritate, pentru casa ta eficientă energetic.</p>
+        <h4>Autoritatea</h4>
+        <p>Certified Passive House Designer, Passive House Institute Darmstadt.
+          Reperul european pe subiect — nu un curs de weekend.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= AUDIENȚA ================= -->
+<!-- ================= 02 · AUDIENȚA ================= -->
 <section class="section section--navy" id="audienta">
   <div class="blob blob--tl" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Audiența</span>
-      <h2 data-reveal style="--d:60ms">+80K <span>followers, pe patru platforme.</span></h2>
+      <span class="slate" data-reveal><b>02</b><i></i>Audiența</span>
+      <h2 data-reveal style="--d:60ms">Patru platforme, <span>o singură intenție:</span> se construiește.</h2>
       <p class="lead" data-reveal style="--d:120ms">
         Nu o audiență de arhitectură contemplativă. Oameni care caută răspunsuri
         pentru un șantier care începe.
@@ -137,6 +161,7 @@
     <div class="split">
       <div class="stat-hero" data-reveal>
         <p class="micro" style="color:var(--yellow)">Comunitate totală</p>
+        <!-- ⚠ Cifră de confirmat din Insights înainte de a fi trimisă unui brand -->
         <b>+80 K<i></i></b>
         <p>Facebook, Instagram, TikTok și YouTube — aceeași persoană,
           patru locuri în care o găsești.</p>
@@ -168,44 +193,59 @@
   </div>
 </section>
 
-<!-- ================= OBIECTIVE ================= -->
+<!-- ================= 03 · DOVADA ================= -->
 <section class="section">
-  <div class="blob blob--br" aria-hidden="true"></div>
+  <div class="glow glow--c" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Obiectivul colaborării</span>
-      <h2 data-reveal style="--d:60ms">Trei lucruri <span>pentru care are sens să lucrăm.</span></h2>
+      <span class="slate" data-reveal><b>03</b><i></i>Dovada</span>
+      <h2 data-reveal style="--d:60ms">Campania NovingAIR. <span>O lună, douăsprezece materiale.</span></h2>
+      <p class="lead" data-reveal style="--d:120ms">
+        Zece clipuri, un carusel și o broșură despre ventilația cu recuperare de
+        căldură. Uite ce a ieșit.
+      </p>
     </div>
 
-    <div class="cards">
-      <article class="card" data-reveal>
-        <span class="card__n">01</span>
-        <h4>Reach</h4>
-        <p>Creșterea vizibilității brandului în rândul unei audiențe relevante —
-          nu în rândul oricui trece pe acolo.</p>
-      </article>
-      <article class="card" data-reveal style="--d:80ms">
-        <span class="card__n">02</span>
-        <h4>Education</h4>
-        <p>Prezentarea produsului sau serviciului într-un mod clar, util și
-          credibil. Categoriile tehnice se vând explicat, nu strigat.</p>
-      </article>
-      <article class="card" data-reveal style="--d:160ms">
-        <span class="card__n">03</span>
-        <h4>Product launch support</h4>
-        <p>Susținerea unui moment de lansare sau a unui push comercial prin
-          conținut nativ, care nu arată a campanie.</p>
-      </article>
+    <div class="split" style="margin-bottom:1rem">
+      <div class="stat-hero" data-reveal>
+        <p class="micro" style="color:var(--yellow)">Vizibilitate imediată</p>
+        <b data-count="154900" data-suffix="+">0</b>
+        <p>vizionări însumate pe Instagram, Facebook, TikTok și YouTube, în 26 de zile.</p>
+      </div>
+      <div class="stat-grid" data-reveal style="--d:80ms">
+        <div class="stat"><b data-count="360" data-suffix="+">0</b><span>comentarii organice, conversație reală sub clipuri</span></div>
+        <div class="stat"><b data-count="170" data-suffix="+">0</b><span>broșuri cerute și trimise către oameni interesați</span></div>
+        <div class="stat"><b data-count="3700" data-suffix="+">0</b><span>interacțiuni totale pe conținutul campaniei</span></div>
+      </div>
+    </div>
+
+    <p class="note" data-reveal>
+      <b>Cele 170+ de broșuri sunt cel mai cald semnal din campanie.</b> Fiecare e un
+      om care a făcut un pas activ, a cerut materialul și și-a lăsat contactul.
+      Nu vizualizare pasivă, ci intenție.
+    </p>
+
+    <div style="margin-top:2rem" data-reveal>
+      <a class="btn btn--primary" href="rezultate.html">Raportul complet <span class="btn__a">→</span></a>
     </div>
   </div>
 </section>
 
 <!-- ================= FORMATE ================= -->
-<section class="section section--mist">
+<section class="section section--mist section--edge">
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Exemple vizuale</span>
+      <span class="slate" data-reveal><b>—</b><i></i>Formate</span>
       <h2 data-reveal style="--d:60ms">Patru formate. <span>Fiecare cu treaba lui.</span></h2>
+    </div>
+
+    <!-- Mockup-uri de telefon. Pune assets/video/reel-1.mp4 … reel-4.mp4 și
+         înlocuiește .phone__empty cu <video autoplay muted loop playsinline>. -->
+    <div class="phones" style="margin-bottom:clamp(2rem,1rem+3vw,3.5rem)" data-reveal>
+      <div class="phone"><div class="phone__empty">Reel 1<br>de adăugat</div></div>
+      <div class="phone"><div class="phone__empty">Reel 2<br>de adăugat</div></div>
+      <div class="phone"><div class="phone__empty">Reel 3<br>de adăugat</div></div>
+      <div class="phone"><div class="phone__empty">Reel 4<br>de adăugat</div></div>
     </div>
 
     <div class="cards">
@@ -225,69 +265,81 @@
           de trei ori și trimis mai departe.</p>
       </article>
       <article class="card" data-reveal style="--d:210ms">
-        <h4>Postări</h4>
-        <p>Susțin campania și țin subiectul viu între clipuri.</p>
-      </article>
-    </div>
-
-    <div class="split" style="margin-top:1rem">
-      <article class="card" data-reveal>
-        <span class="pill" style="justify-self:start">Background static</span>
-        <p>Clipuri simple și clare, în care fundalul rămâne static sau neutru,
-          iar mesajul e transmis prin text. Producție rapidă.</p>
-      </article>
-      <article class="card" data-reveal style="--d:80ms">
-        <span class="pill" style="justify-self:start">Background mobil — premium + viral</span>
-        <p>Clipuri dinamice, hook puternic, valoare mult mai mare. Atrag rapid
-          atenția și generează engagement mare. Procesul de producție e mai lung.</p>
+        <h4>Broșură / checklist</h4>
+        <p>Lead magnetul. Oamenii îl cer singuri și își lasă contactul — de
+          aici au ieșit cele 170 de cereri din campania NovingAIR.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= REZULTATE ================= -->
+<!-- ================= 04 · CALCULATORUL ================= -->
 <section class="section section--navy">
-  <div class="blob blob--tr" aria-hidden="true"></div>
+  <div class="blob blob--br" aria-hidden="true"></div>
+  <div class="wrap wrap--narrow" style="text-align:center">
+    <span class="slate" data-reveal style="justify-content:center"><b>04</b><i></i>Calculator</span>
+    <h2 style="margin-top:1.2rem" data-reveal>
+      Nu te întreb cât ai buget. <span>Te întreb</span> <span class="hl">câte case vinzi.</span>
+    </h2>
+    <p class="lead" style="margin:1.3rem auto 0" data-reveal>
+      La un retainer de 4.000 €/lună și o marjă de 6.000 € pe vânzare, îți trebuie
+      <b style="color:var(--yellow)">opt case pe an</b> ca să ieși pe zero. Opt, dintr-o audiență
+      de zeci de mii aflată în piață. Mișcă sliderele cu cifrele tale și vezi singur.
+    </p>
+    <div class="cta__row" data-reveal>
+      <a class="btn btn--primary" href="calculator.html">Deschide calculatorul <span class="btn__a">→</span></a>
+    </div>
+    <p class="micro" style="margin-top:1.4rem;color:rgba(255,255,255,.4)" data-reveal>
+      Estimare, nu promisiune
+    </p>
+  </div>
+</section>
+
+<!-- ================= 05 · SLOTURILE ================= -->
+<section class="section">
+  <div class="blueprint" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Dovada</span>
-      <h2 data-reveal style="--d:60ms">Campania NovingAIR, <span>o lună.</span></h2>
+      <span class="slate" data-reveal><b>05</b><i></i>Sloturi</span>
+      <h2 data-reveal style="--d:60ms">O casă are <span>douăsprezece decizii.</span> Una singură e luată.</h2>
       <p class="lead" data-reveal style="--d:120ms">
-        Zece clipuri, un carusel și o broșură despre ventilația cu recuperare de
-        căldură. Uite ce a ieșit.
+        Fiecare categorie tehnică dintr-o casă e un slot de parteneriat, și țin
+        <b style="color:var(--ink)">o singură firmă pe categorie</b>. Nu-ți fac reclamă
+        alături de trei concurenți în aceeași lună.
       </p>
     </div>
 
-    <div class="split" style="margin-bottom:1rem">
-      <div class="stat-hero" data-reveal>
-        <p class="micro" style="color:var(--yellow)">Vizibilitate imediată</p>
-        <b>154.900<i>+</i></b>
-        <p>vizionări însumate pe Instagram, Facebook, TikTok și YouTube, în 26 de zile.</p>
-      </div>
-      <div class="stat-grid" data-reveal style="--d:80ms">
-        <div class="stat"><b>360<i>+</i></b><span>comentarii organice, conversație reală sub clipuri</span></div>
-        <div class="stat"><b>170<i>+</i></b><span>broșuri cerute și trimise către oameni interesați</span></div>
-        <div class="stat"><b>3.700<i>+</i></b><span>interacțiuni totale pe conținutul campaniei</span></div>
-      </div>
+    <div class="slots">
+      <article class="slot slot--taken" data-reveal>
+        <span class="slot__k">Ocupat</span>
+        <h4>Ventilație cu recuperare</h4>
+        <p>NovingAIR — campanie livrată, raport public</p>
+      </article>
+      <article class="slot" data-reveal style="--d:40ms"><span class="slot__k">Liber</span><h4>Tâmplărie / ferestre</h4><p>20.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:80ms"><span class="slot__k">Liber</span><h4>Structură CLT / lemn</h4><p>90.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:120ms"><span class="slot__k">Liber</span><h4>Zidărie / ceramică</h4><p>12.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:160ms"><span class="slot__k">Liber</span><h4>Izolație termică</h4><p>9.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:200ms"><span class="slot__k">Liber</span><h4>Izolație naturală</h4><p>14.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:240ms"><span class="slot__k">Liber</span><h4>Pompe de căldură</h4><p>15.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:280ms"><span class="slot__k">Liber</span><h4>Fotovoltaic + baterii</h4><p>18.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:320ms"><span class="slot__k">Liber</span><h4>Acoperiș / învelitori</h4><p>16.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:360ms"><span class="slot__k">Liber</span><h4>Etanșare / membrane</h4><p>4.500 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:400ms"><span class="slot__k">Liber</span><h4>Smart home</h4><p>7.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--d:440ms"><span class="slot__k">Liber</span><h4>Finisaje / pardoseli</h4><p>11.000 € valoare medie</p></article>
     </div>
 
-    <p class="note" data-reveal>
-      <b>Cele 170+ de broșuri sunt cel mai cald semnal din campanie.</b> Fiecare e un
-      om care a făcut un pas activ, a cerut materialul și și-a lăsat contactul.
-      Nu vizualizare pasivă, ci intenție.
-    </p>
-
-    <div style="margin-top:2rem" data-reveal>
-      <a class="btn btn--primary" href="rezultate.html">Raportul complet <span class="btn__a">→</span></a>
+    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.8rem" data-reveal>
+      <a class="btn btn--ghost" href="casa.html">Plimbă-te prin casă <span class="btn__a">→</span></a>
+      <a class="btn btn--ghost" href="contact.html">Rezervă-ți categoria</a>
     </div>
   </div>
 </section>
 
 <!-- ================= PACHETE ================= -->
-<section class="section" id="pachete">
+<section class="section section--mist section--edge" id="pachete">
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Pachete de servicii</span>
+      <span class="slate" data-reveal><b>—</b><i></i>Pachete</span>
       <h2 data-reveal style="--d:60ms">Trei feluri <span>în care putem începe.</span></h2>
     </div>
 
@@ -340,7 +392,7 @@
       </article>
     </div>
 
-    <p class="note" style="margin-top:2rem" data-reveal>
+    <p class="note" style="margin-top:2.2rem" data-reveal>
       <b>Ca reper:</b> pachetul Premium a fost exact formatul campaniei NovingAIR.
       1.550 € pentru 154.900+ vizionări înseamnă aproximativ <b>1 cent pe vizionare</b>,
       plus 170 de oameni care au cerut singuri materialul.
@@ -349,10 +401,10 @@
 </section>
 
 <!-- ================= PROCES ================= -->
-<section class="section section--mist">
+<section class="section">
   <div class="wrap">
     <div class="section-head">
-      <span class="pill" data-reveal>Timeline</span>
+      <span class="slate" data-reveal><b>—</b><i></i>Producție</span>
       <h2 data-reveal style="--d:60ms">Procesul <span>unui reel.</span></h2>
       <p class="lead" data-reveal style="--d:120ms">
         Nu e „filmez ceva și postez". Fiecare clip trece prin nouă pași înainte
@@ -363,36 +415,40 @@
     <div class="flow" data-reveal>
       <span class="flow__step">Research</span><span class="flow__sep">→</span>
       <span class="flow__step">Scripting</span><span class="flow__sep">→</span>
+      <span class="flow__step">Storyboard</span><span class="flow__sep">→</span>
       <span class="flow__step">Filmare</span><span class="flow__sep">→</span>
-      <span class="flow__step">Drive</span><span class="flow__sep">→</span>
-      <span class="flow__step">Editare</span><span class="flow__sep">→</span>
-      <span class="flow__step">Subtitrare</span><span class="flow__sep">→</span>
-      <span class="flow__step">Thumbnail</span><span class="flow__sep">→</span>
-      <span class="flow__step">Planificare</span><span class="flow__sep">→</span>
-      <span class="flow__step flow__step--big">Postare</span>
+      <span class="flow__step">Montaj</span><span class="flow__sep">→</span>
+      <span class="flow__step">Grafică</span><span class="flow__sep">→</span>
+      <span class="flow__step">Aprobare</span><span class="flow__sep">→</span>
+      <span class="flow__step">Publicare</span><span class="flow__sep">→</span>
+      <span class="flow__step flow__step--big">Raport</span>
     </div>
+
+    <p class="note" style="margin-top:2.2rem" data-reveal>
+      <b>Aprobarea e a ta, înainte de publicare.</b> Nimic nu iese fără ochiul
+      tău pe el. Iar la final primești raportul cu cifrele reale, nu un screenshot.
+    </p>
   </div>
 </section>
 
 <!-- ================= CTA ================= -->
 <section class="section cta">
-  <div class="wrap">
-    <p class="micro" data-reveal>Următorul pas</p>
-    <h2 style="margin-top:1rem" data-reveal>Spune-mi ce vinzi. Îți spun dacă audiența mea o cumpără.</h2>
+  <div class="wrap wrap--narrow">
+    <span class="micro" data-reveal>Hai să fii și tu o parte din casă</span>
+    <h2 style="margin-top:1rem" data-reveal>Spune-mi ce vinzi. <span>Îți spun dacă audiența mea o cumpără.</span></h2>
     <p style="margin-top:1.1rem" data-reveal>
-      Treizeci de minute. Dacă nu se potrivește, afli în primele zece și nu-ți
-      pierd restul.
+      Un mail, două paragrafe. Îți răspund cu o părere sinceră — inclusiv dacă
+      părerea e că nu are sens să lucrăm împreună.
     </p>
     <div class="cta__row" data-reveal>
       <a class="btn btn--dark" href="contact.html">Hai să vorbim <span class="btn__a">→</span></a>
-      <a class="btn btn--ghost" href="rezultate.html">Vezi întâi rezultatele</a>
+      <a class="btn btn--ghost" href="calculator.html">Fă-ți întâi socoteala</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer__top">
@@ -411,6 +467,7 @@
         <ul>
           <li><a href="index.html#audienta">Audiența</a></li>
           <li><a href="rezultate.html">Rezultate</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
           <li><a href="pachete.html">Pachete</a></li>
           <li><a href="despre.html">Despre Alin</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -423,7 +480,6 @@
           <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
           <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
           <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
-          <li><a href="https://instagram.com/inhabit.thestudio" target="_blank" rel="noopener">@inhabit.thestudio</a></li>
         </ul>
       </div>
       <div>
@@ -431,18 +487,17 @@
         <ul>
           <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
           <li><a href="despre.html#buildwise">BuildWise</a></li>
-          <li><a href="despre.html#minicurs">Minicurs gratuit</a></li>
           <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <span>© <span id="year">2026</span> BuildWise · Arh. Ionescu George-Alin</span>
-      <span>Cifrele campaniei NovingAIR, perioadă de 1 lună.</span>
+      <span>Prețurile sunt pe campanie, TVA neinclus.</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=2" defer></script>
+<script src="assets/js/main.js?v=3" defer></script>
 </body>
 </html>
