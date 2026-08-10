@@ -54,6 +54,39 @@ Publicare: `git push` — GitHub Pages se reconstruiește singur în ~30 de secu
 
 ---
 
+# Lista de strâns de la Alin (2026-08-10)
+
+**Critice — fără ele site-ul rămâne cu placeholdere:**
+
+1. **Screenshot Insights Instagram** — Professional Dashboard, ultimele 90 de
+   zile: *accounts reached*, *accounts engaged*, *total followers*. Plus
+   **TikTok Analytics** (Overview, 60 zile: video views, profile views) și
+   **YouTube Studio** (Analytics, 90 zile: views, watch time).
+2. **Poză cu Alin, 1500 px+**, fără watermark. Ideal două: una portret pe fundal
+   simplu (hero) și una „în context" — pe șantier, cu casca, lângă un plan.
+   A doua vinde mai bine decât un portret de studio.
+3. **3–5 clipuri** (.mp4 vertical, cum sunt postate) — cele mai performante plus
+   cele 2 din campania NovingAIR. Intră în `assets/video/` (mockup-urile de
+   telefon din secțiunea „formate" și hero-ul).
+4. **Logo BuildWise în SVG** (sau .ai/.eps/.pdf). Dacă nu există, PNG la 2000 px
+   pe fundal transparent.
+
+**Importante — cifre pentru calculator și credibilitate:**
+
+5. **Cele 12 categorii** cu valoarea medie a unei vânzări (€) și marja brută (%).
+   Confirmate din brief: ferestre 20.000 €, VMC 6.000 €, CLT 90.000 €, marje
+   25–40%. Restul sunt estimări puse de mine în `CATS` din `calculator.js`.
+6. **Rezultatele NovingAIR confirmate** (154.900 / 360 / 170) **și acordul lor**
+   să apară public ca studiu de caz.
+7. **Sondajul de audiență** — procentul „în piață de cumpărare" (acum 30%
+   placeholder). Screenshotul dintr-un sondaj din stories ar fi aur.
+8. **Prețurile reale** — 450 / 800 / 1.550 € și retainerul de 4.000 €/lună.
+
+**Nice to have:** testimoniale cu acord (prenume + firmă), contractul NovingAIR
+ca să știm livrabilele exacte, domeniu propriu (ex. `parteneri.buildwise.ro`).
+
+---
+
 # Ce mai am nevoie de la tine
 
 ## 1. ⚠️ Acordul NovingAIR — de verificat înainte de promovare
