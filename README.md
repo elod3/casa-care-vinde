@@ -48,10 +48,12 @@ magick /tmp/full.tiff -crop 1986x2648+1281+0 +repage -resize 1200x \
   -quality 82 -strip assets/img/hero/alin-hero-portrait-1200.jpg
 ```
 
-Există `.jpg` și `.webp` la 1600 și 2400 px, plus decupajul portret care intră
-sub 980 px. Luminozitatea și scrimul se reglează din `.hero__media` și
-`.hero__scrim` în CSS — poza stă aproape la luminozitate plină, textul e ținut
-lizibil de gradient, nu de stingerea imaginii.
+Există `.jpg` și `.webp` la 1600 / 2400 / 3200 px, plus decupajul portret la
+1200 / 1600 / 1986 px (ultimul e înălțimea nativă a senzorului, netăiată).
+Contrastul și scrimul se reglează din `.hero__media` și `.hero__scrim` — dar
+**luminozitatea e coaptă în fișier**, nu aplicată din CSS: un `brightness(1.14)`
+la afișare ridică cu 14% și artefactele de compresie, exact în zonele închise
+unde se văd cel mai urât.
 
 Dacă apare `assets/video/hero.mp4`, se pune peste imagine și preia rolul.
 
@@ -425,3 +427,41 @@ Un overlay care nu pleacă e mai rău decât lipsa lui, mai ales că ține
    oricum după 6 s.
 
 Durata se schimbă din `HOLD` în `assets/js/loader.js`.
+
+---
+
+# Versiunea 8 — fotografia la rezoluția care trebuie
+
+Pe telefon poza ieșea pixelată. Cauza nu era compresia, ci `sizes`.
+
+Browserul alege din `srcset` socotind câți pixeli îi trebuie **pe lățimea la
+care se așază imaginea**. Dar `object-fit: cover` o mărește peste asta: un cadru
+3:4 într-un ecran de telefon (raport ~0,46) e limitat de înălțime, deci ajunge
+lat cât 0,75 din înălțimea ecranului — vreo **1,65 ori lățimea lui**. Plus
+zoom-ul lent de 1,12. Cu `sizes="100vw"`, browserul cerea o variantă de 1200 px
+pentru un loc care avea nevoie de 2100 și o întindea cu 58%.
+
+| Ecran | Are nevoie de | Primea | Primește acum |
+|---|---|---|---|
+| 390×844 @3x | 2127 px | 1200 | **1986** |
+| 430×932 @3x | 2349 px | 1200 | **1986** |
+| 1440 @2x | 3226 px | 2400 | **3200** |
+
+Ce s-a schimbat:
+
+- **`sizes="175vw"`** pe sursele de telefon și **`112vw`** pe cele late — mai
+  mari decât lățimea reală, intenționat, ca să acopere mărirea făcută de `cover`
+  și zoom-ul. Asta e corecția care contează; restul sunt rafinări.
+- **Decupajul portret merge până la 1986×2648**, adică înălțimea nativă a
+  senzorului, fără nicio reeșantionare.
+- **Luminozitatea e coaptă în fișier**, nu mai e `brightness(1.14)` în CSS.
+  Aplicat la afișare, ridica cu 14% și artefactele de compresie.
+- **Zoomul e mai scurt pe telefon** (`slowzoomSm`, 1,06 în loc de 1,12): sursa
+  are 2648 px înălțime, iar un ecran de 3x cere ~2530. La 1,12 am fi mărit poza.
+- **Calitate mai mare** unde se vede (webp 86 pe portret) și mai mică pe
+  fallbackurile JPEG, care ajung doar la browserele fără webp.
+- Bannerul cu casa, randat din SVG, a urcat de la 1800 la 2600 px — rezoluția e
+  gratis când desenul e vectorial.
+
+Un telefon primește acum ~102 KB webp în loc de ~27 KB. E de patru ori mai mult
+pentru singura imagine care contează pe prima pagină.

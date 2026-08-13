@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -74,14 +74,27 @@
 <!-- ================= HERO ================= -->
 <section class="hero">
   <!-- Fotografia lui Alin, developată din DSC00847.ARW (Sony A7III, 3968x2648).
-       Decupajul portret intră sub 980 px ca să nu-l taie cadrul lat pe telefon.
+       Decupajul portret intră sub 980 px, la înălțime nativă (1986x2648).
+
+       `sizes` e mai mare decât lățimea reală, intenționat. Browserul socotește
+       de câți pixeli e nevoie din lățimea la care se așază imaginea, dar
+       `object-fit: cover` o mărește peste asta: un cadru 3:4 într-un ecran de
+       telefon e limitat de înălțime, deci ajunge lat cât 0,75 din înălțimea
+       ecranului — vreo 1,65 ori lățimea lui. Plus zoom-ul lent de 1,12.
+       Cu `sizes="100vw"`, browserul alege o variantă de două ori prea mică și
+       poza iese pixelată exact pe telefon.
+
        Dacă apare assets/video/hero.mp4, videoul se suprapune peste imagine. -->
   <div class="hero__media" aria-hidden="true">
     <picture data-parallax="70">
-      <source media="(max-width: 980px)" type="image/webp" srcset="assets/img/hero/alin-hero-portrait-1200.webp">
-      <source media="(max-width: 980px)" srcset="assets/img/hero/alin-hero-portrait-1200.jpg">
-      <source type="image/webp" srcset="assets/img/hero/alin-hero-1600.webp 1600w, assets/img/hero/alin-hero-2400.webp 2400w" sizes="100vw">
-      <source srcset="assets/img/hero/alin-hero-1600.jpg 1600w, assets/img/hero/alin-hero-2400.jpg 2400w" sizes="100vw">
+      <source media="(max-width: 980px)" type="image/webp" sizes="175vw"
+              srcset="assets/img/hero/alin-hero-portrait-1200.webp 1200w, assets/img/hero/alin-hero-portrait-1600.webp 1600w, assets/img/hero/alin-hero-portrait-1986.webp 1986w">
+      <source media="(max-width: 980px)" sizes="175vw"
+              srcset="assets/img/hero/alin-hero-portrait-1200.jpg 1200w, assets/img/hero/alin-hero-portrait-1600.jpg 1600w, assets/img/hero/alin-hero-portrait-1986.jpg 1986w">
+      <source type="image/webp" sizes="112vw"
+              srcset="assets/img/hero/alin-hero-1600.webp 1600w, assets/img/hero/alin-hero-2400.webp 2400w, assets/img/hero/alin-hero-3200.webp 3200w">
+      <source sizes="112vw"
+              srcset="assets/img/hero/alin-hero-1600.jpg 1600w, assets/img/hero/alin-hero-2400.jpg 2400w, assets/img/hero/alin-hero-3200.jpg 3200w">
       <img src="assets/img/hero/alin-hero-1600.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async">
     </picture>
   </div>
@@ -363,7 +376,7 @@
   <div class="casa-bg" aria-hidden="true">
     <picture data-parallax="46">
       <source type="image/webp" srcset="assets/img/casa-preview.webp">
-      <img src="assets/img/casa-preview.jpg" alt="" width="1800" height="1178" loading="lazy" decoding="async">
+      <img src="assets/img/casa-preview.jpg" alt="" width="2600" height="1701" loading="lazy" decoding="async">
     </picture>
   </div>
   <div class="casa-bg__scrim" aria-hidden="true"></div>
