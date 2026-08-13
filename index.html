@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BuildWise — parteneriate de brand cu arh. Alin Ionescu</title>
+<title>Inhabit Media — parteneriate de brand cu arh. Alin Ionescu</title>
 <meta name="description" content="Zeci de mii de oameni care își construiesc casa acum. Sunt arhitect și le explic ce să pună în ea. Când produsul tău e răspunsul corect, nu mai e reclamă — e specificație.">
-<meta name="theme-color" content="#070B11">
-<meta property="og:title" content="BuildWise — parteneriate de brand cu arh. Alin Ionescu">
+<meta name="theme-color" content="#0A0908">
+<meta property="og:title" content="Inhabit Media — parteneriate de brand cu arh. Alin Ionescu">
 <meta property="og:description" content="Campania NovingAIR: 154.900+ vizionări și 170+ broșuri cerute, într-o lună.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://elod3.github.io/casa-care-vinde/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%230A0F16' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -23,21 +25,27 @@
 
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="brand" href="index.html">
-      <img src="assets/img/buildwise-mark.png" alt="" width="30">
-      <span><b>BUILDWISE</b><small style="display:block">arh. alin ionescu</small></span>
+    <a class="brand brand--mark" href="index.html" aria-label="Inhabit Media — acasă">
+      <img src="assets/img/inhabit-mark.png" alt="" width="34" height="34">
     </a>
-    <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav__links" id="navLinks">
+
+    <div class="nav__bar">
+      <a class="nav__word" href="index.html">
+        <b>INHABIT<i>MEDIA</i></b><small>arh. alin ionescu</small>
+      </a>
+      <nav class="nav__links" id="navLinks">
       <a href="#audienta">Audiența</a>
       <a href="rezultate.html">Rezultate</a>
       <a href="calculator.html">Calculator</a>
-      <a href="pachete.html">Pachete</a>
       <a href="despre.html">Despre</a>
-      <a class="btn btn--primary" href="contact.html">Hai să vorbim</a>
-    </nav>
+        <a class="btn btn--dark nav__cta-m" href="contact.html">Hai să vorbim</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <a class="btn btn--primary nav__cta" href="contact.html">Hai să vorbim</a>
   </div>
 </header>
 
@@ -45,18 +53,21 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <!-- Stratul de imagine. Pune assets/video/hero.mp4 (sau hero.jpg) și se
-       activează singur. Dacă fișierul lipsește, rămâne fundalul construit în
-       CSS — grila de plan + haloul galben — și pagina arată tot bine. -->
+  <!-- Fotografia lui Alin, developată din DSC00847.ARW (Sony A7III, 3968x2648).
+       Decupajul portret intră sub 980 px ca să nu-l taie cadrul lat pe telefon.
+       Dacă apare assets/video/hero.mp4, videoul se suprapune peste imagine. -->
   <div class="hero__media" aria-hidden="true">
-    <video autoplay muted loop playsinline poster="">
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
+    <picture>
+      <source media="(max-width: 980px)" type="image/webp" srcset="assets/img/hero/alin-hero-portrait-1200.webp">
+      <source media="(max-width: 980px)" srcset="assets/img/hero/alin-hero-portrait-1200.jpg">
+      <source type="image/webp" srcset="assets/img/hero/alin-hero-1600.webp 1600w, assets/img/hero/alin-hero-2400.webp 2400w" sizes="100vw">
+      <source srcset="assets/img/hero/alin-hero-1600.jpg 1600w, assets/img/hero/alin-hero-2400.jpg 2400w" sizes="100vw">
+      <img src="assets/img/hero/alin-hero-1600.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async">
+    </picture>
   </div>
   <div class="hero__scrim" aria-hidden="true"></div>
   <div class="blueprint" aria-hidden="true"></div>
   <div class="glow glow--tl" aria-hidden="true"></div>
-  <div class="blob blob--tr" aria-hidden="true"></div>
 
   <div class="wrap">
     <div class="hero__grid">
@@ -73,21 +84,22 @@
         <div class="hero__cta" data-reveal style="--d:210ms">
           <a class="btn btn--primary" href="calculator.html">Calculează ce-ți aduce <span class="btn__a">→</span></a>
           <a class="btn btn--ghost" href="rezultate.html">Vezi ultima campanie</a>
+          <!-- Semnătura stă pe rândul butoanelor, nu sub el: pe un laptop de
+               800 px altfel împinge fâșia de cifre sub linia de plutire. -->
+          <p class="hero__sign">
+            <span>arh. Alin Ionescu</span>
+            <em>@arh.ionescu · Inhabit Studio</em>
+          </p>
         </div>
-      </div>
-
-      <div class="portrait" data-reveal style="--d:280ms">
-        <div class="portrait__ring" aria-hidden="true"></div>
-        <img src="assets/img/alin.png" alt="Arh. Alin Ionescu" width="330" height="330">
-        <span class="pill portrait__tag">@arh.ionescu</span>
       </div>
     </div>
 
-    <!-- ⚠ DE ÎNLOCUIT cu cifrele reale din Insights. Vezi README. -->
+    <!-- Cifrele Instagram sunt citite din Insights, 08.08.2026 (vezi capturile
+         din assets/img/proof/). Restul vin din raportul NovingAIR. -->
     <div class="figures" data-reveal style="--d:340ms">
+      <div><b data-count="476006">0</b><span>vizionări pe Instagram, ultimele 90 de zile</span></div>
       <div><b data-count="154900" data-suffix="+">0</b><span>vizionări, campania NovingAIR</span></div>
       <div><b data-count="170" data-suffix="+">0</b><span>broșuri cerute de oameni reali</span></div>
-      <div><b data-count="10000" data-suffix=" mp">0</b><span>proiectați în 10+ ani</span></div>
       <div><b>PHI<i> ✓</i></b><span>certificare casă pasivă, Darmstadt</span></div>
     </div>
   </div>
@@ -146,7 +158,7 @@
 </section>
 
 <!-- ================= 02 · AUDIENȚA ================= -->
-<section class="section section--navy" id="audienta">
+<section class="section section--lit" data-nav="light" id="audienta">
   <div class="blob blob--tl" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head">
@@ -160,7 +172,7 @@
 
     <div class="split">
       <div class="stat-hero" data-reveal>
-        <p class="micro" style="color:var(--yellow)">Comunitate totală</p>
+        <p class="micro">Comunitate totală</p>
         <!-- ⚠ Cifră de confirmat din Insights înainte de a fi trimisă unui brand -->
         <b>+80 K<i></i></b>
         <p>Facebook, Instagram, TikTok și YouTube — aceeași persoană,
@@ -177,7 +189,7 @@
           <div class="bar__track"><i class="bar__fill" style="--w:74%"></i></div>
         </div>
         <div class="bar">
-          <div class="bar__top"><b>Instagram</b><span>+16,5 K</span></div>
+          <div class="bar__top"><b>Instagram</b><span>16.950</span></div>
           <div class="bar__track"><i class="bar__fill" style="--w:43%"></i></div>
         </div>
         <div class="bar">
@@ -190,6 +202,34 @@
         </p>
       </div>
     </div>
+
+    <!-- Capturile din Instagram Insights, decupate de bara de status a
+         telefonului. Sunt aici ca dovadă: orice cifră de mai sus se poate
+         verifica în ele. De reînnoit când se schimbă perioada. -->
+    <div class="proof" data-reveal style="--d:140ms">
+      <figure class="proof__item">
+        <div class="proof__shot"><img src="assets/img/proof/ig-overview-90z.jpg" alt="Instagram Insights, ultimele 90 de zile: 476.006 vizionări, +2.807 urmăritori net, 157.143 spectatori unici" width="946" height="1885" loading="lazy" decoding="async"></div>
+        <figcaption>
+          <b>90 de zile</b>
+          <span>476.006 vizionări · +2.807 urmăritori net · 157.143 oameni distincți.
+            71,1% din vizionări vin de la non-urmăritori — conținutul iese constant
+            din bula existentă.</span>
+        </figcaption>
+      </figure>
+      <figure class="proof__item">
+        <div class="proof__shot"><img src="assets/img/proof/ig-audienta-30z.jpg" alt="Instagram Insights, audiență: 16.950 urmăritori, +6,0% în 30 de zile" width="946" height="1885" loading="lazy" decoding="async"></div>
+        <figcaption>
+          <b>Creșterea</b>
+          <span>16.950 de urmăritori, +6,0% într-o lună. Clipurile care aduc cei
+            mai mulți oameni noi sunt exact cele tehnice — „cel mai ieftin aer
+            condiționat" e pe locul doi.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="note" data-reveal style="--d:200ms; margin-top:1.2rem">
+      Capturi din Instagram Insights, contul <b>@arh.ionescu</b>, la 8 august 2026.
+      Cifrele de pe Facebook, TikTok și YouTube se pot documenta la fel, la cerere.
+    </p>
   </div>
 </section>
 
@@ -274,7 +314,7 @@
 </section>
 
 <!-- ================= 04 · CALCULATORUL ================= -->
-<section class="section section--navy">
+<section class="section section--lit" data-nav="light">
   <div class="blob blob--br" aria-hidden="true"></div>
   <div class="wrap wrap--narrow" style="text-align:center">
     <span class="slate" data-reveal style="justify-content:center"><b>04</b><i></i>Calculator</span>
@@ -282,22 +322,32 @@
       Nu te întreb cât ai buget. <span>Te întreb</span> <span class="hl">câte case vinzi.</span>
     </h2>
     <p class="lead" style="margin:1.3rem auto 0" data-reveal>
-      La un retainer de 4.000 €/lună și o marjă de 6.000 € pe vânzare, îți trebuie
-      <b style="color:var(--yellow)">opt case pe an</b> ca să ieși pe zero. Opt, dintr-o audiență
+      La o colaborare pe un an și o marjă de 6.000 € pe vânzare, îți trebuie
+      <b style="color:var(--on-lit)">opt case</b> ca să ieși pe zero. Opt, dintr-o audiență
       de zeci de mii aflată în piață. Mișcă sliderele cu cifrele tale și vezi singur.
     </p>
     <div class="cta__row" data-reveal>
       <a class="btn btn--primary" href="calculator.html">Deschide calculatorul <span class="btn__a">→</span></a>
     </div>
-    <p class="micro" style="margin-top:1.4rem;color:rgba(255,255,255,.4)" data-reveal>
+    <p class="micro" style="margin-top:1.4rem" data-reveal>
       Estimare, nu promisiune
     </p>
   </div>
 </section>
 
-<!-- ================= 05 · SLOTURILE ================= -->
-<section class="section">
-  <div class="blueprint" aria-hidden="true"></div>
+<!-- ================= 05 · SLOTURILE =================
+     Secțiunea unei case pasive stă ca banner pe tot fundalul, iar în locul
+     celor două butoane rămâne unul singur: intri în casă. Imaginea e randată
+     din SVG-ul din casa.html — dacă desenul se schimbă acolo, se regenerează
+     (comanda e în README). -->
+<section class="section section--casa">
+  <div class="casa-bg" aria-hidden="true">
+    <picture>
+      <source type="image/webp" srcset="assets/img/casa-preview.webp">
+      <img src="assets/img/casa-preview.jpg" alt="" width="1800" height="1178" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="casa-bg__scrim" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head">
       <span class="slate" data-reveal><b>05</b><i></i>Sloturi</span>
@@ -328,75 +378,11 @@
       <article class="slot" data-reveal style="--d:440ms"><span class="slot__k">Liber</span><h4>Finisaje / pardoseli</h4><p>11.000 € valoare medie</p></article>
     </div>
 
-    <div style="margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.8rem" data-reveal>
-      <a class="btn btn--ghost" href="casa.html">Plimbă-te prin casă <span class="btn__a">→</span></a>
-      <a class="btn btn--ghost" href="contact.html">Rezervă-ți categoria</a>
+    <div class="casa-cta" data-reveal>
+      <a class="btn btn--primary" href="casa.html">Intră în casă <span class="btn__a">→</span></a>
+      <p>Secțiune printr-o casă pasivă. Dă scroll și camera se oprește la
+        fiecare element tehnic — adică la fiecare categorie liberă de mai sus.</p>
     </div>
-  </div>
-</section>
-
-<!-- ================= PACHETE ================= -->
-<section class="section section--mist section--edge" id="pachete">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Pachete</span>
-      <h2 data-reveal style="--d:60ms">Trei feluri <span>în care putem începe.</span></h2>
-    </div>
-
-    <div class="plans">
-      <article class="plan" data-reveal>
-        <p class="plan__name">Pachet <b>Basic</b></p>
-        <p class="plan__price">450 €</p>
-        <div class="plan__meta">
-          <div><b>Durată:</b> 1 săptămână + 3/4 zile</div>
-          <div><b>Format:</b> clipuri filmate static</div>
-        </div>
-        <ul>
-          <li>3x clipuri video</li>
-          <li>3x stories</li>
-        </ul>
-        <a class="btn btn--ghost" href="pachete.html">Ce conține</a>
-      </article>
-
-      <article class="plan plan--featured" data-reveal style="--d:80ms">
-        <span class="pill plan__tag">Cel mai echilibrat</span>
-        <p class="plan__name">Pachet <b>Standard</b></p>
-        <p class="plan__price">800 €</p>
-        <div class="plan__meta">
-          <div><b>Durată:</b> 2 săptămâni + 3/4 zile</div>
-          <div><b>Format:</b> clipuri filmate static</div>
-        </div>
-        <ul>
-          <li>5x clipuri video</li>
-          <li>5x stories</li>
-          <li>1x carusel</li>
-          <li>1x checklist</li>
-        </ul>
-        <a class="btn btn--primary" href="pachete.html">Ce conține <span class="btn__a">→</span></a>
-      </article>
-
-      <article class="plan" data-reveal style="--d:160ms">
-        <p class="plan__name">Pachet <b>Premium</b></p>
-        <p class="plan__price">1.550 €</p>
-        <div class="plan__meta">
-          <div><b>Durată:</b> 1 lună</div>
-          <div><b>Format:</b> static + mobil, design interior premium</div>
-        </div>
-        <ul>
-          <li>8x clipuri video</li>
-          <li>7x stories</li>
-          <li>1x broșură</li>
-          <li>1x carusel</li>
-        </ul>
-        <a class="btn btn--ghost" href="pachete.html">Ce conține</a>
-      </article>
-    </div>
-
-    <p class="note" style="margin-top:2.2rem" data-reveal>
-      <b>Ca reper:</b> pachetul Premium a fost exact formatul campaniei NovingAIR.
-      1.550 € pentru 154.900+ vizionări înseamnă aproximativ <b>1 cent pe vizionare</b>,
-      plus 170 de oameni care au cerut singuri materialul.
-    </p>
   </div>
 </section>
 
@@ -454,8 +440,8 @@
     <div class="footer__top">
       <div>
         <a class="brand" href="index.html">
-          <img src="assets/img/buildwise-mark.png" alt="" width="30">
-          <span><b>BUILDWISE</b><small style="display:block">arh. alin ionescu</small></span>
+          <img src="assets/img/inhabit-mark.png" alt="" width="30">
+          <span><b>INHABIT<i>MEDIA</i></b><small style="display:block">arh. alin ionescu</small></span>
         </a>
         <p style="margin-top:1rem;max-width:30ch">
           De la confuzie la claritate — educație online pentru construcția casei
@@ -468,7 +454,7 @@
           <li><a href="index.html#audienta">Audiența</a></li>
           <li><a href="rezultate.html">Rezultate</a></li>
           <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="pachete.html">Pachete</a></li>
+          <li><a href="pachete.html">Ce conține un parteneriat</a></li>
           <li><a href="despre.html">Despre Alin</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="casa.html">Bonus: casa interactivă</a></li>
@@ -492,12 +478,12 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© <span id="year">2026</span> BuildWise · Arh. Ionescu George-Alin</span>
+      <span>© <span id="year">2026</span> Inhabit Media · Arh. Ionescu George-Alin</span>
       <span>Prețurile sunt pe campanie, TVA neinclus.</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=3" defer></script>
+<script src="assets/js/main.js?v=5" defer></script>
 </body>
 </html>

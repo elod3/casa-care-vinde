@@ -19,6 +19,31 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ---------- inversarea barei peste secțiunile galbene ----------
+     Bara galbenă dispare peste o secțiune galbenă, deci se întoarce: pastilă
+     neagră, scris galben. Nu urmărim secțiunea „curentă" la scroll, ci ce se
+     află fizic sub bară — se măsoară linia ei de mijloc față de dreptunghiul
+     fiecărui element marcat data-nav="light". Așa merge la fel de bine dacă
+     mai apare o secțiune galbenă oriunde în pagină. */
+  var lit = Array.prototype.slice.call(document.querySelectorAll('[data-nav="light"]'));
+  if (nav && lit.length) {
+    var navMid = function () {
+      var r = nav.getBoundingClientRect();
+      return r.top + r.height / 2;
+    };
+    var syncNavTheme = function () {
+      var y = navMid();
+      var over = lit.some(function (el) {
+        var r = el.getBoundingClientRect();
+        return r.top <= y && r.bottom >= y;
+      });
+      nav.classList.toggle('nav--invert', over);
+    };
+    syncNavTheme();
+    window.addEventListener('scroll', syncNavTheme, { passive: true });
+    window.addEventListener('resize', syncNavTheme, { passive: true });
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('nav--open');
@@ -98,14 +123,21 @@
     });
   }
 
+  /* La prima trecere pragul e toată înălțimea ecranului, nu 88% din ea: altfel
+     fâșia de cifre din hero, care se oprește exact pe linia de plutire, rămâne
+     invizibilă până când omul dă scroll — și arată a bug, nu a animație. */
+  var firstSweep = true;
+
   function sweep() {
     queued = false;
     var h = window.innerHeight;
+    var edge = firstSweep ? h : h * 0.88;
+    firstSweep = false;
     for (var i = pending.length - 1; i >= 0; i--) {
       var el = pending[i];
       if (el.classList.contains('is-in')) { pending.splice(i, 1); continue; }
       var r = el.getBoundingClientRect();
-      if (r.top < h * 0.88 && r.bottom > 0) {
+      if (r.top < edge && r.bottom > 0) {
         activate(el);
         pending.splice(i, 1);
       }

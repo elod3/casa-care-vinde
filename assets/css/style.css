@@ -2,8 +2,8 @@
    BUILDWISE — arh. Alin Ionescu
    „Casa care vinde" — sistem de design CINEMATIC.
 
-   Aceleași culori de brand din deck (galben #E2B017, navy #0F2A4A), dar cu
-   solul inversat: fundalul e noaptea, galbenul e lumina. Tot ce se vede e
+   Galbenul de brand din deck (#E2B017) pe un sol neutru-cald — fără albastru
+   nicăieri. Fundalul e noaptea, galbenul e lumina. Tot ce se vede e
    construit din trei straturi — atmosferă (grain + vignetă + glow), scenă
    (conținut) și lumină (accentul galben). Numele de clase sunt păstrate din
    versiunea albă, ca paginile secundare să nu se rupă.
@@ -38,29 +38,34 @@ table { border-collapse: collapse; width: 100%; }
 
 /* ---------- 2. Tokens ---------- */
 :root {
-  /* sol */
-  --bg:        #070B11;
-  --bg-2:      #0B121C;
-  --bg-3:      #0E1724;
+  /* Sol. Fără albastru nicăieri: negrul e neutru-cald, ca să nu răcească
+     galbenul. Vechiul navy a ieșit complet din paletă — secțiunile care erau
+     albastre sunt acum galbene (.section--lit). */
+  --bg:        #0A0908;
+  --bg-2:      #121110;
+  --bg-3:      #1B1917;
 
   /* brand, neatins */
   --yellow:    #E2B017;
   --yellow-lt: #F7D66B;
   --yellow-dk: #B98D0E;
-  --navy:      #0F2A4A;
-  --navy-2:    #1B3654;
+
+  /* cerneala de pe fundal galben */
+  --on-lit:    #17140A;
+  --on-lit-2:  rgba(23, 20, 10, .74);
+  --on-lit-3:  rgba(23, 20, 10, .55);
 
   /* text */
-  --ink:       #EDF1F6;
-  --ink-2:     #94A3B5;
-  --ink-3:     #5F6E80;
+  --ink:       #F3EFE8;
+  --ink-2:     #A8A199;
+  --ink-3:     #6F6960;
 
   /* suprafețe */
   --panel:     rgba(255, 255, 255, .035);
   --panel-2:   rgba(255, 255, 255, .06);
   --line:      rgba(255, 255, 255, .10);
   --line-2:    rgba(255, 255, 255, .18);
-  --line-navy: rgba(255, 255, 255, .14);
+  --line-lit:  rgba(23, 20, 10, .16);
 
   /* aliasuri de compatibilitate cu paginile vechi */
   --mist:      var(--bg-2);
@@ -93,7 +98,8 @@ table { border-collapse: collapse; width: 100%; }
   --shadow-lg: 0 4px 10px rgba(0, 0, 0, .35), 0 50px 90px -40px rgba(0, 0, 0, .9);
   --ease: cubic-bezier(.22, .61, .36, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
-  --nav-h: 74px;
+  /* înălțimea totală ocupată de bara plutitoare (pastila + marginea de sus) */
+  --nav-h: 88px;
 }
 
 /* ---------- 3. Atmosferă ----------
@@ -155,6 +161,17 @@ table { border-collapse: collapse; width: 100%; }
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 78%);
 }
 
+/* Peste fotografie grila trebuie să fie albă și mai deasă ca să se citească —
+   varianta galbenă pe fundal închis dispare complet pe o poză luminată. */
+.hero .blueprint {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 92%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 92%);
+}
+
 /* blob-urile galbene din deck, păstrate dar transformate în lumină */
 .blob {
   position: absolute;
@@ -194,7 +211,10 @@ table { border-collapse: collapse; width: 100%; }
 
 .section { padding-block: var(--section-y); position: relative; overflow: hidden; }
 .section--tight { padding-block: clamp(3rem, 1.5rem + 5vw, 6rem); }
-.section--navy { background: linear-gradient(180deg, var(--navy) 0%, #0C2140 100%); }
+/* Secțiunea aprinsă: galbenul de brand pe toată lățimea, cu cerneală închisă.
+   Ia locul vechilor secțiuni navy. Bara de navigație se întoarce singură pe
+   negru cât timp trece peste ea — vezi data-nav="light" în main.js. */
+.section--lit { background: linear-gradient(180deg, var(--yellow) 0%, #D0A013 100%); color: var(--on-lit); }
 .section--mist { background: var(--bg-2); }
 .section--edge { border-top: 1px solid var(--line); }
 
@@ -212,7 +232,7 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .hl { color: var(--yellow); }
 
 .lead { font-size: var(--fs-lead); color: var(--ink-2); max-width: 60ch; line-height: 1.55; }
-.section--navy .lead, .section--navy p { color: rgba(255, 255, 255, .78); }
+.section--lit .lead, .section--lit p { color: var(--on-lit-2); }
 
 .micro {
   font-size: var(--fs-micro);
@@ -221,7 +241,7 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.section--navy .micro { color: var(--yellow); }
+.section--lit .micro { color: var(--on-lit-3); }
 
 /* eticheta de scenă: „01 / AUDIENȚA" — dă senzația de capitole de film */
 .slate {
@@ -270,8 +290,10 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .btn--dark:hover { background: #fff; }
 .btn--ghost { border-color: var(--line-2); color: var(--ink); }
 .btn--ghost:hover { background: var(--panel-2); border-color: var(--yellow); color: var(--yellow); }
-.section--navy .btn--ghost { border-color: rgba(255, 255, 255, .35); color: #fff; }
-.section--navy .btn--ghost:hover { background: #fff; color: var(--navy); border-color: #fff; }
+.section--lit .btn--ghost { border-color: rgba(23, 20, 10, .4); color: var(--on-lit); }
+.section--lit .btn--ghost:hover { background: var(--on-lit); color: var(--yellow); border-color: var(--on-lit); }
+.section--lit .btn--primary { background: var(--on-lit); color: var(--yellow); }
+.section--lit .btn--primary:hover { background: #000; box-shadow: none; }
 .btn__a { transition: transform .3s var(--ease); }
 .btn:hover .btn__a { transform: translateX(5px); }
 
@@ -286,49 +308,118 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 4px;
 }
 
-/* ---------- 7. Nav ---------- */
+/* ---------- 7. Nav ----------
+   Bara galbenă rotunjită, plutind peste hero — semnătura din referința de
+   design. Marca stă în afara pastilei, în stânga; CTA-ul e o pastilă separată
+   în dreapta. Pe fundal galben textul devine închis, deci toate stările de
+   hover se inversează față de restul site-ului. */
 .nav {
-  position: fixed; inset: 0 0 auto 0; z-index: 100;
-  height: var(--nav-h); display: flex; align-items: center;
-  transition: background-color .4s var(--ease), box-shadow .4s, backdrop-filter .4s;
+  position: fixed; inset: var(--nav-pad) 0 auto 0; z-index: 100;
+  display: flex; align-items: center;
+  transition: translate .4s var(--ease);
+  --nav-pad: clamp(10px, 1.4vw, 18px);
+
+  /* Culorile barei trăiesc în trei variabile, ca inversarea să fie o singură
+     comutare. Implicit: pastilă galbenă, scris negru — bara e peste noapte. */
+  --nav-bg:     var(--yellow);
+  --nav-ink:    #17140A;
+  --nav-ink-2:  rgba(23, 20, 10, .62);
+  --nav-ink-3:  rgba(23, 20, 10, .72);
+  --nav-mark:   1;    /* 1 = marca galbenă, așa cum e fișierul */
+  transition: translate .4s var(--ease);
 }
-.nav--solid {
-  background: rgba(7, 11, 17, .72);
-  backdrop-filter: blur(16px) saturate(140%);
-  box-shadow: 0 1px 0 var(--line);
+
+/* Peste o secțiune galbenă bara s-ar pierde în fundal, deci se întoarce:
+   pastilă neagră, scris galben. Clasa o pune main.js, uitându-se ce element
+   marcat cu data-nav="light" e sub bară în momentul ăla. */
+.nav--invert {
+  --nav-bg:     #0A0D12;
+  --nav-ink:    var(--yellow);
+  --nav-ink-2:  rgba(226, 176, 23, .6);
+  --nav-ink-3:  rgba(226, 176, 23, .78);
+  --nav-mark:   0;
 }
 .nav__inner {
   width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter);
-  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  display: flex; align-items: center; gap: clamp(.5rem, 1vw, .9rem);
 }
-.brand { display: flex; align-items: center; gap: .6rem; }
-.brand img { width: 30px; height: auto; }
-.brand b { font-weight: 800; letter-spacing: -.02em; font-size: 1.05rem; color: var(--ink); }
-.brand small { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
 
-.nav__links { display: flex; align-items: center; gap: clamp(.9rem, .2rem + 1.5vw, 2rem); }
-.nav__links a:not(.btn) { font-size: .9rem; font-weight: 500; color: var(--ink-2); padding-block: .4rem; transition: color .25s; }
-.nav__links a:not(.btn):hover { color: var(--ink); }
-.nav__links a:not(.btn)[aria-current="page"] { color: var(--yellow); font-weight: 700; }
+/* Marca, în afara pastilei. Fișierul e galben, deci peste o secțiune galbenă
+   îl facem negru cu brightness(0) — nu ținem două variante de imagine. */
+.brand--mark { flex: 0 0 auto; display: grid; place-items: center; transition: transform .3s var(--ease); }
+.brand--mark img {
+  width: clamp(30px, 3.4vw, 38px); height: auto;
+  filter: brightness(var(--nav-mark));
+  transition: filter .35s var(--ease);
+}
+.brand--mark:hover { transform: rotate(-6deg) scale(1.06); }
 
-.nav__toggle { display: none; width: 44px; height: 44px; margin-right: -10px; }
-.nav__toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 6px auto; transition: transform .3s var(--ease), opacity .2s; }
-.nav--open .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+/* pastila */
+.nav__bar {
+  flex: 1 1 auto; min-width: 0;
+  display: flex; align-items: center; gap: clamp(.8rem, 2vw, 2.2rem);
+  background: var(--nav-bg); border-radius: 100px;
+  padding: .5rem .6rem .5rem clamp(1rem, 2vw, 1.6rem);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, .8);
+  transition: background-color .35s var(--ease);
+}
+.nav__word { display: grid; line-height: 1; flex: 0 0 auto; }
+/* „inhabitmedia" — un singur cuvânt, minuscule, cu jumătatea a doua mai
+   subțire; contrastul de greutate 400/800 e limbajul din deck. */
+.nav__word b {
+  font-weight: 800; letter-spacing: -.035em; text-transform: lowercase;
+  font-size: clamp(1rem, .85rem + .4vw, 1.2rem); color: var(--nav-ink);
+}
+.nav__word b i { font-style: normal; font-weight: 400; }
+.nav__word small { font-size: .55rem; letter-spacing: .17em; text-transform: uppercase; font-weight: 600; color: var(--nav-ink-2); margin-top: 3px; }
+
+.nav__links { display: flex; align-items: center; gap: clamp(.9rem, .2rem + 1.6vw, 2.1rem); margin-left: auto; padding-right: .8rem; }
+.nav__links a:not(.btn) {
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--nav-ink-3); padding-block: .4rem; transition: color .25s;
+  white-space: nowrap;
+}
+.nav__links a:not(.btn):hover { color: var(--nav-ink); }
+.nav__links a:not(.btn)[aria-current="page"] { color: var(--nav-ink); border-bottom: 2px solid currentColor; }
+
+/* CTA-ul separat din dreapta. Se întoarce invers față de pastilă: pe galben e
+   negru, pe negru e galben — altfel s-ar topi în secțiunea de sub el. */
+.nav__cta {
+  flex: 0 0 auto; padding: .85em 1.5em; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase;
+  background: var(--nav-bg); color: var(--nav-ink);
+  transition: background-color .35s var(--ease), color .35s var(--ease), transform .3s var(--ease), box-shadow .3s;
+}
+.nav--invert .nav__cta:hover { background: #12161F; box-shadow: var(--glow); }
+.nav__cta-m { display: none; }
+
+/* la scroll bara se strânge puțin, ca să nu fure din imagine */
+.nav--solid .nav__bar { padding-block: .38rem; }
+.nav--solid .nav__cta { padding-block: .72em; }
+
+.nav__toggle { display: none; width: 42px; height: 42px; flex: 0 0 auto; margin-left: auto; }
+.nav__toggle span { display: block; width: 22px; height: 2px; background: var(--nav-ink); margin: 5px auto; transition: transform .3s var(--ease), opacity .2s, background-color .35s; }
+.nav--open .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav--open .nav__toggle span:nth-child(2) { opacity: 0; }
-.nav--open .nav__toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav--open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-@media (max-width: 900px) {
-  .nav { background: rgba(7, 11, 17, .82); backdrop-filter: blur(16px); }
+@media (max-width: 980px) {
+  .nav__cta { display: none; }
+  .nav__cta-m { display: inline-flex; }
   .nav__toggle { display: block; }
   .nav__links {
-    position: fixed; inset: var(--nav-h) 0 auto 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--bg-2); border-bottom: 1px solid var(--line);
-    padding: .5rem var(--gutter) 1.6rem; box-shadow: var(--shadow);
+    position: fixed; inset: calc(var(--nav-pad) + 62px) var(--gutter) auto var(--gutter);
+    flex-direction: column; align-items: stretch; gap: 0; margin-left: 0; padding: .4rem 1.3rem 1.4rem;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lg);
+    box-shadow: var(--shadow-lg);
     clip-path: inset(0 0 100% 0); transition: clip-path .45s var(--ease);
   }
   .nav--open .nav__links { clip-path: inset(0 0 0 0); }
-  .nav__links a:not(.btn) { padding-block: .95rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
+  .nav__links a:not(.btn) {
+    padding-block: .95rem; border-bottom: 1px solid var(--line);
+    font-size: 1rem; color: var(--ink-2); text-transform: none; letter-spacing: 0;
+  }
+  .nav__links a:not(.btn):hover { color: var(--yellow); }
+  .nav__links a:not(.btn)[aria-current="page"] { color: var(--yellow); border-bottom-color: var(--line); }
   .nav__links .btn { margin-top: 1.1rem; justify-content: center; }
 }
 
@@ -337,36 +428,67 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   position: relative;
   min-height: 100svh;
   display: grid; align-items: end;
-  padding-top: calc(var(--nav-h) + 3rem);
-  padding-bottom: clamp(2rem, 1rem + 4vw, 4.5rem);
+  /* Spațierea se măsoară în svh, nu în rem: pe un laptop de 800 px hero-ul se
+     strânge singur ca fâșia de cifre să rămână deasupra liniei de plutire. */
+  padding-top: calc(var(--nav-h) + clamp(1rem, 4svh, 3rem));
+  padding-bottom: clamp(1.5rem, 3svh, 4.5rem);
   overflow: hidden;
   isolation: isolate;
 }
 
-/* stratul de imagine/video — dacă fișierul lipsește, rămâne fundalul CSS */
-.hero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+/* Stratul de imagine. Fotografia lui Alin e subiectul hero-ului, nu o textură
+   de fundal — de asta stă aproape la luminozitate plină, iar lizibilitatea o
+   face scrimul de dedesubt, nu stingerea pozei. Dacă apare assets/video/hero.mp4,
+   videoul se pune peste imagine și preia rolul. */
+.hero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: var(--bg); }
 .hero__media img, .hero__media video {
-  width: 100%; height: 100%; object-fit: cover;
-  opacity: .38; filter: grayscale(.35) contrast(1.05);
-  transform: scale(1.06);
-  animation: slowzoom 26s var(--ease) infinite alternate;
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%;
+  filter: contrast(1.1) saturate(.95) brightness(1.14);
+  transform: scale(1.04);
+  animation: slowzoom 30s var(--ease) infinite alternate;
 }
-@keyframes slowzoom { to { transform: scale(1.14); } }
+.hero__media video { position: absolute; inset: 0; }
+@keyframes slowzoom { to { transform: scale(1.12); } }
 
-/* scrim — gradientul care face textul lizibil peste orice imagine */
+/* Scrim în trei straturi: întunecă sus sub bara galbenă, ține stânga citibilă
+   pentru titlu și topește marginea de jos în secțiunea următoare. */
 .hero__scrim {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(180deg, rgba(7, 11, 17, .92) 0%, rgba(7, 11, 17, .35) 38%, rgba(7, 11, 17, .96) 88%),
-    linear-gradient(90deg, rgba(7, 11, 17, .85) 0%, transparent 60%);
+    linear-gradient(180deg, rgba(7, 11, 17, .72) 0%, rgba(7, 11, 17, .08) 24%, rgba(7, 11, 17, .5) 70%, var(--bg) 99%),
+    linear-gradient(90deg, rgba(7, 11, 17, .82) 0%, rgba(7, 11, 17, .3) 44%, transparent 66%);
 }
 
+@media (max-width: 980px) {
+  /* Pe telefon intră decupajul portret. Capul lui Alin cade în prima treime a
+     ecranului, deci textul pornește de sub el — altfel titlul îi taie fața. */
+  .hero__media img { object-position: 50% 22%; }
+  .hero { padding-top: calc(var(--nav-h) + 19svh); }
+  .hero__scrim {
+    background:
+      linear-gradient(180deg, rgba(7, 11, 17, .62) 0%, rgba(7, 11, 17, .06) 16%, rgba(7, 11, 17, .58) 34%, rgba(7, 11, 17, .9) 64%, var(--bg) 97%);
+  }
+}
+
+/* O singură coloană, jos-stânga: Alin stă în dreapta cadrului, iar textul nu
+   are voie să-i intre peste față. */
 .hero__grid { display: grid; gap: clamp(2rem, 1rem + 3vw, 3.5rem); align-items: end; }
-@media (min-width: 980px) { .hero__grid { grid-template-columns: minmax(0, 1.45fr) minmax(0, .55fr); } }
+.hero__grid > * { max-width: min(700px, 62%); }
+@media (max-width: 980px) { .hero__grid > * { max-width: none; } }
+
+/* semnătura de lângă butoane, în locul portretului decupat */
+.hero__sign {
+  display: grid; gap: .15rem; align-self: center;
+  margin-left: clamp(.4rem, 1.5vw, 1.4rem);
+  padding-left: 1rem; border-left: 2px solid var(--yellow);
+}
+@media (max-width: 640px) { .hero__sign { margin-left: 0; flex-basis: 100%; } }
+.hero__sign span { font-weight: 700; font-size: .95rem; }
+.hero__sign em { font-style: normal; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 
 .hero h1 { max-width: 16ch; }
 .hero__lead { margin-top: 1.4rem; }
-.hero__cta { margin-top: 1.9rem; display: flex; flex-wrap: wrap; gap: .8rem; }
+.hero__cta { margin-top: clamp(1.2rem, 3svh, 1.9rem); display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
 
 /* indicatorul de scroll */
 .scrollcue {
@@ -392,8 +514,8 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .figures {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
   gap: clamp(1rem, .4rem + 2vw, 2.5rem);
-  margin-top: clamp(1.8rem, 1rem + 2.5vw, 3rem);
-  padding-top: 1.5rem; border-top: 1px solid var(--line-2);
+  margin-top: clamp(1.2rem, 2.5svh, 3rem);
+  padding-top: clamp(1rem, 2svh, 1.5rem); border-top: 1px solid var(--line-2);
 }
 .figures div { display: grid; gap: .2rem; }
 .figures b {
@@ -416,7 +538,7 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 
 /* ---------- 10. Statistici ---------- */
 .stat-hero {
-  background: linear-gradient(160deg, var(--navy) 0%, #0A1729 100%);
+  background: linear-gradient(160deg, var(--bg-3) 0%, #0D0C0A 100%);
   border: 1px solid var(--line);
   border-radius: var(--r-lg); padding: clamp(1.7rem, 1rem + 2.5vw, 3.2rem);
   display: grid; gap: .6rem; align-content: center;
@@ -433,6 +555,12 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 .stat-hero b i { font-style: normal; color: var(--yellow); }
 .stat-hero p { font-size: .92rem; color: rgba(255, 255, 255, .7); max-width: 34ch; }
+/* Cardul rămâne închis și pe secțiunea galbenă — e o fereastră de noapte în
+   mijlocul luminii. Deci își reia cerneala deschisă, altfel moștenește
+   cerneala închisă a secțiunii și dispare. */
+.section--lit .stat-hero { color: var(--ink); border-color: rgba(255, 255, 255, .12); }
+.section--lit .stat-hero .micro { color: var(--yellow); }
+.section--lit .stat-hero p { color: rgba(255, 255, 255, .7); }
 
 .stat-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr)); }
 .stat {
@@ -449,8 +577,8 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 .stat b i { font-style: normal; color: var(--yellow); }
 .stat span { font-size: .86rem; color: var(--ink-3); line-height: 1.4; }
-.section--navy .stat { background: rgba(255, 255, 255, .05); border-color: var(--line-navy); }
-.section--navy .stat span { color: rgba(255, 255, 255, .7); }
+.section--lit .stat { background: rgba(23, 20, 10, .07); border-color: var(--line-lit); }
+.section--lit .stat span { color: var(--on-lit-2); }
 
 .split { display: grid; gap: 1rem; }
 @media (min-width: 860px) { .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; } }
@@ -481,8 +609,8 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   background: var(--yellow); color: #0A0F16;
   display: grid; place-items: center; font-weight: 800; font-size: .95rem;
 }
-.section--navy .card { background: rgba(255, 255, 255, .05); border-color: var(--line-navy); }
-.section--navy .card p { color: rgba(255, 255, 255, .72); }
+.section--lit .card { background: rgba(23, 20, 10, .07); border-color: var(--line-lit); }
+.section--lit .card p { color: var(--on-lit-2); }
 
 /* ---------- 12. Bare de distribuție ---------- */
 .bars { display: grid; gap: 1.2rem; }
@@ -490,7 +618,10 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .bar__top b { font-weight: 700; font-size: .95rem; }
 .bar__top span { font-weight: 800; font-size: 1rem; letter-spacing: -.02em; color: var(--yellow); font-variant-numeric: tabular-nums; }
 .bar__track { height: 10px; border-radius: 100px; background: rgba(255, 255, 255, .08); overflow: hidden; }
-.section--navy .bar__track { background: rgba(255, 255, 255, .12); }
+.section--lit .bar__track { background: rgba(23, 20, 10, .16); }
+.section--lit .bar__fill { background: var(--on-lit); box-shadow: none; }
+/* cifra de la capătul barei era galben pe galben */
+.section--lit .bar__top span { color: var(--on-lit); }
 .bar__fill {
   height: 100%; border-radius: 100px; width: 0;
   background: linear-gradient(90deg, var(--yellow-dk), var(--yellow-lt));
@@ -516,8 +647,10 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 .plan__name { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); font-weight: 200; letter-spacing: -.035em; }
 .plan__name b { font-weight: 800; }
-.plan__price { font-size: clamp(2.3rem, 1.7rem + 2.1vw, 3.4rem); font-weight: 800; letter-spacing: -.045em; line-height: 1; }
-.plan__price small { font-size: .8rem; font-weight: 500; color: var(--ink-3); letter-spacing: 0; }
+/* Locul unde stătea prețul. Amploarea campaniei ancorează la fel de bine, dar
+   nu publică o cifră pe care partenerul o compară înainte să vorbească. */
+.plan__scale { font-size: clamp(1.9rem, 1.4rem + 1.7vw, 2.7rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.05; }
+.plan__scale span { display: block; margin-top: .5rem; font-size: .82rem; font-weight: 500; letter-spacing: 0; color: var(--ink-3); }
 .plan__meta { display: grid; gap: .5rem; font-size: .88rem; color: var(--ink-3); }
 .plan__meta div { display: flex; gap: .6rem; }
 .plan__meta b { color: var(--ink); font-weight: 600; white-space: nowrap; }
@@ -550,15 +683,15 @@ tr.price td, tr.price th { font-weight: 800; font-size: 1.05rem; background: var
 .profile p { color: var(--ink-2); font-size: .92rem; max-width: 72ch; }
 .profile__tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .35rem; }
 .tag { font-size: .72rem; font-weight: 600; padding: .35em .8em; border-radius: 100px; background: var(--panel-2); color: var(--ink-2); border: 1px solid var(--line); }
-.section--navy .profile { border-color: var(--line-navy); }
-.section--navy .profile p { color: rgba(255, 255, 255, .75); }
-.section--navy .tag { background: rgba(255, 255, 255, .07); color: rgba(255, 255, 255, .8); }
+.section--lit .profile { border-color: var(--line-lit); }
+.section--lit .profile p { color: var(--on-lit-2); }
+.section--lit .tag { background: rgba(23, 20, 10, .1); color: var(--on-lit-2); }
 
 /* ---------- 17. Notă ---------- */
 .note { border-left: 3px solid var(--yellow); padding: 1rem 0 1rem 1.3rem; font-size: .95rem; color: var(--ink-2); max-width: 76ch; }
 .note b { color: var(--ink); }
-.section--navy .note { color: rgba(255, 255, 255, .8); }
-.section--navy .note b { color: #fff; }
+.section--lit .note { color: var(--on-lit-2); border-color: var(--on-lit); }
+.section--lit .note b { color: var(--on-lit); }
 
 /* ---------- 18. Subiecte ---------- */
 .topics { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr)); }
@@ -570,7 +703,7 @@ tr.price td, tr.price th { font-weight: 800; font-size: 1.05rem; background: var
 }
 .topic:hover { border-color: rgba(226, 176, 23, .3); color: var(--ink); }
 .topic b { color: var(--yellow); font-weight: 800; font-size: .8rem; }
-.section--navy .topic { background: rgba(255, 255, 255, .05); border-color: var(--line-navy); }
+.section--lit .topic { background: rgba(23, 20, 10, .07); border-color: var(--line-lit); }
 
 /* ---------- 19. Formular ---------- */
 .form-panel { border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(1.4rem, 1rem + 1.5vw, 2.3rem); background: var(--panel); }
@@ -612,7 +745,7 @@ textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
 .footer__bottom {
   margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--line);
   display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
-  font-size: .76rem; color: #4A5768;
+  font-size: .76rem; color: var(--ink-3);
 }
 
 /* ---------- 22. Page hero ---------- */
@@ -774,7 +907,7 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 .tour { position: relative; background: var(--bg); }
 .tour__viewport {
   position: sticky; top: 0; height: 100svh; overflow: hidden;
-  background: radial-gradient(ellipse 70% 60% at 50% 45%, #101A28 0%, var(--bg) 72%);
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, #1C1916 0%, var(--bg) 72%);
 }
 .tour__stage { position: absolute; top: 0; left: 0; width: 2000px; height: 1400px; transform-origin: 0 0; will-change: transform; }
 /* Secțiunea casei e desenată pe alb. Pe noapte o lăsăm luminoasă — arată ca o
@@ -921,7 +1054,7 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 .phones { display: grid; gap: clamp(1rem, .5rem + 2vw, 2rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 .phone {
   aspect-ratio: 9 / 19.5; border-radius: 28px; overflow: hidden; position: relative;
-  border: 6px solid #161C26; background: var(--bg-2);
+  border: 6px solid #1C1A17; background: var(--bg-2);
   box-shadow: var(--shadow-lg);
   transition: transform .45s var(--ease);
 }
@@ -932,3 +1065,70 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   color: var(--ink-3); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
   background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .02) 0 10px, transparent 10px 20px);
 }
+
+/* ---------- Secțiunea cu casa în fundal ----------
+   Desenul e alb pe fond deschis, deci peste noapte intră la opacitate mică și
+   cu un scrim peste el: rămâne citibil ca imagine, dar nu fură din sloturi. */
+.section--casa { position: relative; isolation: isolate; overflow: hidden; }
+/* Desenul nu e decupat cu `cover` — la înălțimea secțiunii asta i-ar tăia
+   ambele capete ale casei. Intră ca bandă pe toată lățimea, la proporția lui,
+   centrat vertical: se citește ca banner, nu ca textură. */
+.casa-bg { position: absolute; inset: 0; z-index: -2; display: grid; place-items: center; }
+.casa-bg picture { display: block; width: 108%; }
+.casa-bg img {
+  width: 100%; height: auto; max-width: none;
+  opacity: .5; filter: grayscale(.2) contrast(1.06);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+.casa-bg__scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, var(--bg) 0%, rgba(10, 9, 8, .55) 30%, rgba(10, 9, 8, .55) 70%, var(--bg) 100%);
+}
+/* peste desen cardurile trebuie să fie opace, altfel liniile trec prin ele */
+.section--casa .slot { background: rgba(16, 14, 12, .88); backdrop-filter: blur(3px); }
+.casa-cta {
+  margin-top: clamp(2rem, 1.2rem + 2.4vw, 3rem);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem;
+}
+.casa-cta p { max-width: 46ch; font-size: .92rem; color: var(--ink-2); }
+
+/* ---------- Dovada în capturi de ecran ----------
+   Screenshoturile din Insights, în ramă de telefon. Captura e tăiată de bara
+   de status, deci rama o desenează CSS-ul: bezel + crestătură + indicatorul de
+   jos. Imaginea rămâne întreagă (fără crop), ca cifrele să fie verificabile. */
+.proof {
+  margin-top: clamp(2.2rem, 1.2rem + 3vw, 3.6rem);
+  display: grid; gap: clamp(1.8rem, 1rem + 2.4vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+}
+/* Fiecare dovadă: telefonul într-o coloană îngustă, explicația lângă el.
+   Sub 560 px trec una peste alta. */
+.proof__item { display: grid; gap: 1.2rem 1.6rem; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); align-items: start; }
+@media (max-width: 560px) { .proof__item { grid-template-columns: 1fr; } .proof__shot { max-width: 240px; } }
+.proof__shot {
+  position: relative; border-radius: 24px; overflow: hidden;
+  border: 7px solid #151A22; background: #0A0D12;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 255, 255, .07) inset;
+  transition: transform .45s var(--ease), box-shadow .45s;
+}
+.proof__shot:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg), var(--glow-soft); }
+.proof__shot img { display: block; width: 100%; height: auto; }
+/* crestătura și bara de jos, ca să arate a telefon fără să acopere date */
+.proof__shot::before {
+  content: ""; position: absolute; top: 7px; left: 50%; translate: -50% 0;
+  width: 32%; height: 15px; background: #151A22; border-radius: 0 0 12px 12px; z-index: 2;
+}
+.proof__shot::after {
+  content: ""; position: absolute; bottom: 8px; left: 50%; translate: -50% 0;
+  width: 34%; height: 4px; border-radius: 100px; background: rgba(255, 255, 255, .45); z-index: 2;
+}
+.proof figcaption { display: grid; gap: .4rem; }
+.proof figcaption b {
+  font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--yellow);
+}
+.proof figcaption span { font-size: .88rem; color: var(--ink-2); line-height: 1.6; }
+/* pe galben cerneala se închide, nu se luminează */
+.section--lit .proof figcaption b { color: var(--on-lit); }
+.section--lit .proof figcaption span { color: var(--on-lit-2); }

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hai să vorbim — BuildWise / arh. Alin Ionescu</title>
+<title>Hai să vorbim — Inhabit Media / arh. Alin Ionescu</title>
 <meta name="description" content="Un call de 30 de minute. Spune-mi ce vinzi și îți spun dacă audiența mea o cumpără.">
-<meta name="theme-color" content="#070B11">
+<meta name="theme-color" content="#0A0908">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%230A0F16' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -20,21 +20,27 @@
 
 <header class="nav nav--solid" id="nav">
   <div class="nav__inner">
-    <a class="brand" href="index.html">
-      <img src="assets/img/buildwise-mark.png" alt="" width="30">
-      <span><b>BUILDWISE</b><small style="display:block">arh. alin ionescu</small></span>
+    <a class="brand brand--mark" href="index.html" aria-label="Inhabit Media — acasă">
+      <img src="assets/img/inhabit-mark.png" alt="" width="34" height="34">
     </a>
-    <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav__links" id="navLinks">
+
+    <div class="nav__bar">
+      <a class="nav__word" href="index.html">
+        <b>INHABIT<i>MEDIA</i></b><small>arh. alin ionescu</small>
+      </a>
+      <nav class="nav__links" id="navLinks">
       <a href="index.html#audienta">Audiența</a>
       <a href="rezultate.html">Rezultate</a>
       <a href="calculator.html">Calculator</a>
-      <a href="pachete.html">Pachete</a>
       <a href="despre.html">Despre</a>
-      <a class="btn btn--primary" href="contact.html">Hai să vorbim</a>
-    </nav>
+        <a class="btn btn--dark nav__cta-m" href="contact.html">Hai să vorbim</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <a class="btn btn--primary nav__cta" href="contact.html">Hai să vorbim</a>
   </div>
 </header>
 
@@ -80,9 +86,9 @@
           <label for="c-plan">Pachetul care te interesează</label>
           <select id="c-plan">
             <option>Încă nu știu — hai să ne uităm împreună</option>
-            <option>Basic — 450 €</option>
-            <option>Standard — 800 €</option>
-            <option>Premium — 1.550 €</option>
+            <option>Basic — o săptămână de campanie</option>
+            <option>Standard — două săptămâni</option>
+            <option>Premium — o lună</option>
             <option>Altceva / colaborare pe termen lung</option>
           </select>
         </div>
@@ -136,8 +142,8 @@
     <div class="footer__top">
       <div>
         <a class="brand" href="index.html">
-          <img src="assets/img/buildwise-mark.png" alt="" width="30">
-          <span><b>BUILDWISE</b><small style="display:block">arh. alin ionescu</small></span>
+          <img src="assets/img/inhabit-mark.png" alt="" width="30">
+          <span><b>INHABIT<i>MEDIA</i></b><small style="display:block">arh. alin ionescu</small></span>
         </a>
         <p style="margin-top:1rem;max-width:30ch">
           De la confuzie la claritate — educație online pentru construcția casei
@@ -150,7 +156,7 @@
           <li><a href="index.html#audienta">Audiența</a></li>
           <li><a href="rezultate.html">Rezultate</a></li>
           <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="pachete.html">Pachete</a></li>
+          <li><a href="pachete.html">Ce conține un parteneriat</a></li>
           <li><a href="despre.html">Despre Alin</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="casa.html">Bonus: casa interactivă</a></li>
@@ -174,13 +180,13 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© <span id="year">2026</span> BuildWise · Arh. Ionescu George-Alin</span>
+      <span>© <span id="year">2026</span> Inhabit Media · Arh. Ionescu George-Alin</span>
       <span>Târgu-Mureș, România</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=3" defer></script>
+<script src="assets/js/main.js?v=5" defer></script>
 <script>
 /* Fără backend: compune un email pre-completat.
    Ca să primești lead-urile direct în inbox / CRM, schimbă pe un endpoint de
@@ -206,7 +212,7 @@
     ].join('\n');
 
     window.location.href = 'mailto:office@inhabitstudio.ro' +
-      '?subject=' + encodeURIComponent('Parteneriat BuildWise — ' + (g('c-company') || g('c-name'))) +
+      '?subject=' + encodeURIComponent('Parteneriat Inhabit Media — ' + (g('c-company') || g('c-name'))) +
       '&body=' + encodeURIComponent(body);
   });
 })();

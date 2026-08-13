@@ -3,3 +3,6 @@ alin.txt
 
 .DS_Store
 *.swp
+
+# originalele (RAW, screenshoturi, referinte de design) — nu se publica
+_sursa/

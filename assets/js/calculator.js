@@ -45,10 +45,13 @@
   /* ---------- Pachetele ----------
      luni = orizontul pe care se face socoteala (retainerul e pe an) */
   var PACHETE = {
-    basic:    { nume: 'Basic',    cost: 450,   clipuri: 3,  eticheta: '450 € / campanie' },
-    standard: { nume: 'Standard', cost: 800,   clipuri: 5,  eticheta: '800 € / campanie' },
-    premium:  { nume: 'Premium',  cost: 1550,  clipuri: 8,  eticheta: '1.550 € / campanie' },
-    retainer: { nume: 'Retainer', cost: 48000, clipuri: 96, eticheta: '4.000 €/lună × 12 luni' }
+    /* `cost` intră în calculul pragului de rentabilitate, dar nu se tipărește
+       niciodată: prețul nu se publică, se trimite după ce partenerul scrie.
+       `eticheta` descrie amploarea campaniei, nu suma. */
+    basic:    { nume: 'Basic',    cost: 450,   clipuri: 3,  eticheta: 'pachetul Basic, o săptămână de campanie' },
+    standard: { nume: 'Standard', cost: 800,   clipuri: 5,  eticheta: 'pachetul Standard, două săptămâni' },
+    premium:  { nume: 'Premium',  cost: 1550,  clipuri: 8,  eticheta: 'pachetul Premium, o lună' },
+    retainer: { nume: 'Retainer', cost: 48000, clipuri: 96, eticheta: 'un retainer pe douăsprezece luni' }
   };
 
   /* Rata de cerere de ofertă, pe cele trei scenarii.

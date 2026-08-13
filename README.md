@@ -1,4 +1,4 @@
-# BuildWise — site de brand partnership pentru arh. Alin Ionescu
+# Inhabit Media — site de brand partnership pentru arh. Alin Ionescu
 
 Site static (HTML + CSS + JS, fără build, fără dependențe). Vinde parteneriate de
 brand firmelor din construcții, folosind ca argument audiența lui Alin și
@@ -8,10 +8,10 @@ rezultatele campaniei NovingAIR.
 
 ```
 index.html       hero cu Alin + cine sunt + audiența (80K) + obiective + formate
-                 + rezultate + pachete + procesul unui reel + CTA
+                 + rezultate + calculator + sloturi + procesul unui reel + CTA
 rezultate.html   studiu de caz NovingAIR: cifre, distribuție, cele 10 subiecte,
                  3 profiluri de audiență, pașii de continuare
-pachete.html     Basic / Standard / Premium, tabel comparativ, structura funnelului
+pachete.html     Basic / Standard / Premium — livrabile, fără prețuri; tabel comparativ
 despre.html      Alin, Inhabit Studio, BuildWise, minicurs, ArchiEducation
 contact.html     formular + ce se întâmplă după
 casa.html        bonus: turul interactiv prin secțiunea unei case (concept vechi)
@@ -20,9 +20,40 @@ assets/css/style.css     tot stilul, cu tokens sus
 assets/js/main.js        nav, reveal, an
 assets/js/rooms.js       datele turului din casa.html
 assets/js/house.js       motorul de cameră al turului
-assets/img/alin.png      portret extras din deck
-assets/img/buildwise-mark.png  logo extras din deck
+assets/img/alin.png      portret extras din deck (nefolosit acum, vezi hero/)
+assets/img/inhabit-mark.png    marca Inhabit, extrasă din deck
+assets/img/hero/         fotografia de hero, developată din RAW (vezi mai jos)
+assets/img/casa-preview.jpg  bannerul din secțiunea de sloturi, randat din casa.html
+assets/img/proof/        capturile din Instagram Insights
+assets/img/og.jpg        preview 1200×630 pentru share
+_sursa/                  originalele (.ARW, screenshoturi brute) — gitignored
 ```
+
+## Hero-ul: fotografia și bara galbenă
+
+Referința de design (`_sursa/WhatsApp Image ... 7.55.59 PM.jpeg`) e un mockup
+„inhabitmedia": fotografie pe tot ecranul, grilă fină peste ea, bară galbenă
+rotunjită plutind sus, CTA ca pastilă separată în dreapta. Site-ul o reproduce
+cu identitatea BuildWise, iar bara e aceeași pe toate paginile.
+
+Fotografia vine din `_sursa/DSC00847.ARW` (Sony A7III, 3968×2648). Dacă vrei să
+o refaci — altă developare, alt decupaj:
+
+```bash
+dcraw -w -H 0 -o 1 -q 3 -T -c _sursa/DSC00847.ARW > /tmp/full.tiff
+magick /tmp/full.tiff -colorspace RGB -resize 2400x -colorspace sRGB \
+  -quality 82 -strip assets/img/hero/alin-hero-2400.jpg
+# decupajul de telefon: 3:4 centrat pe Alin (capul e la ~57% din lățime)
+magick /tmp/full.tiff -crop 1986x2648+1281+0 +repage -resize 1200x \
+  -quality 82 -strip assets/img/hero/alin-hero-portrait-1200.jpg
+```
+
+Există `.jpg` și `.webp` la 1600 și 2400 px, plus decupajul portret care intră
+sub 980 px. Luminozitatea și scrimul se reglează din `.hero__media` și
+`.hero__scrim` în CSS — poza stă aproape la luminozitate plină, textul e ținut
+lizibil de gradient, nu de stingerea imaginii.
+
+Dacă apare `assets/video/hero.mp4`, se pune peste imagine și preia rolul.
 
 ## Limbajul de design
 
@@ -58,13 +89,16 @@ Publicare: `git push` — GitHub Pages se reconstruiește singur în ~30 de secu
 
 **Critice — fără ele site-ul rămâne cu placeholdere:**
 
-1. **Screenshot Insights Instagram** — Professional Dashboard, ultimele 90 de
-   zile: *accounts reached*, *accounts engaged*, *total followers*. Plus
-   **TikTok Analytics** (Overview, 60 zile: video views, profile views) și
-   **YouTube Studio** (Analytics, 90 zile: views, watch time).
-2. **Poză cu Alin, 1500 px+**, fără watermark. Ideal două: una portret pe fundal
-   simplu (hero) și una „în context" — pe șantier, cu casca, lângă un plan.
-   A doua vinde mai bine decât un portret de studio.
+1. ~~**Screenshot Insights Instagram**~~ — **primit** (08.08.2026), în
+   `assets/img/proof/`, cu bara de status a telefonului tăiată. De acolo vin
+   cifrele publicate: 476.006 vizionări / 90 de zile, +2.807 urmăritori net,
+   157.143 oameni distincți, 71,1% non-urmăritori, 16.950 de urmăritori (+6,0%
+   într-o lună). **Mai lipsesc** TikTok Analytics (Overview, 60 zile) și
+   YouTube Studio (Analytics, 90 zile) — Facebook și TikTok sunt încă declarate,
+   nu documentate.
+2. ~~**Poză cu Alin**~~ — **primit**, `_sursa/DSC00847.ARW`, 3968×2648, fără
+   watermark. E acum fundalul hero-ului. **Ar mai ajuta** una „în context" — pe
+   șantier, cu casca, lângă un plan: vinde mai bine decât un cadru de interior.
 3. **3–5 clipuri** (.mp4 vertical, cum sunt postate) — cele mai performante plus
    cele 2 din campania NovingAIR. Intră în `assets/video/` (mockup-urile de
    telefon din secțiunea „formate" și hero-ul).
@@ -104,21 +138,21 @@ prenume.
 
 ## 2. Poze și logo
 
-- **Poza lui Alin**: cea de acum e decupată din PDF — are 344 px și cară
-  watermarkul inhabit în colț. O poză de studio, 1500 px+, ar schimba complet
-  impresia de la hero.
+- ~~**Poza lui Alin**~~ — rezolvat, vezi secțiunea despre hero mai sus.
 - **Logo BuildWise în SVG** (acum e PNG extras din deck).
 - **Materiale reale din campanie**: 2–3 clipuri sau capturi de reels pe care le
   putem pune în mockup-uri de telefon, ca în deck. Acum secțiunea „formate" e
   doar text.
-- `assets/img/og.jpg` la 1200×630 pentru preview la share.
+- ~~`assets/img/og.jpg`~~ — generat din aceeași fotografie, 1200×630.
 
 ## 3. De confirmat
 
 - Prețurile (450 / 800 / 1.550 €) — **includ TVA sau nu?** Acum scrie „TVA neinclus".
 - Mai sunt valabile pachetele exact așa, sau s-au schimbat de la propunerea NovingAIR?
-- Cifrele de audiență (38K FB / 16,5K IG / 28K TikTok / 300 YT) — la ce dată?
-  Merită trecută o dată, altfel îmbătrânesc.
+- Cifrele de audiență: **Instagram e acum documentat** (16.950 la 08.08.2026,
+  cu captura pe pagină). Facebook 38K, TikTok 28K și YouTube 300 sunt încă
+  declarate fără dovadă și fără dată — dacă trimitem asta unui brand care cere
+  screenshot, e singurul loc unde ne poate prinde pe picior greșit.
 - **Anca Oprea** a fost scoasă complet, cum ai zis. Am scos și lista de
   co-fondatori de pe pagina „Despre", ca să nu trebuiască actualizată la fiecare
   schimbare din echipă.
@@ -197,3 +231,96 @@ eroare.
 Valorile per categorie (`sale`, `marja`, `close`) sunt estimări de piață, în
 afară de cele confirmate în brief (ferestre 20.000 €, VMC 6.000 €, CLT 90.000 €).
 **De calibrat cu Alin.**
+
+---
+
+# Versiunea 4 — poza reală în hero
+
+Trei schimbări, toate pornite de la materialele primite pe 10 august.
+
+**Bara galbenă.** Navigația a devenit pastila rotunjită din referința de design:
+marca în afara pastilei la stânga, linkurile în interior, CTA-ul ca pastilă
+separată la dreapta. E aceeași pe toate cele șapte pagini. Pe fundal galben
+textul e închis, deci stările de hover sunt inversate față de restul site-ului.
+
+**Fotografia.** Hero-ul nu mai e un fundal construit din CSS cu un portret
+decupat lângă titlu — e fotografia lui Alin pe tot ecranul, la luminozitate
+aproape plină. Portretul rotund a dispărut (era redundant, plus era decupat din
+PDF la 344 px); în locul lui, o semnătură pe rândul butoanelor. Grila de peste
+poză e albă și de 48 px, nu galbenă de 74 — varianta galbenă dispărea complet
+peste o imagine luminată.
+
+**Dovada.** Capturile din Insights intră în secțiunea „Audiența", în rame de
+telefon desenate din CSS (captura e tăiată de bara de status, deci rama o pune
+stilul). Cifra de vizionări din hero e acum una verificabilă în captură, nu una
+declarată.
+
+Două detalii de întreținere:
+
+- Spațierea hero-ului se măsoară în `svh`, nu în `rem`. Pe un laptop de 800 px
+  fâșia de cifre cădea sub linia de plutire; acum hero-ul se strânge singur.
+- Prima trecere a reveal-ului din `main.js` folosește toată înălțimea ecranului
+  ca prag, nu 88% din ea. Fâșia de cifre se oprește exact pe linia de plutire și
+  rămânea invizibilă până la primul scroll — arăta a bug, nu a animație.
+
+---
+
+# Versiunea 5 — Inhabit Media, fără albastru, fără prețuri
+
+**Brandul.** Site-ul e emis de **Inhabit Media**, nu de BuildWise. Bara, titlurile,
+footerele și `og:title` s-au schimbat peste tot. BuildWise a rămas doar unde
+înseamnă chiar programul de educație al lui Alin — capitolul din `despre.html` și
+linkul „Ecosistem" din footer. Marca e același fișier, redenumit `inhabit-mark.png`.
+
+**Albastrul a ieșit complet.** Nu mai există niciun hex cu componenta albastră
+dominantă în CSS, în HTML sau în SVG-ul casei. Ce s-a schimbat:
+
+| Era | E acum |
+|---|---|
+| `--bg` `#070B11`, `--bg-2` `#0B121C`, `--bg-3` `#0E1724` | `#0A0908`, `#121110`, `#1B1917` — negru neutru-cald |
+| `--ink-2` `#94A3B5`, `--ink-3` `#5F6E80` | `#A8A199`, `#6F6960` — griuri fără răceală |
+| `--navy` / `--navy-2` | șterse din paletă |
+| `.section--navy` (secțiuni albastre) | `.section--lit` — galbenul de brand pe toată lățimea |
+| ușa și grinda albastre din SVG-ul casei | griuri calde |
+
+Secțiunile care erau albastre sunt acum galbene. Pe ele, cerneala se închide
+(`--on-lit`), nu se luminează: titluri negre, cifre negre, carduri cu 7% negru.
+Singura excepție e `.stat-hero`, care rămâne o fereastră de noapte în mijlocul
+luminii și de aceea își reia explicit cerneala deschisă.
+
+**Bara se întoarce pe secțiunile galbene.** O pastilă galbenă peste o secțiune
+galbenă ar dispărea, deci `main.js` verifică la fiecare scroll ce element marcat
+`data-nav="light"` se află fizic sub linia de mijloc a barei. Când e unul, pune
+`.nav--invert`: pastilă neagră, scris galben, marca înnegrită cu `brightness(0)`.
+CTA-ul din dreapta se întoarce invers față de pastilă, altfel s-ar topi în ea.
+Toate culorile barei trăiesc în patru variabile (`--nav-bg`, `--nav-ink`,
+`--nav-ink-2/3`), deci inversarea e o singură comutare — dacă mai apare o
+secțiune galbenă oriunde, e destul să-i pui `data-nav="light"`.
+
+**Prețurile au ieșit de peste tot.** Ideea e că partenerul scrie ca să primească
+oferta, nu că o compară singur pe site.
+
+- Secțiunea „Trei feluri în care putem începe" de pe prima pagină: ștearsă.
+- `pachete.html`: prețul din card e înlocuit de amploarea campaniei („12 materiale
+  / două săptămâni"), rândul „Preț" a ieșit din tabelul comparativ, toate
+  butoanele spun acum **Cere oferta**. Pagina a ieșit din bara de navigație și e
+  linkată ca „Ce conține un parteneriat".
+- `contact.html`: dropdownul nu mai listează sume.
+- `calculator.js`: costurile **rămân în calcul** — fără ele n-ai prag de
+  rentabilitate — dar nu se mai tipăresc. `eticheta` descrie acum amploarea
+  („pachetul Premium, o lună"), nu suma. Rezultatul se citește la fel: „8 vânzări
+  îți trebuie ca să ieși pe zero la un retainer pe douăsprezece luni".
+
+**Secțiunea sloturilor.** Cele două butoane („Plimbă-te prin casă" / „Rezervă-ți
+categoria") au fost înlocuite cu unul singur, **Intră în casă**, iar secțiunea
+casei stă ca banner pe tot fundalul. Desenul e randat din SVG-ul din `casa.html`:
+
+```bash
+# extrage <svg id="houseSvg"> din casa.html într-un fișier temporar, apoi:
+chromium --headless --screenshot=/tmp/h.png --window-size=2400,1680 file:///tmp/house.html
+magick /tmp/h.png -trim +repage -border 40 -resize 1800x -quality 84 assets/img/casa-preview.jpg
+```
+
+Banda intră la proporția ei, pe toată lățimea, nu cu `object-fit: cover` — la
+înălțimea secțiunii, `cover` i-ar tăia ambele capete ale casei. Cardurile de slot
+de deasupra sunt opace, altfel liniile desenului trec prin ele.
