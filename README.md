@@ -465,3 +465,54 @@ Ce s-a schimbat:
 
 Un telefon primește acum ~102 KB webp în loc de ~27 KB. E de patru ori mai mult
 pentru singura imagine care contează pe prima pagină.
+
+---
+
+# Versiunea 9 — telefonul, a doua axă
+
+Pe telefon pagina era o cascadă: **15,6 ecrane** de derulat, toate blocuri de
+aceeași lățime, în același ritm, fără niciun reper la care să te agăți.
+
+Pe ecran lat secțiunile alternează lățimi, coloane și culori, deci ochiul are de
+ce să se prindă. Turnate pe o singură coloană, toate ajung la fel. Leacul nu e
+să tăiem conținut, ci **să schimbăm axa**.
+
+| Secțiune | Era | E acum |
+|---|---|---|
+| Audiența (capturi Insights) | 3,1 ecrane | 2,2 |
+| Sloturi (12 carduri) | 2,7 | 1,6 |
+| Formate (4 mockupuri) | 2,5 | 1,6 |
+| Cine sunt | 1,6 | 1,4 |
+| **Total** | **15,6 ecrane** | **12,1** |
+
+## Ce s-a schimbat
+
+**Benzi orizontale cu snap.** Ce se repetă — mockupurile de telefon, capturile
+din Insights, cifrele mari — trece pe orizontală sub 720 px. Clasa `.rail`, pusă
+pe `.phones`, `.proof` și `.stat-grid`, e generică: orice grilă care se repetă
+o poate primi.
+
+Trei detalii fac diferența dintre o bandă care se înțelege și una care pare
+ruptă:
+
+- **iese în gutter** (`margin-inline: calc(var(--gutter) * -1)`), ca să atingă
+  marginea ecranului. O bandă care se oprește la marginea textului arată a card
+  tăiat, nu a listă care continuă;
+- **elementele sunt sub 80% din lățime**, deci următorul se vede pe jumătate.
+  Ăsta e tot indiciul de care are nevoie degetul — nu-i trebuie săgeți;
+- **un `::after` gol la capăt**, altfel ultimul element nu poate ajunge la
+  poziția lui de snap.
+
+**Sloturile trec pe două coloane.** Douăsprezece carduri într-o coloană sunt o
+listă; pe două sunt un tablou — și exact asta spune secțiunea, că e un tablou cu
+locuri libere. Sub 380 px revin la o coloană, altfel devin prea strâmte.
+
+**Secțiunile respiră mai puțin.** `--section-y` scade de la 4,5–11 rem la
+3,2–5 rem pe telefon. Aerul dintre secțiuni era calibrat pentru desktop și se
+aduna în minute de derulat.
+
+## De făcut
+
+Portretul din `despre.html` e tot decupajul de 344 px din PDF. Acum că avem
+RAW-ul, se poate înlocui — dar cercul galben cu siluetă decupată e o alegere de
+design, nu doar o imagine, așa că merită discutat înainte, nu schimbat din mers.

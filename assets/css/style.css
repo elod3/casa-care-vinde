@@ -1283,3 +1283,72 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   /* nimeni nu așteaptă degeaba dacă a cerut mai puțină mișcare */
   .loader { display: none; }
 }
+
+/* ==========================================================================
+   29. TELEFON — a doua axă
+
+   Pe ecran lat, secțiunile alternează lățimi, coloane și culori, deci ochiul
+   are de ce să se agațe. Turnate pe o singură coloană de telefon, toate ajung
+   blocuri de aceeași lățime, cu același ritm — o cascadă din care nu se mai
+   vede unde ești.
+
+   Leacul nu e să tăiem conținut, ci să schimbăm axa: ce se repetă (mockupuri,
+   capturi, cifre) trece pe orizontală, cu snap. Următorul element se vede pe
+   jumătate la marginea ecranului — ăsta e tot indiciul de care are nevoie
+   degetul ca să știe că poate trage.
+   ========================================================================== */
+@media (max-width: 720px) {
+  .rail {
+    display: flex !important;
+    gap: .8rem;
+    /* iese în gutter: banda atinge marginea ecranului, deci se citește ca
+       „mai e ceva dincolo", nu ca un card centrat */
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail > * {
+    flex: 0 0 min(76%, 300px);
+    scroll-snap-align: start;
+  }
+  /* ultimul element are nevoie de aer în dreapta ca să poată ajunge la snap */
+  .rail::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
+
+  /* mockupurile sunt mai înguste: patru ecrane de telefon unul sub altul
+     mâncau două ecrane și jumătate de derulat, degeaba */
+  .phones.rail > * { flex: 0 0 min(52%, 200px); }
+
+  /* cifrele mari au nevoie de ceva mai multă lățime decât restul, altfel
+     eticheta de sub ele se rupe în coloane de două cuvinte */
+  .stat-grid.rail > * { flex: 0 0 min(82%, 330px); }
+
+  /* capturile din Insights: telefonul și explicația rămân una lângă alta */
+  .proof.rail > * { flex: 0 0 min(80%, 320px); grid-template-columns: 1fr; }
+  .proof.rail .proof__shot { max-width: 190px; }
+
+  /* Sloturile rămân verticale, dar pe două coloane: douăsprezece carduri într-o
+     singură coloană sunt o listă, pe două sunt un tablou — și exact asta
+     spune secțiunea, că e un tablou cu locuri libere. */
+  .slots { grid-template-columns: 1fr 1fr; gap: .55rem; }
+  .slot { padding: .85rem .9rem; border-radius: 13px; }
+  .slot h4 { font-size: .88rem; line-height: 1.25; }
+  .slot p { font-size: .7rem; }
+  .slot__k { font-size: .55rem; letter-spacing: .13em; }
+
+  /* Secțiunile respirau ca pe desktop, adică prea mult pentru un ecran de
+     telefon: aerul dintre ele se aduna în minute de derulat. */
+  :root { --section-y: clamp(3.2rem, 2rem + 5vw, 5rem); }
+  .cards { gap: .7rem; }
+  .card { padding: 1.15rem 1.2rem; }
+  .card p { font-size: .86rem; }
+}
+
+/* sub 380 px sloturile pe două coloane devin prea strâmte */
+@media (max-width: 379px) {
+  .slots { grid-template-columns: 1fr; }
+}
