@@ -20,6 +20,26 @@
 </head>
 <body>
 
+<!-- Ecran de încărcare. Stă peste o pagină care se încarcă normal dedesubt;
+     nu amână nimic. Se arată o singură dată pe sesiune. -->
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader__grid" aria-hidden="true"></div>
+  <div class="loader__glow" aria-hidden="true"></div>
+  <div class="loader__inner">
+    <img class="loader__mark" src="assets/img/inhabit-mark.png" alt="" width="60" height="60">
+    <p class="loader__word">
+      <b>inhabit<i>media</i></b>
+      <small>arh. alin ionescu</small>
+    </p>
+    <div class="loader__bar" aria-hidden="true"><i></i></div>
+    <p class="loader__meta">
+      <span class="loader__step">Se pregătește pagina</span>
+      <b class="loader__pct">0%</b>
+    </p>
+  </div>
+  <span class="loader__skip" aria-hidden="true">Apasă ca să intri</span>
+</div>
+
 <div class="atmos" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"></div>
 
@@ -483,6 +503,7 @@
   </div>
 </footer>
 
+<script src="assets/js/loader.js?v=2" defer></script>
 <script src="assets/js/main.js?v=6" defer></script>
 </body>
 </html>

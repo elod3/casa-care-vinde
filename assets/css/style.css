@@ -1178,3 +1178,101 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 /* pe galben cerneala se închide, nu se luminează */
 .section--lit .proof figcaption b { color: var(--on-lit); }
 .section--lit .proof figcaption span { color: var(--on-lit-2); }
+
+/* ==========================================================================
+   28. ECRANUL DE ÎNCĂRCARE
+
+   Un overlay peste pagina deja construită — nu întârzie nimic din ce se
+   încarcă dedesubt, doar stă deasupra. Rămâne cu două secunde peste momentul
+   în care site-ul e gata: ultima cincime din bară se umple pe durata aia, ca
+   așteptarea să arate a lucru în desfășurare, nu a blocaj.
+
+   Trei plase de siguranță, în ordinea în care intră:
+   - fără JS (`html.no-js`) nu apare deloc;
+   - `prefers-reduced-motion` îl scoate imediat;
+   - dacă JS moare pe drum, animația `loaderFail` îl stinge oricum la 11 s.
+   ========================================================================== */
+.loader {
+  position: fixed; inset: 0; z-index: 999;
+  display: grid; place-items: center;
+  background: var(--bg);
+  isolation: isolate;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.05s var(--ease-out), opacity .5s ease .4s;
+  animation: loaderFail 1ms linear 11s forwards;
+}
+.no-js .loader { display: none; }
+
+/* aceeași grilă de plan ca peste tot, doar mai discretă */
+.loader__grid {
+  position: absolute; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(rgba(226, 176, 23, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 176, 23, .05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 0%, transparent 80%);
+}
+.loader__glow {
+  position: absolute; top: 50%; left: 50%; translate: -50% -50%; z-index: -1;
+  width: min(620px, 90vw); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 176, 23, .16) 0%, transparent 65%);
+  filter: blur(30px);
+  animation: breathe 5.5s ease-in-out infinite;
+}
+
+.loader__inner {
+  display: grid; justify-items: center; gap: 1.5rem;
+  padding-inline: var(--gutter); width: min(420px, 86vw);
+}
+.loader__mark { width: clamp(44px, 6vw, 60px); height: auto; }
+
+.loader__word { line-height: 1; text-align: center; }
+.loader__word b {
+  display: block; font-weight: 800; letter-spacing: -.035em; text-transform: lowercase;
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.1rem); color: var(--ink);
+}
+.loader__word b i { font-style: normal; font-weight: 200; }
+.loader__word small {
+  display: block; margin-top: .55rem;
+  font-size: .55rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: var(--ink-3);
+}
+
+.loader__bar {
+  width: 100%; height: 2px; border-radius: 100px;
+  background: rgba(255, 255, 255, .1); overflow: hidden;
+}
+.loader__bar i {
+  display: block; height: 100%; width: 100%;
+  background: linear-gradient(90deg, var(--yellow-dk), var(--yellow-lt));
+  box-shadow: 0 0 14px -2px rgba(226, 176, 23, .8);
+  transform: scaleX(var(--p, 0)); transform-origin: 0 50%;
+  transition: transform .5s var(--ease-out);
+}
+
+.loader__meta {
+  width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3);
+}
+/* pasul se schimbă cu un fade scurt, ca să nu clipească textul */
+.loader__step { transition: opacity .3s; }
+.loader--swap .loader__step { opacity: 0; }
+.loader__pct { font-weight: 800; font-size: .8rem; letter-spacing: 0; color: var(--yellow); font-variant-numeric: tabular-nums; }
+
+.loader__skip {
+  position: absolute; bottom: clamp(1.4rem, 4vh, 2.6rem); left: 50%; translate: -50% 0;
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3);
+  opacity: 0; transition: opacity .6s ease;
+}
+.loader--offer .loader__skip { opacity: 1; }
+
+/* ieșirea: aceeași tăietură de montaj ca [data-reveal="wipe"] */
+.loader--done { clip-path: inset(0 0 100% 0); opacity: 0; pointer-events: none; }
+.loader--gone { display: none; }
+
+@keyframes loaderFail { to { opacity: 0; visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* nimeni nu așteaptă degeaba dacă a cerut mai puțină mișcare */
+  .loader { display: none; }
+}

@@ -357,3 +357,71 @@ Trei detalii care nu se văd, dar contează:
 
 Indicatorul „Derulează" a fost scos: de când fâșia de cifre intră în ecran,
 cele două se călcau, iar fâșia invită la scroll mai bine decât o săgeată.
+
+---
+
+# Versiunea 7 — ecranul de încărcare
+
+Un overlay peste o pagină care se încarcă normal dedesubt. Nu amână nimic:
+HTML-ul, CSS-ul și imaginile pornesc exact ca înainte, iar ecranul doar stă
+deasupra până se golește contorul.
+
+## Cum e construită bara
+
+Nu e falsă pe toată durata. Primele patru cincimi urmăresc semnale reale, în
+ordinea în care vin:
+
+| Prag | Semnal | Ce scrie |
+|---|---|---|
+| 34% | DOM-ul parsat | Se pregătește pagina |
+| 55% | `document.fonts.ready` | Se încarcă fonturile |
+| 72% | fotografia din hero decodată | Se developează fotografia |
+| 80% | `window.load` | Se adună cifrele |
+
+Abia ultima cincime e **ținerea de două secunde**. Bara continuă să urce pe
+durata ei, cu o curbă care încetinește spre final. Un progres care se oprește
+la 80% și stă nemișcat produce exact efectul invers celui dorit — arată a
+blocaj, nu a lucru în desfășurare.
+
+## Ce am măsurat despre scorul Google
+
+Grija era că overlay-ul întârzie LCP. **Nu-l întârzie.** Chrome nu testează
+ocluziunea: conținutul care se desenează în spatele overlay-ului se
+înregistrează la momentul lui real de pictare, nu când pleacă overlay-ul.
+Măsurat cu `PerformanceObserver`, câte trei rulări:
+
+```
+fără loader   856 / 1360 / 1408 ms
+cu loader    1264 / 1024 /  760 ms
+```
+
+Intervalele se suprapun; nu există penalizare sistematică. (Măsurătoare de
+laborator, pe localhost, cu rețea instantanee — cifrele reale vor fi altele,
+dar concluzia structurală ține.)
+
+Costul real nu e LCP, ci că omul așteaptă vreo trei secunde până poate atinge
+ceva. De aia:
+
+- **o singură dată pe sesiune** (`sessionStorage`). Site-ul are șapte pagini;
+  un ecran de trei secunde la fiecare navigare ar fi o pedeapsă, nu o intrare;
+- după o secundă apare **„Apasă ca să intri"** — click, tastă, scroll sau
+  Escape îl scot imediat. Ca bonus, primul click oprește și măsurarea LCP;
+- `prefers-reduced-motion` îl sare complet.
+
+## Trei plase de siguranță
+
+Un overlay care nu pleacă e mai rău decât lipsa lui, mai ales că ține
+`overflow: hidden` pe `<html>` — pagina n-ar mai putea fi derulată deloc.
+
+1. **Fără JS** (`html.no-js`) nu apare deloc.
+2. **Momentul ieșirii stă pe `setTimeout`, nu în bucla de desen.**
+   `requestAnimationFrame` nu rulează când browserul nu produce cadre — un tab
+   deschis cu click pe rotiță face exact asta. Dacă decizia de a termina ar
+   depinde de el, ecranul ar îngheța pe loc. Așa, în cel mai rău caz bara se
+   oprește din urcat, dar overlay-ul tot pleacă la timp. (Am prins-o testând:
+   bara rămânea împietrită la 80,4% și scrollul blocat.)
+3. **Oprire dură la 9 s**, plus animația CSS `loaderFail` la 11 s dacă JS a
+   murit de tot. `window.load` care nu vine e tratat separat: ținerea pornește
+   oricum după 6 s.
+
+Durata se schimbă din `HOLD` în `assets/js/loader.js`.
