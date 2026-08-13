@@ -85,6 +85,8 @@ table { border-collapse: collapse; width: 100%; }
   /* Plafonat la 5,4rem: peste asta, titlul din hero trece pe 4 rânduri și
      împinge fâșia de cifre sub linia de plutire pe laptopuri de 900 px. */
   --fs-h1:     clamp(2.5rem, 1.3rem + 4.4vw, 5.4rem);
+  /* Sub 460 px minimul de 2,5rem era mai lat decât ecranul: „construiesc casa."
+     ieșea din cadru. Aici scara se rupe și pornește de mai jos. */
   --fs-micro:  clamp(0.66rem, 0.63rem + 0.15vw, 0.76rem);
 
   --gutter:    clamp(1.15rem, 0.5rem + 2.6vw, 3.5rem);
@@ -815,6 +817,13 @@ textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
 }
 [data-reveal].is-in { opacity: 1; transform: none; filter: none; }
 
+/* Două variante care se atrag: una vine de sus, cealaltă de jos, și se
+   întâlnesc la mijloc. Pe asta stă secțiunea de formate — ecranul coboară,
+   explicația urcă, iar perechea se închide sub ochii omului. */
+[data-reveal="down"] { transform: translateY(-52px); }
+[data-reveal="up"]   { transform: translateY(52px); }
+[data-reveal="down"].is-in, [data-reveal="up"].is-in { transform: none; }
+
 /* variantă „cortină": textul urcă din spatele unei margini */
 [data-reveal="wipe"] { clip-path: inset(0 0 100% 0); transform: none; filter: none; opacity: 1; transition: clip-path 1.1s var(--ease-out); }
 [data-reveal="wipe"].is-in { clip-path: inset(0 0 -10% 0); }
@@ -1359,8 +1368,14 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
     padding-top: 1rem;
   }
   .figures.rail > * { flex: 0 0 min(58%, 210px); }
-  /* ultimul element are nevoie de aer în dreapta ca să poată ajunge la snap */
-  .rail::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
+  /* Distanțierul de la capăt e doar pentru benzile care NU derivă. Pe cele care
+     se mișcă singure ar strica bucla: punctul de reluare se calculează din
+     lățimea unui set întreg, iar un capăt în plus îl mută. */
+  .rail:not([data-drift])::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
+
+  /* Gestul vertical nu are ce căuta aici: fără asta, un scroll în jos peste
+     bandă o clatină lateral câțiva pixeli. */
+  .rail { touch-action: pan-x; }
 
   /* mockupurile sunt mai înguste: patru ecrane de telefon unul sub altul
      mâncau două ecrane și jumătate de derulat, degeaba */
@@ -1408,4 +1423,119 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 /* sub 380 px sloturile pe două coloane devin prea strâmte */
 @media (max-width: 379px) {
   .slots { grid-template-columns: 1fr; }
+}
+
+/* titlul de hero, pe telefoanele înguste */
+@media (max-width: 460px) {
+  :root { --fs-h1: clamp(1.85rem, 0.5rem + 6.6vw, 2.9rem); }
+  .hero h1 { max-width: none; }
+  .display, .hero h1 { overflow-wrap: break-word; }
+}
+
+/* ==========================================================================
+   30. TEANCUL DE CĂRȚI
+
+   Cifrele campaniei NovingAIR nu mai stau una lângă alta, ci una peste alta.
+   La fiecare patru secunde, cea din față pleacă în spate. Ocupă locul uneia
+   singure și obligă ochiul să aștepte următoarea — o cifră pe care ai
+   așteptat-o cântărește mai mult decât una pe care ai citit-o din fugă.
+
+   Fără JS teancul nu se învârte, deci n-are voie să ascundă nimic: `.deck`
+   pornește ca listă normală și abia `is-ready` (pus de JS) îl strânge.
+   ========================================================================== */
+.deck { display: grid; gap: 1rem; }
+.deck__dots { display: none; }
+
+.deck.is-ready {
+  position: relative;
+  display: block;
+  min-height: var(--deck-h, 190px);
+  padding-bottom: 2.2rem;
+}
+.deck.is-ready .deck__card {
+  position: absolute; inset: 0 0 auto 0;
+  transform-origin: 50% 100%;
+  transition: transform .75s var(--ease-out), opacity .55s ease, filter .55s ease;
+  will-change: transform, opacity;
+}
+
+/* Cartea din față e dreaptă și clară; cele din spate coboară, se micșorează
+   și se sting. Peste trei nu se mai vede nimic, deci nici nu le desenăm. */
+.deck.is-ready .deck__card[data-pos="0"] { transform: translateY(0) scale(1);        opacity: 1;   filter: none; z-index: 3; }
+.deck.is-ready .deck__card[data-pos="1"] { transform: translateY(14px) scale(.94);   opacity: .55; filter: blur(1px); z-index: 2; }
+.deck.is-ready .deck__card[data-pos="2"] { transform: translateY(26px) scale(.88);   opacity: .28; filter: blur(2px); z-index: 1; }
+.deck.is-ready .deck__card[data-pos="3"] { transform: translateY(34px) scale(.84);   opacity: 0;   z-index: 0; }
+/* cea care tocmai a plecat: iese în sus, nu se stinge pe loc */
+.deck.is-ready .deck__card[data-pos="out"] { transform: translateY(-28px) scale(1.04); opacity: 0; z-index: 4; }
+
+.deck__card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--r-lg); padding: clamp(1.3rem, 1rem + 1.4vw, 2rem);
+  display: flex; align-items: baseline; gap: 1rem;
+}
+.deck__card b {
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.7rem); font-weight: 800;
+  letter-spacing: -.045em; line-height: 1; font-variant-numeric: tabular-nums;
+  color: var(--yellow); flex: 0 0 auto;
+}
+.deck__card span { font-size: .86rem; color: var(--ink-3); line-height: 1.4; }
+.section--lit .deck__card { background: rgba(23, 20, 10, .07); border-color: var(--line-lit); }
+.section--lit .deck__card b { color: var(--on-lit); }
+.section--lit .deck__card span { color: var(--on-lit-2); }
+
+/* punctele de dedesubt — și indicator, și buton */
+.deck.is-ready .deck__dots {
+  display: flex; gap: .45rem; position: absolute; left: 0; bottom: 0; z-index: 5;
+}
+.deck__dots button {
+  width: 22px; height: 3px; border-radius: 100px; padding: 0;
+  background: var(--line-2); transition: background-color .35s, width .35s var(--ease);
+}
+.deck__dots button[aria-current="true"] { background: var(--yellow); width: 34px; }
+.section--lit .deck__dots button { background: rgba(23, 20, 10, .25); }
+.section--lit .deck__dots button[aria-current="true"] { background: var(--on-lit); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* fără mișcare, teancul se desface la loc în listă */
+  .deck.is-ready { display: grid; min-height: 0; padding-bottom: 0; }
+  .deck.is-ready .deck__card { position: static; transform: none; opacity: 1; filter: none; }
+  .deck.is-ready .deck__dots { display: none; }
+}
+
+/* ==========================================================================
+   31. FORMATE — perechi care se închid la scroll
+
+   Erau două liste separate: patru mockupuri sus, patru descrieri jos, iar
+   cititorul trebuia să le potrivească din ochi. Acum fiecare format e o
+   pereche, iar mișcarea o spune: ecranul coboară, textul urcă, se întâlnesc.
+   ========================================================================== */
+.formats { display: grid; gap: clamp(2.2rem, 1.2rem + 3vw, 4rem); }
+.format {
+  display: grid; align-items: center;
+  gap: clamp(1.2rem, .6rem + 2.4vw, 2.6rem);
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+}
+/* la două formate din patru, ecranul trece în dreapta: altfel patru rânduri
+   identice devin ele însele o listă */
+@media (min-width: 721px) {
+  .format { grid-template-columns: minmax(0, 210px) minmax(0, 1fr); }
+  .format--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 210px); }
+  .format--flip .phone { order: 2; }
+  .format--flip .format__body { text-align: right; justify-items: end; }
+}
+.format .phone { width: 100%; }
+.format__body { display: grid; gap: .55rem; justify-items: start; }
+.format__n {
+  font-size: .62rem; font-weight: 700; letter-spacing: .2em;
+  color: var(--yellow); font-variant-numeric: tabular-nums;
+}
+.format__body h4 { font-size: clamp(1.05rem, .95rem + .5vw, 1.4rem); }
+.format__body p { font-size: .9rem; color: var(--ink-3); max-width: 46ch; }
+
+@media (max-width: 720px) {
+  /* Ecran mai mic pe telefon: patru mockupuri la lățime întreagă ar readuce
+     exact cascada din care tocmai am ieșit. */
+  .format { grid-template-columns: minmax(0, 118px) minmax(0, 1fr); gap: 1.1rem; }
+  .formats { gap: 1.8rem; }
+  .format__body p { font-size: .84rem; }
 }

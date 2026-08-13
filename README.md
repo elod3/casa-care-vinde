@@ -574,3 +574,56 @@ liber, taie exact prin literele albe.
 
 **Rezultat: 9,8 ecrane, de la 15,6.** Verificat pe toate cele șapte pagini că
 niciuna nu capătă scroll orizontal.
+
+---
+
+# Versiunea 11 — teanc, perechi și bucle care se închid
+
+## Bucla se închide exact
+
+Reluarea benzilor se calcula ca `scrollWidth / 2`. E corect doar dacă există fix
+o copie și niciun capăt în plus — și nu era: distanțierul de la capătul benzii
+(`.rail::after`) muta punctul, deci la fiecare rotație banda sărea. Acum
+reluarea se măsoară ca **distanța dintre începutul setului original și
+începutul primei copii**, adică o rotație adevărată, iar distanțierul a rămas
+doar pe benzile care nu derivă.
+
+Al doilea bug, mai urât: prima copie era condiționată de lățime, așa că benzile
+deja destul de late **nu primeau nicio copie** — fără punct de reluare, nu se
+mișcau deloc. Acum prima copie e obligatorie, iar următoarele se adaugă doar
+cât să acopere două ecrane.
+
+Restul, tot pe benzi:
+
+- **Gestul vertical nu mai clatină banda** (`touch-action: pan-x`). Un scroll în
+  jos peste ea o muta câțiva pixeli lateral.
+- **Grupurile numerotate curg înainte.** Cardurile `01…04` derivau înapoi și se
+  citeau de la 4 la 1. Acum `.cards` și `.flow` sunt mereu în ordine; alternanța
+  a rămas pentru grupurile fără ordine.
+
+## Cifrele NovingAIR: teanc de cărți
+
+Cele trei cifre ale campaniei nu mai stau una lângă alta, ci **una peste alta**.
+La fiecare patru secunde, cea din față pleacă în sus și următoarea urcă în locul
+ei. Ocupă locul uneia singure și obligă ochiul să aștepte — o cifră pe care ai
+așteptat-o cântărește mai mult decât una citită din fugă.
+
+- înălțimea se fixează pe cea mai înaltă carte **înainte** de suprapunere,
+  altfel secțiunea de dedesubt sare la fiecare rotație;
+- fără JS teancul rămâne listă normală, deci nu ascunde nimic: clasa `is-ready`
+  e cea care îl strânge;
+- punctele de dedesubt sunt și indicator, și buton;
+- se oprește cât ții degetul pe el și într-un tab de fundal.
+
+## Formatele: perechi care se închid la scroll
+
+Erau două liste separate — patru mockupuri sus, patru descrieri jos — iar
+cititorul trebuia să le potrivească din ochi. Acum **fiecare format e o
+pereche**, iar mișcarea o spune: ecranul coboară de sus, textul urcă de jos, se
+întâlnesc (`data-reveal="down"` / `="up"`). Pe ecran lat, două din patru au
+ecranul în dreapta, ca patru rânduri identice să nu devină ele însele o listă.
+
+## Titlul de hero
+
+Sub 460 px, minimul de `2.5rem` era mai lat decât ecranul și „construiesc casa."
+ieșea din cadru. Acolo scara se rupe și pornește de la `1.85rem`.

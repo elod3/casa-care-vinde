@@ -231,17 +231,49 @@
       var cloned = false;
       var raf = null;
 
-      /* Dublăm conținutul o dată, ca banda să se închidă în cerc. Clonele sunt
-         ascunse pentru cititoarele de ecran — sunt aceleași date, spuse iar. */
+      /* Bucla se închide pe `period`: distanța dintre începutul setului
+         original și începutul primei copii, adică exact o rotație completă.
+         Nu `scrollWidth / 2` — ăla e corect doar dacă există fix o copie și
+         niciun capăt în plus, iar din asta ies săriturile la reluare.
+
+         Copiem setul de câte ori e nevoie ca banda să fie de cel puțin două
+         ecrane: cu două-trei elemente scurte, o singură copie lasă gol în
+         dreapta și bucla se vede. */
+      var originals = null, period = 0;
+
       function clone() {
         if (cloned) return;
         cloned = true;
-        Array.prototype.slice.call(rail.children).forEach(function (c) {
-          var d = c.cloneNode(true);
-          d.setAttribute('aria-hidden', 'true');
-          d.setAttribute('tabindex', '-1');
-          rail.appendChild(d);
-        });
+        originals = Array.prototype.slice.call(rail.children);
+
+        function copiazaSet() {
+          originals.forEach(function (c) {
+            var d = c.cloneNode(true);
+            d.setAttribute('aria-hidden', 'true');
+            d.setAttribute('tabindex', '-1');
+            rail.appendChild(d);
+          });
+        }
+
+        /* Prima copie e obligatorie, nu condiționată: fără ea nu există punct
+           de reluare și banda nu se mișcă deloc, oricât de lată ar fi.
+           Următoarele se adaugă doar dacă banda e mai scurtă de două ecrane —
+           altfel, la reluare, s-ar vedea gol în dreapta. */
+        copiazaSet();
+        var runde = 0;
+        while (rail.scrollWidth < rail.clientWidth * 2 + 40 && runde < 5) {
+          copiazaSet();
+          runde++;
+        }
+        measure();
+      }
+
+      function measure() {
+        if (!originals || !originals.length) return;
+        var primaCopie = rail.children[originals.length];
+        period = primaCopie
+          ? primaCopie.offsetLeft - originals[0].offsetLeft
+          : rail.scrollWidth;
       }
 
       /* Poziția se ține aici, nu se citește din `scrollLeft` la fiecare cadru.
@@ -263,11 +295,10 @@
       function step() {
         raf = null;
         if (!mqPhone.matches) return;
-        var half = rail.scrollWidth / 2;
-        if (Date.now() > heldUntil && half > 0) {
+        if (Date.now() > heldUntil && period > 0) {
           pos += SPEED * dir;
-          if (pos >= half) pos -= half;      // s-a închis cercul
-          else if (pos < 0) pos += half;
+          if (pos >= period) pos -= period;   // s-a închis cercul
+          else if (pos < 0) pos += period;
           rail.scrollLeft = pos;
         }
         raf = requestAnimationFrame(step);
@@ -276,8 +307,9 @@
       function sync() {
         if (mqPhone.matches) {
           clone();
-          // spre dreapta pornim din mijloc, altfel am da imediat de capăt
-          if (dir < 0 && rail.scrollLeft === 0) rail.scrollLeft = rail.scrollWidth / 2;
+          measure();
+          // înapoi pornim de la o rotație, altfel am da imediat de capăt
+          if (dir < 0 && rail.scrollLeft === 0) rail.scrollLeft = period;
           pos = rail.scrollLeft;
           if (!raf) raf = requestAnimationFrame(step);
         } else if (raf) {
@@ -286,10 +318,78 @@
       }
 
       sync();
+      // fonturile schimbă lățimile după ce se încarcă, deci remăsurăm
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+      window.addEventListener('resize', measure, { passive: true });
       (mqPhone.addEventListener ? mqPhone.addEventListener.bind(mqPhone, 'change')
                                 : mqPhone.addListener.bind(mqPhone))(sync);
     });
   }
+
+  /* ---------- teancul de cărți ----------
+     Cifrele stau una peste alta și se schimbă la fiecare patru secunde. Fără
+     JS rămân stivuite normal, deci nimic nu se ascunde: clasa `is-ready` (pusă
+     de aici) e cea care strânge teancul. */
+  document.querySelectorAll('[data-deck]').forEach(function (deck) {
+    var cards = Array.prototype.slice.call(deck.querySelectorAll('.deck__card'));
+    var dots = deck.querySelector('.deck__dots');
+    if (cards.length < 2) return;
+
+    /* Înălțimea se fixează pe cea mai înaltă carte înainte de a le suprapune:
+       altfel secțiunea de dedesubt sare de fiecare dată când intră o carte cu
+       text mai scurt. */
+    var maxH = 0;
+    cards.forEach(function (c) { maxH = Math.max(maxH, c.offsetHeight); });
+    deck.style.setProperty('--deck-h', (maxH + 34) + 'px');
+    deck.classList.add('is-ready');
+
+    var top = 0, timer = null;
+
+    if (dots) {
+      cards.forEach(function (_, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Cifra ' + (i + 1) + ' din ' + cards.length);
+        b.addEventListener('click', function () { show(i); porneste(); });
+        dots.appendChild(b);
+      });
+    }
+
+    function show(n) {
+      top = (n + cards.length) % cards.length;
+      cards.forEach(function (c, i) {
+        var d = (i - top + cards.length) % cards.length;
+        // cartea dinaintea celei din față e cea care tocmai a plecat
+        c.setAttribute('data-pos', d === cards.length - 1 && cards.length > 2 ? 'out' : String(Math.min(d, 3)));
+      });
+      if (dots) {
+        Array.prototype.slice.call(dots.children).forEach(function (b, i) {
+          b.setAttribute('aria-current', i === top ? 'true' : 'false');
+        });
+      }
+    }
+
+    function porneste() {
+      clearInterval(timer);
+      if (REDUCED) return;
+      timer = setInterval(function () { show(top + 1); }, 4000);
+    }
+
+    show(0);
+    porneste();
+
+    /* Se oprește cât ține degetul pe el, ca orice altă buclă din pagină. */
+    ['pointerenter', 'pointerdown', 'touchstart'].forEach(function (ev) {
+      deck.addEventListener(ev, function () { clearInterval(timer); }, { passive: true });
+    });
+    ['pointerleave', 'pointerup', 'touchend'].forEach(function (ev) {
+      deck.addEventListener(ev, porneste, { passive: true });
+    });
+    // într-un tab de fundal nu are rost să se învârtă
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearInterval(timer); else porneste();
+    });
+  });
 
   /* ---------- orice buclă se oprește cât o atingi ----------
      O bandă care nu se oprește e o bandă din care nu poți citi. Ține cât timp
