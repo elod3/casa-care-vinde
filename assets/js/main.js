@@ -251,6 +251,13 @@
             var d = c.cloneNode(true);
             d.setAttribute('aria-hidden', 'true');
             d.setAttribute('tabindex', '-1');
+            /* Clonele sunt copii decorative și nu intră în lista `pending` a
+               reveal-ului, deci n-ar primi niciodată `is-in`. Dacă la clonare
+               originalul e încă sub linia de plutire (cazul benzii de carduri),
+               copiile ar rămâne blocate pe opacity:0 — goluri care plutesc prin
+               bandă. Le forțăm în starea revelată din capul locului. */
+            if (d.hasAttribute('data-reveal')) d.classList.add('is-in');
+            d.querySelectorAll('[data-reveal]').forEach(function (x) { x.classList.add('is-in'); });
             rail.appendChild(d);
           });
         }

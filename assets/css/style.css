@@ -515,6 +515,13 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .hero__grid > * { max-width: min(700px, 62%); }
 @media (max-width: 980px) { .hero__grid > * { max-width: none; } }
 
+/* Hero-ul e un grid; fâșia de cifre e o bandă orizontală. Fără min-width:0
+   pe itemele de grid, min-width:auto le umflă la lățimea benzii (min-content),
+   pista iese peste ecran și titlul + textul se taie la overflow:hidden.
+   Cu min-width:0 pista se strânge la lățimea telefonului, iar banda scrollează
+   pe orizontală în interiorul ei. */
+.hero > .wrap, .hero__grid, .hero__grid > * { min-width: 0; }
+
 /* semnătura de lângă butoane, în locul portretului decupat */
 .hero__sign {
   display: grid; gap: .15rem; align-self: center;
