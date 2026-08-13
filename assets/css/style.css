@@ -318,7 +318,7 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   pointer-events: none;
   animation: sweep 7s ease-in-out infinite;
 }
-.btn--primary:hover::after { animation-play-state: paused; }
+.btn--primary:hover::after, .btn--primary:active::after { animation-play-state: paused; }
 /* pe secțiunea galbenă butonul e negru, deci luciul se închide la rândul lui */
 .section--lit .btn--primary::after {
   background-image: linear-gradient(105deg, transparent 40%, rgba(226, 176, 23, .22) 50%, transparent 60%);
@@ -1086,7 +1086,7 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   animation: sweep 9s ease-in-out infinite;
   animation-delay: calc(var(--i, 0) * 620ms);
 }
-.slot:hover::after { animation-play-state: paused; }
+.slot:hover::after, .slot:active::after { animation-play-state: paused; }
 @keyframes sweep {
   0%, 62%, 100% { background-position: 180% 0; }
   84%           { background-position: -80% 0; }
@@ -1095,7 +1095,10 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 /* banda care se derulează — categoriile, ca un generic de film */
 .marquee { overflow: hidden; position: relative; padding-block: 1.1rem; border-block: 1px solid var(--line); }
 .marquee__track { display: flex; gap: 3rem; width: max-content; animation: slide 42s linear infinite; }
-.marquee:hover .marquee__track { animation-play-state: paused; }
+/* Se oprește și la deget, nu doar la cursor: pe telefon nu există hover, iar o
+   bandă care nu se oprește e o bandă din care nu poți citi. */
+.marquee:hover .marquee__track,
+.marquee.is-held .marquee__track { animation-play-state: paused; }
 .marquee span {
   font-size: clamp(1rem, .8rem + 1vw, 1.6rem); font-weight: 200; letter-spacing: -.03em;
   color: var(--ink-3); white-space: nowrap; display: flex; align-items: center; gap: 3rem;
@@ -1122,22 +1125,46 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 /* ---------- Secțiunea cu casa în fundal ----------
    Desenul e alb pe fond deschis, deci peste noapte intră la opacitate mică și
    cu un scrim peste el: rămâne citibil ca imagine, dar nu fură din sloturi. */
-.section--casa { position: relative; isolation: isolate; overflow: hidden; }
+/* De când lista celor douăsprezece a plecat în casa.html, secțiunea are doar
+   titlu și un buton — și s-a strâns atât de mult încât desenul din spate abia
+   se mai vedea. Acum casa e subiectul, nu fundalul: îi dăm înălțime cât să
+   încapă întreagă și o lăsăm mai în față. */
+.section--casa {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: min(72svh, 620px);
+  display: grid; align-content: center;
+}
 /* Desenul nu e decupat cu `cover` — la înălțimea secțiunii asta i-ar tăia
    ambele capete ale casei. Intră ca bandă pe toată lățimea, la proporția lui,
    centrat vertical: se citește ca banner, nu ca textură. */
+/* Pe ecran lat desenul intră întreg, scalat după înălțimea secțiunii: e o
+   secțiune printr-o casă, iar o secțiune tăiată de rama ecranului nu mai spune
+   nimic. `height` peste 100% lasă rezerva din care trage parallaxul. */
 .casa-bg { position: absolute; inset: 0; z-index: -2; display: grid; place-items: center; }
-.casa-bg picture { display: block; width: 108%; }
+.casa-bg picture { display: block; width: 100%; height: 116%; }
 .casa-bg img {
-  width: 100%; height: auto; max-width: none;
-  opacity: .5; filter: grayscale(.2) contrast(1.06);
+  width: 100%; height: 100%; max-width: none; object-fit: contain;
+  opacity: .62; filter: grayscale(.15) contrast(1.06);
   mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
 }
 .casa-bg__scrim {
   position: absolute; inset: 0; z-index: -1;
+  /* Două straturi. Primul topește desenul în secțiunile vecine, sus și jos.
+     Al doilea e o pată închisă fix sub blocul de text: casa are voie să se
+     vadă, dar nu peste cuvinte — desenul e linie subțire albă și taie exact
+     prin literele albe dacă îl lași liber. */
   background:
-    linear-gradient(180deg, var(--bg) 0%, rgba(10, 9, 8, .55) 30%, rgba(10, 9, 8, .55) 70%, var(--bg) 100%);
+    linear-gradient(180deg, var(--bg) 0%, rgba(10, 9, 8, .34) 24%, rgba(10, 9, 8, .34) 76%, var(--bg) 100%),
+    radial-gradient(ellipse 52% 66% at 24% 52%, rgba(10, 9, 8, .82) 0%, rgba(10, 9, 8, .34) 62%, transparent 86%);
+}
+@media (max-width: 720px) {
+  /* pe telefon textul ocupă toată lățimea, deci pata se mută pe centru */
+  .casa-bg__scrim {
+    background:
+      linear-gradient(180deg, var(--bg) 0%, rgba(10, 9, 8, .3) 18%, rgba(10, 9, 8, .3) 82%, var(--bg) 100%),
+      radial-gradient(ellipse 96% 58% at 50% 54%, rgba(10, 9, 8, .9) 0%, rgba(10, 9, 8, .58) 60%, transparent 88%);
+  }
 }
 /* peste desen cardurile trebuie să fie opace, altfel liniile trec prin ele */
 .section--casa .slot { background: rgba(16, 14, 12, .88); backdrop-filter: blur(3px); }
@@ -1316,20 +1343,50 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
     flex: 0 0 min(76%, 300px);
     scroll-snap-align: start;
   }
+  /* Benzile care se mișcă singure n-au voie să aibă snap: snapul trage
+     înapoi la fiecare pixel împins de derivă și banda tremură pe loc. */
+  .rail[data-drift] { scroll-snap-type: none; }
+
+  /* Pe telefon nu are rost întreg: la lățimea asta ar fi o dungă de 4 cm.
+     Îl lăsăm să iasă mult peste margini și să se vadă mijlocul casei, mare. */
+  .casa-bg picture { width: 250%; height: auto; }
+  .casa-bg img { height: auto; object-fit: fill; }
+  .section--casa { min-height: min(66svh, 560px); }
+
+  /* fâșia de cifre din hero intră și ea în bandă */
+  .figures.rail {
+    border-top: 1px solid var(--line-2);
+    padding-top: 1rem;
+  }
+  .figures.rail > * { flex: 0 0 min(58%, 210px); }
   /* ultimul element are nevoie de aer în dreapta ca să poată ajunge la snap */
   .rail::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
 
   /* mockupurile sunt mai înguste: patru ecrane de telefon unul sub altul
      mâncau două ecrane și jumătate de derulat, degeaba */
   .phones.rail > * { flex: 0 0 min(52%, 200px); }
+  .phones.rail { align-items: center; }
 
   /* cifrele mari au nevoie de ceva mai multă lățime decât restul, altfel
      eticheta de sub ele se rupe în coloane de două cuvinte */
   .stat-grid.rail > * { flex: 0 0 min(82%, 330px); }
 
-  /* capturile din Insights: telefonul și explicația rămân una lângă alta */
-  .proof.rail > * { flex: 0 0 min(80%, 320px); grid-template-columns: 1fr; }
-  .proof.rail .proof__shot { max-width: 190px; }
+  /* Capturile din Insights: telefonul deasupra, explicația dedesubt, ambele
+     pe mijlocul cardului. Lipit de marginea din stânga, telefonul arăta a
+     listă tăiată; centrat arată a obiect așezat. */
+  .proof.rail > * {
+    flex: 0 0 min(82%, 330px);
+    grid-template-columns: 1fr;
+    justify-items: center; text-align: center;
+  }
+  .proof.rail .proof__shot { max-width: 172px; width: 100%; margin-inline: auto; }
+  .proof.rail figcaption { justify-items: center; }
+
+  /* Cardurile cu text intră și ele în bandă — erau exact blocurile suprapuse
+     din care pagina ieșea cascadă. Sunt mai late decât cifrele: sub 82% textul
+     s-ar rupe în coloane de câte două cuvinte. */
+  .cards.rail > *, .plans.rail > *, .topics.rail > * { flex: 0 0 min(82%, 330px); }
+  .cards.rail > *, .plans.rail > * { height: auto; }
 
   /* Sloturile rămân verticale, dar pe două coloane: douăsprezece carduri într-o
      singură coloană sunt o listă, pe două sunt un tablou — și exact asta

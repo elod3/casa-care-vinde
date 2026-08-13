@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/style.css?v=13">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -427,13 +427,49 @@
   </div>
 </section>
 
+<!-- ---------- INVENTARUL CELOR 12 ----------
+     Lista a plecat de pe prima pagină și a venit aici: acolo e invitația, aici
+     e inventarul. Cine a ajuns până în casă vrea deja detaliile. -->
+<section class="section section--mist section--edge" id="categorii">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pill" data-reveal>Cele douăsprezece</span>
+      <h2 data-reveal style="--d:60ms">Fiecare categorie tehnică <span>e un slot.</span></h2>
+      <p class="lead" data-reveal style="--d:120ms">
+        Țin <b style="color:var(--ink)">o singură firmă pe categorie</b>. Nu-ți fac
+        reclamă alături de trei concurenți în aceeași lună. Valorile sunt media
+        unei vânzări în categoria respectivă.
+      </p>
+    </div>
+
+    <div class="slots">
+      <article class="slot slot--taken" data-reveal>
+        <span class="slot__k">Ocupat</span>
+        <h4>Ventilație cu recuperare</h4>
+        <p>NovingAIR — campanie livrată, raport public</p>
+      </article>
+      <article class="slot" data-reveal style="--i:1;--d:40ms"><span class="slot__k">Liber</span><h4>Tâmplărie / ferestre</h4><p>20.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:2;--d:80ms"><span class="slot__k">Liber</span><h4>Structură CLT / lemn</h4><p>90.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:3;--d:120ms"><span class="slot__k">Liber</span><h4>Zidărie / ceramică</h4><p>12.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:4;--d:160ms"><span class="slot__k">Liber</span><h4>Izolație termică</h4><p>9.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:5;--d:200ms"><span class="slot__k">Liber</span><h4>Izolație naturală</h4><p>14.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:6;--d:240ms"><span class="slot__k">Liber</span><h4>Pompe de căldură</h4><p>15.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:7;--d:280ms"><span class="slot__k">Liber</span><h4>Fotovoltaic + baterii</h4><p>18.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:8;--d:320ms"><span class="slot__k">Liber</span><h4>Acoperiș / învelitori</h4><p>16.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:9;--d:360ms"><span class="slot__k">Liber</span><h4>Etanșare / membrane</h4><p>4.500 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:10;--d:400ms"><span class="slot__k">Liber</span><h4>Smart home</h4><p>7.000 € valoare medie</p></article>
+      <article class="slot" data-reveal style="--i:11;--d:440ms"><span class="slot__k">Liber</span><h4>Finisaje / pardoseli</h4><p>11.000 € valoare medie</p></article>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="dupa">
   <div class="wrap">
     <div class="section-head">
       <span class="pill" data-reveal>Revenind la subiect</span>
       <h2 data-reveal style="--d:60ms">Casa e o metaforă. <span>Cifrele sunt reale.</span></h2>
     </div>
-    <div class="stat-grid rail" data-reveal>
+    <div class="stat-grid rail" data-drift="1" data-reveal>
       <div class="stat"><b>80K<i>+</i></b><span>comunitate pe 4 platforme</span></div>
       <div class="stat"><b>154.900<i>+</i></b><span>vizionări, campania NovingAIR</span></div>
       <div class="stat"><b>170<i>+</i></b><span>broșuri cerute de oameni reali</span></div>
@@ -498,6 +534,6 @@
 <script src="assets/js/rooms.js?v=3"></script>
 <script src="assets/js/house.js?v=3" defer></script>
 <script src="assets/js/loader.js?v=2" defer></script>
-<script src="assets/js/main.js?v=6" defer></script>
+<script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>

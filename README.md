@@ -14,7 +14,8 @@ rezultate.html   studiu de caz NovingAIR: cifre, distribuție, cele 10 subiecte,
 pachete.html     Basic / Standard / Premium — livrabile, fără prețuri; tabel comparativ
 despre.html      Alin, Inhabit Studio, BuildWise, minicurs, ArchiEducation
 contact.html     formular + ce se întâmplă după
-casa.html        bonus: turul interactiv prin secțiunea unei case (concept vechi)
+casa.html        turul interactiv prin secțiunea unei case + inventarul celor 12
+                 categorii (mutat aici de pe prima pagină)
 
 assets/css/style.css     tot stilul, cu tokens sus
 assets/js/main.js        nav, reveal, an
@@ -516,3 +517,60 @@ aduna în minute de derulat.
 Portretul din `despre.html` e tot decupajul de 344 px din PDF. Acum că avem
 RAW-ul, se poate înlocui — dar cercul galben cu siluetă decupată e o alegere de
 design, nu doar o imagine, așa că merită discutat înainte, nu schimbat din mers.
+
+---
+
+# Versiunea 10 — tot ce se repetă intră în bandă
+
+Trei schimbări, toate pornite de la același lucru: pe telefon, orice grup care
+se repetă ajungea o stivă de blocuri identice.
+
+## 1. Benzile s-au extins la toate grupurile
+
+În v9 trecuseră pe orizontală doar mockupurile, capturile și cifrele. Acum intră
+**toate**: cardurile cu text (`.cards`), pachetele (`.plans`), subiectele
+(`.topics`), fâșia de cifre din hero (`.figures`). Șase benzi pe prima pagină,
+cinci pe „Rezultate".
+
+**Direcțiile alternează în ordinea din pagină** — prima bandă curge într-o parte,
+următoarea în cealaltă. Alternanța e ce rupe monotonia; dacă toate ar merge la
+fel, ar fi tot o cascadă, doar culcată.
+
+**Se mișcă singure.** Deriva mută `scrollLeft`, nu un `transform`. Diferența
+contează: cu `transform`, degetul n-ar avea ce apuca — banda ar fi o animație pe
+care o privești. Așa e un scroll adevărat, pe care îl iei în mână oricând, iar
+deriva doar îl împinge cât timp nu-l atinge nimeni.
+
+Două lucruri prinse la testare:
+
+- **Poziția se ține în JS, nu se citește din `scrollLeft`.** Browserul rotunjește
+  valoarea la citire, așa că un pas de 0,28 px se pierdea de fiecare dată și
+  banda stătea pe loc la nesfârșit.
+- **Benzile care derivă n-au voie să aibă `scroll-snap`.** Snapul trage înapoi
+  fiecare pixel împins de derivă și banda tremură pe loc.
+
+## 2. Orice buclă se oprește cât o atingi
+
+O bandă care nu se oprește e o bandă din care nu poți citi. Deriva se oprește la
+atingere și rămâne pe loc **2,6 secunde** după ce iei degetul — să nu-ți fugă
+textul fix când îl ridici. La fel banda de categorii de sus (`data-loop`),
+sclipirea de pe sloturi și luciul de pe butoane, care până acum se opreau doar
+la `hover` — adică niciodată, pe telefon.
+
+## 3. Casa a rămas doar casă
+
+Lista celor douăsprezece categorii a plecat de pe prima pagină în `casa.html`,
+într-o secțiune nouă. Pe prima pagină rămân desenul, titlul și un buton:
+**aici e invitația, acolo e inventarul.**
+
+Desenul se comportă diferit pe cele două ecrane, din motive de conținut, nu de
+gust: pe lat intră **întreg** (`object-fit: contain`), fiindcă o secțiune printr-o
+casă tăiată de rama ecranului nu mai spune nimic; pe telefon ar fi o dungă de
+patru centimetri, deci iese peste margini și se vede mijlocul casei, mare.
+
+Scrimul are acum două straturi: unul topește desenul în secțiunile vecine, altul
+e o pată închisă fix sub blocul de text. Desenul e linie subțire albă și, lăsat
+liber, taie exact prin literele albe.
+
+**Rezultat: 9,8 ecrane, de la 15,6.** Verificat pe toate cele șapte pagini că
+niciuna nu capătă scroll orizontal.

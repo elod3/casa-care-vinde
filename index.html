@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/style.css?v=13">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -129,7 +129,7 @@
 
     <!-- Cifrele Instagram sunt citite din Insights, 08.08.2026 (vezi capturile
          din assets/img/proof/). Restul vin din raportul NovingAIR. -->
-    <div class="figures" data-reveal style="--d:340ms">
+    <div class="figures rail" data-drift="1" data-reveal style="--d:340ms">
       <div><b data-count="476006">0</b><span>vizionări pe Instagram, ultimele 90 de zile</span></div>
       <div><b data-count="154900" data-suffix="+">0</b><span>vizionări, campania NovingAIR</span></div>
       <div><b data-count="170" data-suffix="+">0</b><span>broșuri cerute de oameni reali</span></div>
@@ -140,7 +140,7 @@
 </section>
 
 <!-- ================= BANDA DE CATEGORII ================= -->
-<div class="marquee" aria-hidden="true">
+<div class="marquee" data-loop aria-hidden="true">
   <div class="marquee__track">
     <span>Tâmplărie<span></span></span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
     <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
@@ -160,7 +160,7 @@
       <h2 data-reveal style="--d:60ms">Arhitect. <span>Și omul pe care îl întreabă înainte să toarne placa.</span></h2>
     </div>
 
-    <div class="cards">
+    <div class="cards rail" data-drift="-1">
       <article class="card" data-reveal>
         <span class="card__n">01</span>
         <h4>Nișa</h4>
@@ -238,7 +238,7 @@
     <!-- Capturile din Instagram Insights, decupate de bara de status a
          telefonului. Sunt aici ca dovadă: orice cifră de mai sus se poate
          verifica în ele. De reînnoit când se schimbă perioada. -->
-    <div class="proof rail" data-reveal style="--d:140ms">
+    <div class="proof rail" data-drift="1" data-reveal style="--d:140ms">
       <figure class="proof__item">
         <div class="proof__shot"><img src="assets/img/proof/ig-overview-90z.jpg" alt="Instagram Insights, ultimele 90 de zile: 476.006 vizionări, +2.807 urmăritori net, 157.143 spectatori unici" width="946" height="1885" loading="lazy" decoding="async"></div>
         <figcaption>
@@ -284,7 +284,7 @@
         <b data-count="154900" data-suffix="+">0</b>
         <p>vizionări însumate pe Instagram, Facebook, TikTok și YouTube, în 26 de zile.</p>
       </div>
-      <div class="stat-grid rail" data-reveal style="--d:80ms">
+      <div class="stat-grid rail" data-drift="-1" data-reveal style="--d:80ms">
         <div class="stat"><b data-count="360" data-suffix="+">0</b><span>comentarii organice, conversație reală sub clipuri</span></div>
         <div class="stat"><b data-count="170" data-suffix="+">0</b><span>broșuri cerute și trimise către oameni interesați</span></div>
         <div class="stat"><b data-count="3700" data-suffix="+">0</b><span>interacțiuni totale pe conținutul campaniei</span></div>
@@ -313,14 +313,14 @@
 
     <!-- Mockup-uri de telefon. Pune assets/video/reel-1.mp4 … reel-4.mp4 și
          înlocuiește .phone__empty cu <video autoplay muted loop playsinline>. -->
-    <div class="phones rail" style="margin-bottom:clamp(2rem,1rem+3vw,3.5rem)" data-reveal>
+    <div class="phones rail" data-drift="1" style="margin-bottom:clamp(2rem,1rem+3vw,3.5rem)" data-reveal>
       <div class="phone"><div class="phone__empty">Reel 1<br>de adăugat</div></div>
       <div class="phone"><div class="phone__empty">Reel 2<br>de adăugat</div></div>
       <div class="phone"><div class="phone__empty">Reel 3<br>de adăugat</div></div>
       <div class="phone"><div class="phone__empty">Reel 4<br>de adăugat</div></div>
     </div>
 
-    <div class="cards">
+    <div class="cards rail" data-drift="-1">
       <article class="card" data-reveal>
         <h4>Reels — clipuri educaționale</h4>
         <p>Formatul principal. Un hook puternic, o idee explicată, un CTA.
@@ -367,11 +367,10 @@
   </div>
 </section>
 
-<!-- ================= 05 · SLOTURILE =================
-     Secțiunea unei case pasive stă ca banner pe tot fundalul, iar în locul
-     celor două butoane rămâne unul singur: intri în casă. Imaginea e randată
-     din SVG-ul din casa.html — dacă desenul se schimbă acolo, se regenerează
-     (comanda e în README). -->
+<!-- ================= 05 · CASA =================
+     Doar casa și un buton. Lista celor douăsprezece categorii a plecat în
+     casa.html: aici e invitația, acolo e inventarul. Imaginea e randată din
+     SVG-ul din casa.html — dacă desenul se schimbă, se regenerează (README). -->
 <section class="section section--casa">
   <div class="casa-bg" aria-hidden="true">
     <picture data-parallax="46">
@@ -391,29 +390,11 @@
       </p>
     </div>
 
-    <div class="slots">
-      <article class="slot slot--taken" data-reveal>
-        <span class="slot__k">Ocupat</span>
-        <h4>Ventilație cu recuperare</h4>
-        <p>NovingAIR — campanie livrată, raport public</p>
-      </article>
-      <article class="slot" data-reveal style="--i:1;--d:40ms"><span class="slot__k">Liber</span><h4>Tâmplărie / ferestre</h4><p>20.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:2;--d:80ms"><span class="slot__k">Liber</span><h4>Structură CLT / lemn</h4><p>90.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:3;--d:120ms"><span class="slot__k">Liber</span><h4>Zidărie / ceramică</h4><p>12.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:4;--d:160ms"><span class="slot__k">Liber</span><h4>Izolație termică</h4><p>9.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:5;--d:200ms"><span class="slot__k">Liber</span><h4>Izolație naturală</h4><p>14.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:6;--d:240ms"><span class="slot__k">Liber</span><h4>Pompe de căldură</h4><p>15.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:7;--d:280ms"><span class="slot__k">Liber</span><h4>Fotovoltaic + baterii</h4><p>18.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:8;--d:320ms"><span class="slot__k">Liber</span><h4>Acoperiș / învelitori</h4><p>16.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:9;--d:360ms"><span class="slot__k">Liber</span><h4>Etanșare / membrane</h4><p>4.500 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:10;--d:400ms"><span class="slot__k">Liber</span><h4>Smart home</h4><p>7.000 € valoare medie</p></article>
-      <article class="slot" data-reveal style="--i:11;--d:440ms"><span class="slot__k">Liber</span><h4>Finisaje / pardoseli</h4><p>11.000 € valoare medie</p></article>
-    </div>
-
     <div class="casa-cta" data-reveal>
       <a class="btn btn--primary" href="casa.html">Intră în casă <span class="btn__a">→</span></a>
-      <p>Secțiune printr-o casă pasivă. Dă scroll și camera se oprește la
-        fiecare element tehnic — adică la fiecare categorie liberă de mai sus.</p>
+      <p>Secțiune printr-o casă pasivă. Dă scroll și camera se oprește la fiecare
+        element tehnic. Acolo vezi toate cele douăsprezece categorii, care e
+        ocupată și cât valorează fiecare.</p>
     </div>
   </div>
 </section>
@@ -517,6 +498,6 @@
 </footer>
 
 <script src="assets/js/loader.js?v=2" defer></script>
-<script src="assets/js/main.js?v=6" defer></script>
+<script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>

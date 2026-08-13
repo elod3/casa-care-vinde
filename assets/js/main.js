@@ -207,6 +207,111 @@
     window.addEventListener('resize', queue, { passive: true });
   }
 
+  /* ---------- benzile care se mișcă singure ----------
+     Pe telefon, blocurile de date stăteau unul sub altul și pagina ieșea o
+     cascadă. Acum fiecare grup se scurge lateral, ca banda de categorii de sus
+     — dar cu direcții care alternează pe măsură ce cobori: un rând pleacă spre
+     stânga, următorul spre dreapta. Alternanța e ce rupe monotonia; dacă toate
+     ar merge în aceeași parte, ar fi tot o cascadă, doar culcată.
+
+     Deriva se face mișcând `scrollLeft`, nu un `transform`. Diferența contează:
+     cu `transform`, degetul n-ar avea ce apuca — banda ar fi o animație pe care
+     o privești. Așa, e un scroll adevărat, pe care îl poți lua în mână oricând,
+     iar deriva doar îl împinge cât timp nu-l atinge nimeni. */
+  var drifters = Array.prototype.slice.call(document.querySelectorAll('[data-drift]'));
+  var mqPhone = window.matchMedia('(max-width: 720px)');
+
+  if (!REDUCED && drifters.length) {
+    var SPEED = 0.28;       // px pe cadru — lent cât să apuci să citești
+    var RESUME = 2600;      // cât stă pe loc după ce iei degetul
+
+    drifters.forEach(function (rail) {
+      var dir = parseFloat(rail.getAttribute('data-drift')) || 1;
+      var heldUntil = 0;
+      var cloned = false;
+      var raf = null;
+
+      /* Dublăm conținutul o dată, ca banda să se închidă în cerc. Clonele sunt
+         ascunse pentru cititoarele de ecran — sunt aceleași date, spuse iar. */
+      function clone() {
+        if (cloned) return;
+        cloned = true;
+        Array.prototype.slice.call(rail.children).forEach(function (c) {
+          var d = c.cloneNode(true);
+          d.setAttribute('aria-hidden', 'true');
+          d.setAttribute('tabindex', '-1');
+          rail.appendChild(d);
+        });
+      }
+
+      /* Poziția se ține aici, nu se citește din `scrollLeft` la fiecare cadru.
+         Browserul rotunjește valoarea la citire, așa că un pas de 0,28 px
+         s-ar pierde de fiecare dată și banda ar sta pe loc la nesfârșit.
+         Când omul o mișcă cu degetul, resincronizăm din scroll-ul real. */
+      var pos = 0;
+
+      function hold() {
+        heldUntil = Date.now() + RESUME;
+        pos = rail.scrollLeft;
+      }
+
+      ['pointerdown', 'touchstart', 'wheel', 'mouseenter'].forEach(function (ev) {
+        rail.addEventListener(ev, hold, { passive: true });
+      });
+      rail.addEventListener('focusin', hold);
+
+      function step() {
+        raf = null;
+        if (!mqPhone.matches) return;
+        var half = rail.scrollWidth / 2;
+        if (Date.now() > heldUntil && half > 0) {
+          pos += SPEED * dir;
+          if (pos >= half) pos -= half;      // s-a închis cercul
+          else if (pos < 0) pos += half;
+          rail.scrollLeft = pos;
+        }
+        raf = requestAnimationFrame(step);
+      }
+
+      function sync() {
+        if (mqPhone.matches) {
+          clone();
+          // spre dreapta pornim din mijloc, altfel am da imediat de capăt
+          if (dir < 0 && rail.scrollLeft === 0) rail.scrollLeft = rail.scrollWidth / 2;
+          pos = rail.scrollLeft;
+          if (!raf) raf = requestAnimationFrame(step);
+        } else if (raf) {
+          cancelAnimationFrame(raf); raf = null;
+        }
+      }
+
+      sync();
+      (mqPhone.addEventListener ? mqPhone.addEventListener.bind(mqPhone, 'change')
+                                : mqPhone.addListener.bind(mqPhone))(sync);
+    });
+  }
+
+  /* ---------- orice buclă se oprește cât o atingi ----------
+     O bandă care nu se oprește e o bandă din care nu poți citi. Ține cât timp
+     apeși, plus o clipă după, ca să nu-ți fugă textul de sub deget fix când
+     îl ridici. */
+  var loops = Array.prototype.slice.call(document.querySelectorAll('[data-loop]'));
+  loops.forEach(function (el) {
+    var t = null;
+    function hold() {
+      el.classList.add('is-held');
+      clearTimeout(t);
+      t = setTimeout(function () { el.classList.remove('is-held'); }, 1600);
+    }
+    ['pointerdown', 'touchstart', 'pointermove'].forEach(function (ev) {
+      el.addEventListener(ev, hold, { passive: true });
+    });
+    el.addEventListener('pointerleave', function () {
+      clearTimeout(t);
+      el.classList.remove('is-held');
+    });
+  });
+
   /* ---------- lumina care urmărește cursorul pe carduri ---------- */
   if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.card').forEach(function (card) {
