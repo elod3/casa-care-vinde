@@ -324,3 +324,36 @@ magick /tmp/h.png -trim +repage -border 40 -resize 1800x -quality 84 assets/img/
 Banda intră la proporția ei, pe toată lățimea, nu cu `object-fit: cover` — la
 înălțimea secțiunii, `cover` i-ar tăia ambele capete ale casei. Cardurile de slot
 de deasupra sunt opace, altfel liniile desenului trec prin ele.
+
+---
+
+# Versiunea 6 — mișcările mici
+
+Șase mișcări, toate periferice: se prind cu coada ochiului, niciuna nu cere să
+fie privită. Toate se opresc la `prefers-reduced-motion` — blocul universal de
+la finalul CSS-ului le taie pe toate deodată, iar parallaxul e păzit în JS de
+`REDUCED`.
+
+| Ce | Unde | De ce |
+|---|---|---|
+| **Parallax** | fotografia din hero (±70 px), banda cu casa (±46 px) | fundalul rămâne în urma paginii, deci se citește ca adâncime |
+| **Sclipire pe sloturi** | doar cardurile `Liber`, decalate cu 620 ms | ochiul o prinde periferic și se uită exact la categoriile de vânzare |
+| **Luciu pe butonul principal** | `.btn--primary`, la 7 s | aceeași limbă ca sclipirea de pe sloturi |
+| **Plutire** | blob-urile galbene | durate care nu se împart una la alta, ca să nu se sincronizeze |
+| **Respirație** | haloul din `.stat-hero`, 11 s | ține cardul viu fără să miște text |
+| **Pauză la hover** | banda de categorii, sloturile, butonul | mica dovadă că pagina răspunde |
+
+Trei detalii care nu se văd, dar contează:
+
+- **Parallaxul are semn negativ.** Stratul trebuie să rămână *în urma* paginii.
+  Cu semnul invers ar merge mai repede decât textul și ar părea mai aproape, nu
+  mai departe — exact pe dos față de ce vrei.
+- **Translația se pune pe `<picture>`, nu pe `<img>`.** Imaginea din hero are
+  deja propriul transform (zoom-ul lent), iar cele două s-ar suprascrie. Stratul
+  e cu 90 px mai înalt decât rama, ca amplitudinea de ±70 px să aibă din ce să
+  tragă fără să descopere marginea.
+- **Un singur `requestAnimationFrame` pentru toate straturile**, cu straturile
+  ieșite din ecran sărite. Nu un listener de scroll per element.
+
+Indicatorul „Derulează" a fost scos: de când fâșia de cifre intră în ecran,
+cele două se călcau, iar fâșia invită la scroll mai bine decât o săgeată.

@@ -188,6 +188,17 @@ table { border-collapse: collapse; width: 100%; }
 .blob--br { bottom: 10%; right: -6%; width: clamp(80px, 12vw, 190px); aspect-ratio: 1.3; }
 @media (max-width: 720px) { .blob { opacity: .45; } }
 
+/* Blob-urile plutesc încet, cu durate care nu se împart una la alta — dacă ar
+   fi sincronizate, ochiul ar citi ritmul și mișcarea ar deveni un tic. */
+.blob { animation: float 19s ease-in-out infinite; }
+.blob--bl { animation-duration: 23s; animation-delay: -6s; }
+.blob--tr { animation-duration: 26s; animation-delay: -11s; }
+.blob--br { animation-duration: 31s; animation-delay: -3s; }
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%      { transform: translate3d(0, -14px, 0) rotate(1.2deg); }
+}
+
 /* bare de letterbox — apar doar pe momentele „de film" */
 .letterbox { position: relative; }
 .letterbox::before, .letterbox::after {
@@ -296,6 +307,22 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .section--lit .btn--primary:hover { background: #000; box-shadow: none; }
 .btn__a { transition: transform .3s var(--ease); }
 .btn:hover .btn__a { transform: translateX(5px); }
+
+/* Un luciu trece rar peste butonul principal — aceeași limbă ca sclipirea de
+   pe sloturi, ca mișcările din pagină să pară un singur sistem, nu efecte
+   adunate. La hover se oprește: acolo comanda o dă deja cursorul. */
+.btn--primary::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, .28) 50%, transparent 60%);
+  background-size: 280% 100%; background-position: 200% 0;
+  pointer-events: none;
+  animation: sweep 7s ease-in-out infinite;
+}
+.btn--primary:hover::after { animation-play-state: paused; }
+/* pe secțiunea galbenă butonul e negru, deci luciul se închide la rândul lui */
+.section--lit .btn--primary::after {
+  background-image: linear-gradient(105deg, transparent 40%, rgba(226, 176, 23, .22) 50%, transparent 60%);
+}
 
 .link-arrow {
   display: inline-flex; align-items: center; gap: .45rem;
@@ -441,6 +468,9 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
    face scrimul de dedesubt, nu stingerea pozei. Dacă apare assets/video/hero.mp4,
    videoul se pune peste imagine și preia rolul. */
 .hero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: var(--bg); }
+/* Stratul e mai înalt decât rama cu 90 px sus și jos, ca parallaxul (±70 px)
+   să aibă din ce să tragă fără să descopere marginea imaginii. */
+.hero__media picture { position: absolute; inset: -90px 0; display: block; }
 .hero__media img, .hero__media video {
   width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%;
   filter: contrast(1.1) saturate(.95) brightness(1.14);
@@ -491,13 +521,6 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .hero__cta { margin-top: clamp(1.2rem, 3svh, 1.9rem); display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
 
 /* indicatorul de scroll */
-.scrollcue {
-  position: absolute; left: 50%; bottom: 1.4rem; translate: -50% 0; z-index: 2;
-  display: grid; justify-items: center; gap: .6rem;
-  font-size: .6rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--ink-3);
-}
-.scrollcue i { display: block; width: 1px; height: 46px; background: linear-gradient(180deg, var(--yellow), transparent); }
-@media (max-width: 900px) { .scrollcue { display: none; } }
 
 /* portret + inel, recolorat pentru noapte */
 .portrait { position: relative; justify-self: center; width: min(330px, 76vw); }
@@ -548,6 +571,11 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   content: ""; position: absolute; top: -40%; right: -20%;
   width: 70%; aspect-ratio: 1; border-radius: 50%;
   background: radial-gradient(circle, rgba(226, 176, 23, .16), transparent 70%);
+  animation: breathe 11s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { opacity: .75; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.12); }
 }
 .stat-hero b {
   font-size: clamp(2.8rem, 1.8rem + 5vw, 6rem); font-weight: 800;
@@ -1027,6 +1055,7 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
    ========================================================================== */
 .slots { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
 .slot {
+  position: relative; overflow: hidden;
   border: 1px dashed var(--line-2); border-radius: 16px;
   padding: 1.1rem 1.2rem; display: grid; gap: .35rem; align-content: start;
   background: rgba(0, 0, 0, .2);
@@ -1038,6 +1067,23 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 .slot p { font-size: .78rem; color: var(--ink-3); }
 .slot--taken { border-style: solid; border-color: rgba(226, 176, 23, .5); background: rgba(226, 176, 23, .08); }
 .slot--taken .slot__k { color: var(--yellow); }
+
+/* O lumină mătură rar cardurile libere, decalat de la unul la altul. E singura
+   mișcare din pagină care are treabă: ochiul o prinde periferic și se uită
+   exact la categoriile pe care le vindem. Cel ocupat nu clipește. */
+.slot:not(.slot--taken)::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(105deg, transparent 38%, rgba(226, 176, 23, .13) 50%, transparent 62%);
+  background-size: 260% 100%; background-position: 180% 0;
+  pointer-events: none;
+  animation: sweep 9s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 620ms);
+}
+.slot:hover::after { animation-play-state: paused; }
+@keyframes sweep {
+  0%, 62%, 100% { background-position: 180% 0; }
+  84%           { background-position: -80% 0; }
+}
 
 /* banda care se derulează — categoriile, ca un generic de film */
 .marquee { overflow: hidden; position: relative; padding-block: 1.1rem; border-block: 1px solid var(--line); }

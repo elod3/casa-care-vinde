@@ -168,6 +168,45 @@
     [150, 600, 1500].forEach(function (ms) { setTimeout(schedule, ms); });
   }
 
+  /* ---------- parallax ----------
+     Imaginile de fundal se mișcă mai încet decât pagina. E singura mișcare pe
+     care omul n-o observă conștient, dar care îi spune că fundalul e mai
+     departe decât textul — de aia se citește ca adâncime, nu ca efect.
+
+     Translația se pune pe învelitoare, nu pe <img>: imaginea are deja propriul
+     transform (zoom-ul lent din hero), iar cele două s-ar suprascrie.
+     Un singur rAF pentru toate straturile, ca să nu punem un listener de
+     scroll per element. */
+  var layers = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  if (!REDUCED && layers.length) {
+    var ticking = false;
+
+    var place = function () {
+      ticking = false;
+      var h = window.innerHeight;
+      layers.forEach(function (el) {
+        var host = el.parentElement.getBoundingClientRect();
+        if (host.bottom < -200 || host.top > h + 200) return;   // în afara ecranului
+        // -1..1, cât de departe e mijlocul secțiunii de mijlocul ecranului
+        var d = (host.top + host.height / 2 - h / 2) / (h / 2 + host.height / 2);
+        var amp = parseFloat(el.getAttribute('data-parallax')) || 40;
+        // semnul e negativ intenționat: stratul trebuie să rămână în urma
+        // paginii, nu s-o ia înainte. Invers, ar părea mai aproape decât textul.
+        el.style.transform = 'translate3d(0, ' + (-d * amp).toFixed(1) + 'px, 0)';
+      });
+    };
+
+    var queue = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(place);
+    };
+
+    place();
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue, { passive: true });
+  }
+
   /* ---------- lumina care urmărește cursorul pe carduri ---------- */
   if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.card').forEach(function (card) {
