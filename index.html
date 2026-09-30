@@ -393,16 +393,82 @@
   </div>
 </section>
 
+<!-- ================= AXONOMETRIA =================
+     O casă reală din proiectele Inhabit Studio: randarea de noapte se
+     desface la scroll în axonometria explodată (explozie.js). La final
+     preiau nivelurile decupate din AXO, în three.js, și fiecare își arată
+     categoriile. Cele douăsprezece sunt aceleași ca în casa.html. -->
+<section class="explo" id="explozie" aria-labelledby="exploTitle">
+  <div class="explo__stage">
+    <canvas class="explo__frames" aria-hidden="true"></canvas>
+    <canvas class="explo__gl" aria-hidden="true"></canvas>
+    <noscript><img class="explo__still" src="assets/explozie/axo-final.webp" alt=""></noscript>
+
+    <div class="explo__head">
+      <p class="slate"><b>—</b><i></i>Axonometrie explodată</p>
+      <h2 id="exploTitle">O casă reală, <span>desfăcută pe etaje.</span></h2>
+      <p class="explo__sub">Proiect Inhabit Studio. Fiecare nivel ascunde categoriile lui de parteneriat, și doar una e luată.</p>
+    </div>
+
+    <ul class="explo__levels">
+      <li class="explo__level" data-level="acoperis">
+        <b>Acoperiș</b>
+        <span>Acoperiș / învelitori</span><span>Fotovoltaic + baterii</span><span>Izolație naturală</span>
+      </li>
+      <li class="explo__level" data-level="mansarda">
+        <b>Mansardă</b>
+        <span>Structură CLT / lemn</span><span>Tâmplărie / ferestre</span><span>Etanșare / membrane</span><span>Smart home</span>
+      </li>
+      <li class="explo__level" data-level="parter">
+        <b>Parter</b>
+        <span class="is-taken">Ventilație cu recuperare <em>NovingAIR · ocupat</em></span>
+        <span>Zidărie / ceramică</span><span>Izolație termică</span><span>Pompe de căldură</span><span>Finisaje / pardoseli</span>
+      </li>
+    </ul>
+
+    <p class="explo__hint" aria-hidden="true">Derulează</p>
+  </div>
+</section>
+
+<!-- ================= PE DINĂUNTRU =================
+     Aceeași casă, patru camere. Clipurile sunt animate din randările
+     Inhabit Studio (Scene 33, 34, 35, 44). Fiecare e legat de categoria
+     pe care o arată; pornesc doar când sunt pe ecran (casa-video.js). -->
+<section class="section inside" id="dinauntru">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="slate" data-reveal><b>—</b><i></i>Pe dinăuntru</span>
+      <h2 data-reveal style="--d:60ms">Fiecare cameră <span>e o decizie de cumpărare.</span></h2>
+    </div>
+  </div>
+  <div class="inside__rail" data-reveal>
+    <figure class="room">
+      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/living_soare.webp" src="assets/video/casa/living_soare.mp4"></video>
+      <figcaption><b>Tâmplărie / ferestre</b><span>Soarele de iarnă intră pe fereastra mare și rămâne în casă.</span><em>liber</em></figcaption>
+    </figure>
+    <figure class="room">
+      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/scara.webp" src="assets/video/casa/scara.mp4"></video>
+      <figcaption><b>Structură CLT / lemn</b><span>Scara și peretele de lemn, lăsate la vedere.</span><em>liber</em></figcaption>
+    </figure>
+    <figure class="room">
+      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/dining.webp" src="assets/video/casa/dining.mp4"></video>
+      <figcaption><b>Finisaje / pardoseli</b><span>Stejar pe jos, lumină naturală pe masă.</span><em>liber</em></figcaption>
+    </figure>
+    <figure class="room room--taken">
+      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/bucatarie.webp" src="assets/video/casa/bucatarie.mp4"></video>
+      <figcaption><b>Ventilație cu recuperare</b><span>Aerul se schimbă fără să deschizi geamul.</span><em>NovingAIR · ocupat</em></figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- ================= 05 · CASA =================
      Doar casa și un buton. Lista celor douăsprezece categorii a plecat în
      casa.html: aici e invitația, acolo e inventarul. Imaginea e randată din
      SVG-ul din casa.html — dacă desenul se schimbă, se regenerează (README). -->
 <section class="section section--casa">
   <div class="casa-bg" aria-hidden="true">
-    <picture data-parallax="46">
-      <source type="image/webp" srcset="assets/img/casa-preview.webp">
-      <img src="assets/img/casa-preview.jpg" alt="" width="2600" height="1701" loading="lazy" decoding="async">
-    </picture>
+    <!-- casa de noapte, orbită lentă din Scene 31 (Inhabit Studio) -->
+    <video class="casa-bg__video" muted playsinline preload="none" data-play="once" poster="assets/video/casa/noapte_orbit.webp" data-end="assets/video/casa/noapte_orbit-final.webp" src="assets/video/casa/noapte_orbit.mp4"></video>
   </div>
   <div class="casa-bg__scrim" aria-hidden="true"></div>
   <div class="wrap">
@@ -454,6 +520,14 @@
       tău pe el. Iar la final primești raportul cu cifrele reale, nu un screenshot.
     </p>
   </div>
+</section>
+
+<!-- ================= SEARA =================
+     Fațada de zi (Scene 28) care ajunge în randarea de noapte (Scene 36):
+     rulează o dată când intră pe ecran și rămâne pe casa aprinsă. -->
+<section class="dusk" aria-label="Aceeași fațadă, de la apus la noapte">
+  <video muted playsinline preload="none" data-play="once" poster="assets/video/casa/zi_noapte-start.webp" data-end="assets/video/casa/zi_noapte-final.webp" src="assets/video/casa/zi_noapte.mp4"></video>
+  <p class="dusk__cap"><b>Aceeași fațadă, de la apus la noapte.</b> Proiect Inhabit Studio.</p>
 </section>
 
 <!-- ================= CTA ================= -->
@@ -523,6 +597,11 @@
   </div>
 </footer>
 
+<script type="importmap">
+{ "imports": { "three": "./assets/vendor/three.module.min.js" } }
+</script>
+<script src="assets/js/explozie.js?v=1" defer></script>
+<script src="assets/js/casa-video.js?v=1" defer></script>
 <script src="assets/js/loader.js?v=2" defer></script>
 <script src="assets/js/main.js?v=10" defer></script>
 </body>

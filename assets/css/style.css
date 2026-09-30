@@ -1539,3 +1539,112 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   .formats { gap: 1.8rem; }
   .format__body p { font-size: .84rem; }
 }
+
+/* ---------- Axonometria explodată (explozie.js) ----------
+   Secțiune înaltă cu scena lipită: scroll-ul derulează cadrele, nu pagina.
+   Începe pe noapte, deci pe fundalul paginii; când casa ajunge în studio,
+   titlul trece pe cerneală închisă, ca pe secțiunile galbene. */
+.explo { position: relative; height: 420svh; background: var(--bg); }
+.explo__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; }
+.explo__frames, .explo__gl, .explo__still { position: absolute; inset: 0; width: 100%; height: 100%; }
+.explo__still { object-fit: cover; }
+.explo__gl { pointer-events: none; }
+
+.explo__head {
+  position: absolute; z-index: 2;
+  left: var(--gutter); top: clamp(5.5rem, 12svh, 8rem);
+  max-width: min(30rem, 42vw);
+  transition: color .6s ease;
+}
+.explo__head h2 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.6rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; }
+.explo__head h2 span { font-weight: 300; }
+.explo__sub { margin-top: 1rem; font-size: .95rem; color: var(--ink-2); max-width: 34ch; transition: color .6s ease; }
+.explo .slate i { transition: background .6s ease; }
+/* studioul e gri deschis: cerneala se întoarce */
+.explo.is-day .explo__head { color: var(--on-lit); }
+.explo.is-day .explo__sub { color: var(--on-lit-2); }
+.explo.is-day .slate { color: var(--on-lit-3); }
+.explo.is-day .slate b { color: #7A5B00; }
+.explo.is-day .slate i { background: rgba(23, 20, 10, .25); }
+
+/* etichetele nivelurilor: le mută explozie.js lângă nivelul lor */
+.explo__levels { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.explo__level {
+  position: absolute; left: 0; top: 0;
+  display: grid; gap: .18rem; padding: .2rem 0 .2rem .85rem;
+  border-left: 2px solid var(--on-lit);
+  color: var(--on-lit); font-size: .8rem; line-height: 1.35;
+  opacity: 0; translate: 0 10px;
+  transition: opacity .5s ease, translate .5s ease;
+  white-space: nowrap;
+}
+.explo__level.is-on { opacity: 1; translate: 0 0; }
+.explo__level b { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(23, 20, 10, .55); margin-bottom: .15rem; }
+.explo__level span { color: rgba(23, 20, 10, .78); }
+/* singura categorie ocupată e singura cu culoare */
+.explo__level .is-taken { color: var(--on-lit); font-weight: 600; }
+.explo__level .is-taken em {
+  display: table; margin-top: .25rem;
+  font-style: normal; font-weight: 600; font-size: .7rem;
+  padding: .12rem .45rem; border-radius: 99px; background: var(--on-lit); color: var(--yellow);
+}
+
+.explo__hint {
+  position: absolute; z-index: 2; left: 50%; bottom: 1.4rem; translate: -50% 0;
+  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3);
+  transition: opacity .4s ease;
+}
+.explo.is-day .explo__hint { opacity: 0; }
+
+@media (max-width: 720px) {
+  .explo__head { top: 5rem; max-width: none; right: var(--gutter); }
+  .explo__sub { display: none; }
+  /* pe telefon eticheta stă peste casă: primește un fundal, altfel nu se citește */
+  .explo__level {
+    font-size: .72rem; padding: .45rem .7rem; border-left-width: 2px;
+    background: rgba(214, 208, 208, .93);
+    border-radius: 0 8px 8px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explo { height: auto; }
+  .explo__stage { position: relative; }
+}
+
+/* ---------- Pe dinăuntru: camerele casei, fiecare cu categoria ei ---------- */
+.inside { padding-bottom: clamp(3rem, 2rem + 4vw, 6rem); }
+.inside__rail {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 34vw);
+  gap: clamp(.8rem, .5rem + 1vw, 1.4rem);
+  overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  padding: 0 var(--gutter) 1rem; scrollbar-width: none;
+}
+.inside__rail::-webkit-scrollbar { display: none; }
+.room { scroll-snap-align: start; display: grid; gap: .8rem; }
+.room video {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px;
+  background: var(--bg-3);
+}
+.room figcaption { display: grid; gap: .2rem; padding-left: .9rem; border-left: 2px solid var(--line-2); }
+.room figcaption b { font-size: 1rem; font-weight: 600; }
+.room figcaption span { font-size: .88rem; color: var(--ink-2); }
+.room figcaption em { font-style: normal; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); margin-top: .2rem; }
+.room--taken figcaption { border-left-color: var(--yellow); }
+.room--taken figcaption em { color: var(--yellow); }
+@media (max-width: 720px) { .inside__rail { grid-auto-columns: 82vw; } }
+
+/* ---------- Seara: fațada de la apus la noapte, pe toată lățimea ---------- */
+.dusk { position: relative; background: #07070A; }
+.dusk video { width: 100%; aspect-ratio: 16 / 9; max-height: 92svh; object-fit: cover; }
+.dusk__cap {
+  position: absolute; left: var(--gutter); bottom: clamp(1rem, .6rem + 1.5vw, 2rem);
+  font-size: .85rem; color: rgba(243, 239, 232, .72); max-width: 40ch;
+}
+.dusk__cap b { color: var(--ink); font-weight: 600; }
+@media (max-width: 720px) {
+  /* pe telefon fațada rămâne întreagă; textul trece sub imagine */
+  .dusk__cap { position: static; padding: .9rem var(--gutter) 0; }
+}
+
+/* secțiunea de sloturi: în loc de desen, casa noaptea, cu scrim-ul existent */
+.casa-bg__video { width: 100%; height: 100%; object-fit: cover; opacity: .7; }
