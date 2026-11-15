@@ -294,7 +294,7 @@ html.anim .camp__stats li, html.anim .camp__hot > * { will-change: auto; }
 
 /* text trasat, apoi turnat (cine.js) */
 .ln { position: relative; }
-.ln__out { display: block; color: transparent; -webkit-text-stroke: 1px var(--ln, currentColor); }
+.ln__out { display: block; color: transparent; -webkit-text-stroke: var(--lw, 1px) var(--ln, currentColor); }
 .ln__fill { position: absolute; inset: 0; display: block; }
 .ln__rule { position: absolute; left: 0; right: 0; bottom: .06em; height: 1px; background: var(--ln, currentColor); transform-origin: 0 50%; }
 /* titlurile de secțiune */
