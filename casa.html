@@ -18,58 +18,33 @@
 <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/style.css?v=16">
+<style>@import url("assets/css/style.css?v=16") layer(old);</style>
+<link rel="stylesheet" href="assets/css/sub.css?v=1">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
 
-<!-- Ecran de încărcare. Stă peste o pagină care se încarcă normal dedesubt;
-     nu amână nimic. Se arată o singură dată pe sesiune. -->
-<div class="loader" id="loader" role="status" aria-live="polite">
-  <div class="loader__grid" aria-hidden="true"></div>
-  <div class="loader__glow" aria-hidden="true"></div>
-  <div class="loader__inner">
-    <img class="loader__mark" src="assets/img/inhabit-mark.webp" alt="" width="60" height="60">
-    <p class="loader__word">
-      <b>inhabit<i>media</i></b>
-      <small>arh. alin ionescu</small>
-    </p>
-    <div class="loader__bar" aria-hidden="true"><i></i></div>
-    <p class="loader__meta">
-      <span class="loader__step">Se pregătește pagina</span>
-      <b class="loader__pct">0%</b>
-    </p>
-  </div>
-  <span class="loader__skip" aria-hidden="true">Apasă ca să intri</span>
-</div>
-
 <div class="atmos" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"></div>
 
-<header class="nav nav--solid" id="nav">
-  <div class="nav__inner">
-    <a class="brand brand--mark" href="index.html" aria-label="Inhabit Media — acasă">
-      <img src="assets/img/inhabit-mark.webp" alt="" width="34" height="34">
-    </a>
-
-    <div class="nav__bar">
-      <a class="nav__word" href="index.html">
-        <b>INHABIT<i>MEDIA</i></b><small>arh. alin ionescu</small>
-      </a>
-      <nav class="nav__links" id="navLinks">
-      <a href="index.html#audienta">Audiența</a>
-      <a href="rezultate.html">Rezultate</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="despre.html">Despre</a>
-        <a class="btn btn--dark nav__cta-m" href="contact.html">Hai să vorbim</a>
-      </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <a class="btn btn--primary nav__cta" href="contact.html">Hai să vorbim</a>
-  </div>
+<header class="nav" id="nav">
+  <a class="nav__word" href="index.html" aria-label="Inhabit Media, acasă">
+    <svg class="nav__mark" viewBox="0 0 160 160" aria-hidden="true" fill="none" stroke-width="8.5" stroke-linecap="round">
+      <mask id="bwSun"><rect width="160" height="160" fill="#fff"/><path d="M43 65 84 37l40 29v94H43z" fill="#000"/></mask>
+      <circle class="m-y" cx="49" cy="56" r="29" mask="url(#bwSun)" stroke="none"/>
+      <path class="m-s" d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43"/>
+      <path class="m-w" stroke-linecap="butt" d="M74 44 47 62q-4 3-4 8v12"/>
+    </svg>
+    <span class="nav__name"><b>inhabit<i>media</i></b><small>arh. alin ionescu</small></span>
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="index.html#audienta">Audiența</a>
+    <a href="rezultate.html">Rezultate</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="despre.html">Despre</a>
+    <a class="btn btn--yellow" href="contact.html">Hai să vorbim</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
 </header>
 
 <main>
@@ -491,57 +466,29 @@
 
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <a class="brand" href="index.html">
-          <img src="assets/img/inhabit-mark.webp" alt="" width="30">
-          <span><b>INHABIT<i>MEDIA</i></b><small style="display:block">arh. alin ionescu</small></span>
-        </a>
-        <p style="margin-top:1rem;max-width:30ch">
-          De la confuzie la claritate — educație online pentru construcția casei
-          tale eficiente energetic.
-        </p>
-      </div>
-      <div>
-        <h5>Site</h5>
-        <ul>
-          <li><a href="index.html#audienta">Audiența</a></li>
-          <li><a href="rezultate.html">Rezultate</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="pachete.html">Ce conține un parteneriat</a></li>
-          <li><a href="despre.html">Despre Alin</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Canale</h5>
-        <ul>
-          <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
-          <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Ecosistem</h5>
-        <ul>
-          <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
-          <li><a href="despre.html#buildwise">BuildWise</a></li>
-          <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
-        </ul>
-      </div>
+<footer class="end" id="contact">
+  <div class="end__stage">
+    <p class="end__say"><span>Te învăț să construiești o casă caldă,</span><span>luminoasă și ușor de trăit.</span></p>
+    <div class="end__alin">
+      <img src="assets/img/alin-cut.webp" alt="Arhitectul Alin Ionescu" width="1200" height="1010" loading="lazy">
     </div>
-    <div class="footer__bottom">
-      <span>&copy; <span id="year">2026</span> Inhabit Media &middot; Arh. Ionescu George-Alin</span>
-      <span>Casa interactivă e un demo de concept.</span>
-    </div>
+    <p class="end__by">Din bio-ul <b>@arh.ionescu</b></p>
   </div>
+  <div class="end__cta">
+    <p>Un mail, două paragrafe. Îți răspund cu o părere sinceră — inclusiv dacă părerea e că nu are sens să lucrăm împreună.</p>
+    <div class="end__btns"><a class="btn btn--dark" href="contact.html">Hai să vorbim</a><a class="btn btn--lineink" href="calculator.html">Fă-ți întâi socoteala</a></div>
+  </div>
+  <div class="end__nav">
+    <nav class="end__col" aria-label="Site"><p>Site</p><ul><li><a href="index.html#audienta">Audiența</a></li><li><a href="rezultate.html">Rezultate</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="pachete.html">Ce conține un parteneriat</a></li><li><a href="despre.html">Despre Alin</a></li><li><a href="contact.html">Contact</a></li><li><a href="casa.html">Bonus: casa interactivă</a></li></ul></nav>
+    <nav class="end__col" aria-label="Canale"><p>Canale</p><ul><li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li><li><a href="despre.html#buildwise">BuildWise</a></li><li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li></ul></nav>
+  </div>
+  <div class="mq mq--night" aria-hidden="true"><div class="mq__t"><span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span><span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span><span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span><span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span><span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span><span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span></div></div>
+  <div class="end__legal"><span>© 2026 Inhabit Media · Arh. Ionescu George-Alin</span><span>Prețurile sunt pe campanie, TVA neinclus.</span></div>
 </footer>
 
 <script src="assets/js/rooms.js?v=3"></script>
 <script src="assets/js/house.js?v=3" defer></script>
-<script src="assets/js/loader.js?v=2" defer></script>
 <script src="assets/js/main.js?v=10" defer></script>
+<script src="assets/js/sub.js?v=1" defer></script>
 </body>
 </html>

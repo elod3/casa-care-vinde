@@ -1,0 +1,29 @@
+
+/* ---- învelișul paginilor interioare: peste style.css (care stă în @layer old) ---- */
+:root {
+  --bg: var(--night); --bg-2: var(--night); --bg-3: #141210; --mist: var(--night); --mist-2: #141210;
+  --r: 0px; --r-lg: 0px; --r-blob: 0px;
+  --shadow: none; --shadow-lg: none; --glow: none; --glow-soft: none;
+  --panel: transparent; --panel-2: rgba(243, 239, 232, .05);
+  --line: rgba(243, 239, 232, .18); --line-2: rgba(243, 239, 232, .3);
+  --maxw: 1440px;
+  --fs-h1: clamp(2.5rem, 6.2vw, 7rem); --fs-h2: clamp(2.125rem, 4.6vw, 5.5rem);
+}
+.blob, .glow, .blueprint, .atmos, .progress, .btn__a, .portrait__ring { display: none !important; }
+h1, h2 { font-weight: 800; line-height: .95; letter-spacing: -.05em; text-wrap: balance; }
+h1 span, h2 span { font-weight: 200; }
+.page-hero { padding-top: 132px; }
+/* eticheta de deasupra titlului: text simplu, nu pastilă */
+.pill, .micro { padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--yellow); font-size: .875rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.pill::before, .micro::before { content: none; }
+:is(.section--lit, .cta) :is(.pill, .micro) { color: var(--night); }
+/* casetele devin rânduri de document: o linie sus, fără fundal */
+.card, .stat, .profile, .topic, .plan, .scen, .flow__step { border-radius: 0; background: none; box-shadow: none; }
+.card::before, .card::after, .stat::before, .plan::before, .calc__panel::before, .form-panel::before { content: none; }
+.btn { border-radius: 4px; box-shadow: none; background-image: none; letter-spacing: 0; text-transform: none; }
+.btn::before, .btn::after { content: none; }
+.btn--primary { background: var(--yellow); color: var(--night); }
+.btn--primary:hover { background: #F0C22C; }
+.btn--ghost { border: 1.5px solid currentColor; background: none; color: inherit; }
+.cta { background: var(--yellow); color: var(--night); }
+.end__stage { margin-top: 0; }

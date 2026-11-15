@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ro" class="no-js">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,396 +16,94 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%230A0F16' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/hero/casa-noapte.webp">
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/style.css?v=16">
-<script>document.documentElement.classList.remove('no-js');</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Alin Ionescu","jobTitle":"Arhitect","url":"https://elod3.github.io/casa-care-vinde/","image":"https://elod3.github.io/casa-care-vinde/assets/img/alin.webp","sameAs":["https://www.instagram.com/arh.ionescu/"],"worksFor":{"@type":"Organization","name":"Inhabit Media"},"knowsAbout":["case pasive","arhitectură rezidențială","parteneriate de brand"]}
-</script>
+<link rel="stylesheet" href="assets/css/cine.css">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim');try{if(sessionStorage.getItem('bw-seen'))document.documentElement.classList.add('seen')}catch(e){}}</script>
+<meta name="robots" content="noindex">
 </head>
 <body>
 
-<!-- Ecran de încărcare. Stă peste o pagină care se încarcă normal dedesubt;
-     nu amână nimic. Se arată o singură dată pe sesiune. -->
-<div class="loader" id="loader" role="status" aria-live="polite">
-  <div class="loader__grid" aria-hidden="true"></div>
-  <div class="loader__glow" aria-hidden="true"></div>
-  <div class="loader__inner">
-    <img class="loader__mark" src="assets/img/inhabit-mark.webp" alt="" width="60" height="60">
-    <p class="loader__word">
-      <b>inhabit<i>media</i></b>
-      <small>arh. alin ionescu</small>
-    </p>
-    <div class="loader__bar" aria-hidden="true"><i></i></div>
-    <p class="loader__meta">
-      <span class="loader__step">Se pregătește pagina</span>
-      <b class="loader__pct">0%</b>
-    </p>
+<div class="loader" id="loader" role="status" aria-label="Se încarcă">
+  <div class="loader__panel"></div>
+  <div class="loader__center">
+    <svg class="loader__mark" viewBox="0 0 160 160" aria-hidden="true" fill="none" stroke-width="8.5" stroke-linecap="round">
+      <mask id="bwSunL"><rect width="160" height="160" fill="#fff"/><path d="M43 65 84 37l40 29v94H43z" fill="#000"/></mask>
+      <circle class="l-y" cx="49" cy="56" r="29" mask="url(#bwSunL)" stroke="none"/>
+      <path class="l-s" pathLength="1" d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43"/>
+      <path class="l-w" pathLength="1" stroke-linecap="butt" d="M74 44 47 62q-4 3-4 8v12"/>
+    </svg>
+    <p class="loader__by"><span><b>inhabit</b>media presents</span></p>
   </div>
-  <span class="loader__skip" aria-hidden="true">Apasă ca să intri</span>
 </div>
 
-<div class="atmos" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"></div>
-
 <header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="brand brand--mark" href="index.html" aria-label="Inhabit Media — acasă">
-      <img src="assets/img/inhabit-mark.webp" alt="" width="34" height="34">
-    </a>
-
-    <div class="nav__bar">
-      <a class="nav__word" href="index.html">
-        <b>INHABIT<i>MEDIA</i></b><small>arh. alin ionescu</small>
-      </a>
-      <nav class="nav__links" id="navLinks">
-      <a href="#audienta">Audiența</a>
-      <a href="rezultate.html">Rezultate</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="despre.html">Despre</a>
-        <a class="btn btn--dark nav__cta-m" href="contact.html">Hai să vorbim</a>
-      </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <a class="btn btn--primary nav__cta" href="contact.html">Hai să vorbim</a>
-  </div>
+  <a class="nav__word" href="index.html" aria-label="Inhabit Media, acasă">
+    <svg class="nav__mark" viewBox="0 0 160 160" aria-hidden="true" fill="none" stroke-width="8.5" stroke-linecap="round">
+      <mask id="bwSun"><rect width="160" height="160" fill="#fff"/><path d="M43 65 84 37l40 29v94H43z" fill="#000"/></mask>
+      <circle class="m-y" cx="49" cy="56" r="29" mask="url(#bwSun)" stroke="none"/>
+      <path class="m-s" d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43"/>
+      <path class="m-w" stroke-linecap="butt" d="M74 44 47 62q-4 3-4 8v12"/>
+    </svg>
+    <span class="nav__name"><b>inhabit<i>media</i></b><small>arh. alin ionescu</small></span>
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="#audienta">Audiența</a>
+    <a href="rezultate.html">Rezultate</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="despre.html">Despre</a>
+    <a class="btn btn--yellow" href="contact.html">Hai să vorbim</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
 </header>
 
 <main>
-
-<!-- ================= HERO ================= -->
 <section class="hero">
-  <!-- Fotografia lui Alin, developată din DSC00847.ARW (Sony A7III, 3968x2648).
-       Decupajul portret intră sub 980 px, la înălțime nativă (1986x2648).
-
-       `sizes` e mai mare decât lățimea reală, intenționat. Browserul socotește
-       de câți pixeli e nevoie din lățimea la care se așază imaginea, dar
-       `object-fit: cover` o mărește peste asta: un cadru 3:4 într-un ecran de
-       telefon e limitat de înălțime, deci ajunge lat cât 0,75 din înălțimea
-       ecranului — vreo 1,65 ori lățimea lui. Plus zoom-ul lent de 1,12.
-       Cu `sizes="100vw"`, browserul alege o variantă de două ori prea mică și
-       poza iese pixelată exact pe telefon.
-
-       Dacă apare assets/video/hero.mp4, videoul se suprapune peste imagine. -->
-  <div class="hero__media" aria-hidden="true">
-    <picture data-parallax="70">
-      <source media="(max-width: 980px)" type="image/webp" sizes="175vw"
-              srcset="assets/img/hero/alin-hero-portrait-1200.webp 1200w, assets/img/hero/alin-hero-portrait-1600.webp 1600w, assets/img/hero/alin-hero-portrait-1986.webp 1986w">
-      <source media="(max-width: 980px)" sizes="175vw"
-              srcset="assets/img/hero/alin-hero-portrait-1200.jpg 1200w, assets/img/hero/alin-hero-portrait-1600.jpg 1600w, assets/img/hero/alin-hero-portrait-1986.jpg 1986w">
-      <source type="image/webp" sizes="112vw"
-              srcset="assets/img/hero/alin-hero-1600.webp 1600w, assets/img/hero/alin-hero-2400.webp 2400w, assets/img/hero/alin-hero-3200.webp 3200w">
-      <source sizes="112vw"
-              srcset="assets/img/hero/alin-hero-1600.jpg 1600w, assets/img/hero/alin-hero-2400.jpg 2400w, assets/img/hero/alin-hero-3200.jpg 3200w">
-      <img src="assets/img/hero/alin-hero-1600.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async">
-    </picture>
+  <div class="hero__house" aria-hidden="true">
+    <div style="position:absolute;inset:-14px -20px">
+      <img class="hero__off" src="assets/img/hero/casa-noapte.webp" alt="" width="1440" height="892" fetchpriority="high">
+      <img class="hero__on" src="assets/img/hero/casa-noapte.webp" alt="" width="1440" height="892">
+    </div>
   </div>
   <div class="hero__scrim" aria-hidden="true"></div>
-  <div class="blueprint" aria-hidden="true"></div>
-  <div class="glow glow--tl" aria-hidden="true"></div>
-
-  <div class="wrap">
-    <div class="hero__grid">
-      <div>
-        <p class="slate" data-reveal><b>Brand partnership</b><i></i>2026</p>
-        <h1 class="display" data-reveal style="--d:70ms">
-          Zeci de mii de oameni <span>care își</span> construiesc <span class="hl">casa.</span>
-        </h1>
-        <p class="lead hero__lead" data-reveal style="--d:140ms">
-          Sunt arhitect și le explic, zi de zi, ce să pună în casa aia. Când produsul
-          tău e răspunsul corect la o întrebare pe care și-o pun oricum, nu mai e reclamă.
-          E recomandare.
-        </p>
-        <div class="hero__cta" data-reveal style="--d:210ms">
-          <a class="btn btn--primary" href="calculator.html">Calculează ce-ți aduce <span class="btn__a">→</span></a>
-          <a class="btn btn--ghost" href="rezultate.html">Vezi ultima campanie</a>
-          <!-- Semnătura stă pe rândul butoanelor, nu sub el: pe un laptop de
-               800 px altfel împinge fâșia de cifre sub linia de plutire. -->
-          <p class="hero__sign">
-            <span>arh. Alin Ionescu</span>
-            <em>@arh.ionescu · Inhabit Studio</em>
-          </p>
+  <div class="hero__in">
+    <h1 data-in>Zeci de mii de oameni <span>care își</span> construiesc <span class="hl">casa.</span></h1>
+    <div class="hero__foot">
+      <div data-in>
+        <p class="hero__lead">Sunt arhitect și le explic, zi de zi, ce să pună în casa aia. Când produsul tău e răspunsul corect la o întrebare pe care și-o pun oricum, nu mai e reclamă. E recomandare.</p>
+        <div class="hero__cta">
+          <a class="btn btn--yellow" href="calculator.html">Calculează ce-ți aduce</a>
+          <a class="btn btn--line" href="rezultate.html">Vezi ultima campanie</a>
         </div>
       </div>
-    </div>
-
-    <!-- Cifrele Instagram sunt citite din Insights, 08.08.2026 (vezi capturile
-         din assets/img/proof/). Restul vin din raportul NovingAIR. -->
-    <div class="figures rail" data-drift="1" data-reveal style="--d:340ms">
-      <div><b data-count="476006">0</b><span>vizionări pe Instagram, ultimele 90 de zile</span></div>
-      <div><b data-count="154900" data-suffix="+">0</b><span>vizionări, campania NovingAIR</span></div>
-      <div><b data-count="170" data-suffix="+">0</b><span>broșuri cerute de oameni reali</span></div>
-      <div><b>PHI<i> ✓</i></b><span>certificare casă pasivă, Darmstadt</span></div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ================= BANDA DE CATEGORII ================= -->
-<div class="marquee" data-loop aria-hidden="true">
-  <div class="marquee__track">
-    <span>Tâmplărie<span></span></span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
-    <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
-    <span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span>
-    <span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
-    <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
-    <span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span>
-  </div>
-</div>
-
-<!-- ================= 01 · CINE SUNT ================= -->
-<section class="section" id="cine">
-  <div class="glow glow--br" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>01</b><i></i>Cine sunt</span>
-      <h2 data-reveal style="--d:60ms">Arhitect. <span>Și omul pe care îl întreabă înainte să toarne placa.</span></h2>
-    </div>
-
-    <div class="cards rail" data-drift="1">
-      <article class="card" data-reveal>
-        <span class="card__n">01</span>
-        <h4>Nișa</h4>
-        <p>Oameni interesați de construcții eficiente energetic. Nu curioși — oameni
-          cu teren, credit și decizii de luat în lunile următoare.</p>
-      </article>
-      <article class="card" data-reveal style="--d:70ms">
-        <span class="card__n">02</span>
-        <h4>Tipul de conținut</h4>
-        <p>Educațional. Explic lucruri complicate simplu, în clipuri de un minut,
-          fără să vând nimic în primele 50 de secunde.</p>
-      </article>
-      <article class="card" data-reveal style="--d:140ms">
-        <span class="card__n">03</span>
-        <h4>Ce transmit</h4>
-        <p>Valori de bună practică în arhitectură și construcții. De asta o
-          recomandare de la mine trece drept specificație, nu drept banner.</p>
-      </article>
-      <article class="card" data-reveal style="--d:210ms">
-        <span class="card__n">04</span>
-        <h4>Autoritatea</h4>
-        <p>Certified Passive House Designer, Passive House Institute Darmstadt.
-          Reperul european pe subiect — nu un curs de weekend.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 02 · AUDIENȚA ================= -->
-<section class="section section--lit" data-nav="light" id="audienta">
-  <div class="blob blob--tl" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>02</b><i></i>Audiența</span>
-      <h2 data-reveal style="--d:60ms">Patru platforme, <span>o singură intenție:</span> se construiește.</h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Nu o audiență de arhitectură contemplativă. Oameni care caută răspunsuri
-        pentru un șantier care începe.
-      </p>
-    </div>
-
-    <div class="split">
-      <div class="stat-hero" data-reveal>
-        <p class="micro">Comunitate totală</p>
-        <!-- ⚠ Cifră de confirmat din Insights înainte de a fi trimisă unui brand -->
-        <b>+80 K<i></i></b>
-        <p>Facebook, Instagram, TikTok și YouTube — aceeași persoană,
-          patru locuri în care o găsești.</p>
-      </div>
-
-      <div class="bars" data-reveal style="--d:80ms">
-        <div class="bar">
-          <div class="bar__top"><b>Facebook</b><span>+38 K</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:100%"></i></div>
-        </div>
-        <div class="bar">
-          <div class="bar__top"><b>TikTok</b><span>+28 K</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:74%"></i></div>
-        </div>
-        <div class="bar">
-          <div class="bar__top"><b>Instagram</b><span>16.950</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:43%"></i></div>
-        </div>
-        <div class="bar">
-          <div class="bar__top"><b>YouTube</b><span>+300</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:3%"></i></div>
-        </div>
-        <p class="note" style="margin-top:.6rem">
-          <b>YouTube e mic intenționat.</b> E canalul unde ducem materialul lung
-          când un partener vrea profunzime tehnică, nu locul din care vine reach-ul.
-        </p>
+      <div data-in>
+        <ul class="hero__figs">
+          <li><b>476.006</b><span>vizionări pe Instagram, ultimele 90 de zile</span></li>
+          <li><b>154.900+</b><span>vizionări, campania NovingAIR</span></li>
+          <li><b>170+</b><span>broșuri cerute de oameni reali</span></li>
+          <li><b>PHI ✓</b><span>certificare casă pasivă, Darmstadt</span></li>
+        </ul>
+        <p class="hero__sign"><b>arh. Alin Ionescu</b> · @arh.ionescu · Inhabit Studio</p>
       </div>
     </div>
-
-    <!-- Capturile din Instagram Insights, decupate de bara de status a
-         telefonului. Sunt aici ca dovadă: orice cifră de mai sus se poate
-         verifica în ele. De reînnoit când se schimbă perioada. -->
-    <div class="proof rail" data-drift="-1" data-reveal style="--d:140ms">
-      <figure class="proof__item">
-        <div class="proof__shot"><img src="assets/img/proof/ig-overview-90z.webp" alt="Instagram Insights, ultimele 90 de zile: 476.006 vizionări, +2.807 urmăritori net, 157.143 spectatori unici" width="946" height="1885" loading="lazy" decoding="async"></div>
-        <figcaption>
-          <b>90 de zile</b>
-          <span>476.006 vizionări · +2.807 urmăritori net · 157.143 oameni distincți.
-            71,1% din vizionări vin de la non-urmăritori — conținutul iese constant
-            din bula existentă.</span>
-        </figcaption>
-      </figure>
-      <figure class="proof__item">
-        <div class="proof__shot"><img src="assets/img/proof/ig-audienta-30z.webp" alt="Instagram Insights, audiență: 16.950 urmăritori, +6,0% în 30 de zile" width="946" height="1885" loading="lazy" decoding="async"></div>
-        <figcaption>
-          <b>Creșterea</b>
-          <span>16.950 de urmăritori, +6,0% într-o lună. Clipurile care aduc cei
-            mai mulți oameni noi sunt exact cele tehnice — „cel mai ieftin aer
-            condiționat" e pe locul doi.</span>
-        </figcaption>
-      </figure>
-    </div>
-    <p class="note" data-reveal style="--d:200ms; margin-top:1.2rem">
-      Capturi din Instagram Insights, contul <b>@arh.ionescu</b>, la 8 august 2026.
-      Cifrele de pe Facebook, TikTok și YouTube se pot documenta la fel, la cerere.
-    </p>
   </div>
 </section>
-
-<!-- ================= 03 · DOVADA ================= -->
-<section class="section">
-  <div class="glow glow--c" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>03</b><i></i>Dovada</span>
-      <h2 data-reveal style="--d:60ms">Campania NovingAIR. <span>O lună, douăsprezece materiale.</span></h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Zece clipuri, un carusel și o broșură despre ventilația cu recuperare de
-        căldură. Uite ce a ieșit.
-      </p>
-    </div>
-
-    <div class="split" style="margin-bottom:1rem">
-      <div class="stat-hero" data-reveal>
-        <p class="micro" style="color:var(--yellow)">Vizibilitate imediată</p>
-        <b data-count="154900" data-suffix="+">0</b>
-        <p>vizionări însumate pe Instagram, Facebook, TikTok și YouTube, în 26 de zile.</p>
-      </div>
-      <!-- Teanc de cărți: cifrele campaniei stau una peste alta, iar la fiecare
-           patru secunde cea din față trece în spate. Ocupă locul uneia singure
-           și obligă ochiul să aștepte următoarea. Fără JS rămân stivuite și
-           vizibile — .deck le desface în listă simplă. -->
-      <div class="deck" data-deck data-reveal style="--d:80ms">
-        <div class="deck__card"><b data-count="360" data-suffix="+">0</b><span>comentarii organice, conversație reală sub clipuri</span></div>
-        <div class="deck__card"><b data-count="170" data-suffix="+">0</b><span>broșuri cerute și trimise către oameni interesați</span></div>
-        <div class="deck__card"><b data-count="3700" data-suffix="+">0</b><span>interacțiuni totale pe conținutul campaniei</span></div>
-        <div class="deck__dots" aria-hidden="true"></div>
-      </div>
-    </div>
-
-    <p class="note" data-reveal>
-      <b>Cele 170+ de broșuri sunt cel mai cald semnal din campanie.</b> Fiecare e un
-      om care a făcut un pas activ, a cerut materialul și și-a lăsat contactul.
-      Nu vizualizare pasivă, ci intenție.
-    </p>
-
-    <div style="margin-top:2rem" data-reveal>
-      <a class="btn btn--primary" href="rezultate.html">Raportul complet <span class="btn__a">→</span></a>
-    </div>
-  </div>
+<section class="say" aria-label="De la Alin">
+  <p class="tag">De la Alin</p>
+  <p class="say__txt"><b>Explic case,</b> zi de zi. Oamenii care se uită chiar construiesc, și înainte să cumpere ceva, <b>întreabă un arhitect.</b> Dacă produsul tău e răspunsul corect, <b class="hl">îl recomand.</b></p>
+  <p class="say__by"><b>arh. Alin Ionescu</b><span>Certified Passive House Designer</span></p>
 </section>
 
-<!-- ================= FORMATE ================= -->
-<section class="section section--mist section--edge">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Formate</span>
-      <h2 data-reveal style="--d:60ms">Patru formate. <span>Fiecare cu treaba lui.</span></h2>
-    </div>
-
-    <!-- Fiecare format e o pereche: ecranul și explicația lui, nu două liste
-         separate pe care trebuie să le potrivești din ochi. La scroll, ecranul
-         coboară de sus și textul urcă de jos, iar cele două se întâlnesc.
-         Pune assets/video/reel-1.mp4 … reel-4.mp4 și înlocuiește .phone__empty
-         cu <video autoplay muted loop playsinline>. -->
-    <div class="formats">
-      <article class="format">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Reel<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">01</span>
-          <h4>Reels — clipuri educaționale</h4>
-          <p>Formatul principal. Un hook puternic, o idee explicată, un CTA.
-            De aici vine aproape tot reach-ul.</p>
-        </div>
-      </article>
-
-      <article class="format format--flip">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Story<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">02</span>
-          <h4>Stories</h4>
-          <p>Contactul zilnic. Întrebări, sondaje, linkuri directe — locul unde
-            audiența răspunde, nu doar privește.</p>
-        </div>
-      </article>
-
-      <article class="format">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Carusel<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">03</span>
-          <h4>Carusel</h4>
-          <p>Conținut static optimizat pentru salvare. Un carusel bun e citit
-            de trei ori și trimis mai departe.</p>
-        </div>
-      </article>
-
-      <article class="format format--flip">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Broșură<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">04</span>
-          <h4>Broșură / checklist</h4>
-          <p>Lead magnetul. Oamenii îl cer singuri și își lasă contactul — de
-            aici au ieșit cele 170 de cereri din campania NovingAIR.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 04 · CALCULATORUL ================= -->
-<section class="section section--lit" data-nav="light">
-  <div class="blob blob--br" aria-hidden="true"></div>
-  <div class="wrap wrap--narrow" style="text-align:center">
-    <span class="slate" data-reveal style="justify-content:center"><b>04</b><i></i>Calculator</span>
-    <h2 style="margin-top:1.2rem" data-reveal>
-      Nu te întreb cât ai buget. <span>Te întreb</span> <span class="hl">câte case vinzi.</span>
-    </h2>
-    <p class="lead" style="margin:1.3rem auto 0" data-reveal>
-      La o colaborare pe un an și o marjă de 6.000 € pe vânzare, îți trebuie
-      <b style="color:var(--on-lit)">opt case</b> ca să ieși pe zero. Opt, dintr-o audiență
-      de zeci de mii aflată în piață. Mișcă sliderele cu cifrele tale și vezi singur.
-    </p>
-    <div class="cta__row" data-reveal>
-      <a class="btn btn--primary" href="calculator.html">Deschide calculatorul <span class="btn__a">→</span></a>
-    </div>
-    <p class="micro" style="margin-top:1.4rem" data-reveal>
-      Estimare, nu promisiune
-    </p>
-  </div>
-</section>
-
-<!-- ================= AXONOMETRIA =================
-     O casă reală din proiectele Inhabit Studio: randarea de noapte se
-     desface la scroll în axonometria explodată (explozie.js). La final
-     preiau nivelurile decupate din AXO, în three.js, și fiecare își arată
-     categoriile. Cele douăsprezece sunt aceleași ca în casa.html. -->
 <section class="explo" id="explozie" aria-labelledby="exploTitle">
   <div class="explo__stage">
     <canvas class="explo__frames" aria-hidden="true"></canvas>
     <canvas class="explo__gl" aria-hidden="true"></canvas>
+    <div class="explo__shade" aria-hidden="true"></div>
+    <div class="explo__bar" aria-hidden="true"></div>
     <noscript><img class="explo__still" src="assets/explozie/axo-final.webp" alt=""></noscript>
 
     <div class="explo__head">
-      <p class="slate"><b>—</b><i></i>Axonometrie explodată</p>
+      <p class="explo__tag">Axonometrie explodată</p>
       <h2 id="exploTitle">O casă reală, <span>desfăcută pe etaje.</span></h2>
       <p class="explo__sub">Proiect Inhabit Studio. Fiecare nivel ascunde categoriile lui de parteneriat, și doar una e luată.</p>
     </div>
@@ -413,196 +111,241 @@
     <ul class="explo__levels">
       <li class="explo__level" data-level="acoperis">
         <b>Acoperiș</b>
-        <span>Acoperiș / învelitori</span><span>Fotovoltaic + baterii</span><span>Izolație naturală</span>
+        <button type="button" class="explo__cat" data-name="Acoperiș / învelitori" data-at=".39,.29">Acoperiș / învelitori</button>
+        <button type="button" class="explo__cat" data-name="Fotovoltaic + baterii" data-at=".63,.37">Fotovoltaic + baterii</button>
+        <button type="button" class="explo__cat" data-name="Izolație naturală" data-at=".82,.72">Izolație naturală</button>
       </li>
       <li class="explo__level" data-level="mansarda">
         <b>Mansardă</b>
-        <span>Structură CLT / lemn</span><span>Tâmplărie / ferestre</span><span>Etanșare / membrane</span><span>Smart home</span>
+        <button type="button" class="explo__cat" data-name="Structură CLT / lemn" data-at=".32,.38" data-room="scara" data-text="Scara și peretele de lemn, lăsate la vedere.">Structură CLT / lemn</button>
+        <button type="button" class="explo__cat" data-name="Tâmplărie / ferestre" data-at=".49,.34" data-room="living_soare" data-text="Soarele de iarnă intră pe fereastra mare și rămâne în casă.">Tâmplărie / ferestre</button>
+        <button type="button" class="explo__cat" data-name="Etanșare / membrane" data-at=".84,.59">Etanșare / membrane</button>
+        <button type="button" class="explo__cat" data-name="Smart home" data-at=".78,.44">Smart home</button>
       </li>
       <li class="explo__level" data-level="parter">
         <b>Parter</b>
-        <span class="is-taken">Ventilație cu recuperare <em>NovingAIR · ocupat</em></span>
-        <span>Zidărie / ceramică</span><span>Izolație termică</span><span>Pompe de căldură</span><span>Finisaje / pardoseli</span>
+        <button type="button" class="explo__cat is-taken" data-name="Ventilație cu recuperare" data-at=".835,.315" data-taken data-room="bucatarie" data-text="Aerul se schimbă fără să deschizi geamul.">Ventilație cu recuperare <em>NovingAIR · ocupat</em></button>
+        <button type="button" class="explo__cat" data-name="Zidărie / ceramică" data-at=".50,.52">Zidărie / ceramică</button>
+        <button type="button" class="explo__cat" data-name="Izolație termică" data-at=".66,.61">Izolație termică</button>
+        <button type="button" class="explo__cat" data-name="Pompe de căldură" data-at=".78,.43">Pompe de căldură</button>
+        <button type="button" class="explo__cat" data-name="Finisaje / pardoseli" data-at=".42,.40" data-room="dining" data-text="Stejar pe jos, lumină naturală pe masă.">Finisaje / pardoseli</button>
       </li>
     </ul>
 
+    <div class="explo__dots"></div>
+
+    <aside class="explo__panel" aria-live="polite" hidden>
+      <button type="button" class="explo__close" data-flip>Înapoi</button>
+      <h3 class="explo__pname"></h3>
+      <p class="explo__pstate"></p>
+      <p class="explo__ptext"></p>
+      <video class="explo__pvideo" muted loop playsinline preload="none" hidden></video>
+      <a class="btn btn--yellow" href="contact.html">Hai să vorbim</a>
+    </aside>
+
     <p class="explo__hint" aria-hidden="true">Derulează</p>
+    <p class="explo__press">Apasă pe un punct din casă</p>
+  </div>
+</section>
+<section class="camp" id="campanie" aria-labelledby="campTitle">
+  <div class="camp__stage">
+    <div class="camp__head">
+      <div>
+        <p class="camp__tag">Dovada</p>
+        <h2 id="campTitle">Campania NovingAIR. <span>O lună, douăsprezece materiale.</span></h2>
+      </div>
+      <p class="camp__lead">Zece clipuri, un carusel și o broșură despre ventilația cu recuperare de căldură. Uite ce a ieșit.</p>
+    </div>
+    <div class="camp__hero">
+      <div class="camp__num" aria-hidden="true">
+        <span>154.900+</span>
+        <video muted loop playsinline preload="none" poster="assets/video/casa/bucatarie.webp" src="assets/video/casa/bucatarie.mp4"></video>
+      </div>
+      <p class="camp__cap"><b>Vizibilitate imediată</b> <span class="camp__sr">154.900+</span> vizionări însumate pe Instagram, Facebook, TikTok și YouTube, în 26 de zile.</p>
+    </div>
+  </div>
+
+  <ul class="camp__stats">
+    <li><b>360+</b><span>comentarii organice, conversație reală sub clipuri</span></li>
+    <li><b>3.700+</b><span>interacțiuni totale pe conținutul campaniei</span></li>
+  </ul>
+
+  <div class="camp__hot">
+    <b class="camp__170">170+</b>
+    <div>
+      <p class="camp__170cap">broșuri cerute și trimise către oameni interesați</p>
+      <p class="camp__note"><b>Cele 170+ de broșuri sunt cel mai cald semnal din campanie.</b> Fiecare e un om care a făcut un pas activ, a cerut materialul și și-a lăsat contactul. Nu vizualizare pasivă, ci intenție.</p>
+      <a class="btn btn--dark" href="rezultate.html">Raportul complet</a>
+    </div>
   </div>
 </section>
 
-<!-- ================= PE DINĂUNTRU =================
-     Aceeași casă, patru camere. Clipurile sunt animate din randările
-     Inhabit Studio (Scene 33, 34, 35, 44). Fiecare e legat de categoria
-     pe care o arată; pornesc doar când sunt pe ecran (casa-video.js). -->
-<section class="section inside" id="dinauntru">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Pe dinăuntru</span>
-      <h2 data-reveal style="--d:60ms">Fiecare cameră <span>e o decizie de cumpărare.</span></h2>
-    </div>
+<section class="who" id="cine" aria-labelledby="whoTitle">
+  <div class="who__pic"><img src="assets/img/hero/alin-hero-portrait-1200.webp" srcset="assets/img/hero/alin-hero-portrait-1200.webp 1200w, assets/img/hero/alin-hero-portrait-1600.webp 1600w" sizes="(max-width: 767px) 100vw, 46vw" alt="Arhitectul Alin Ionescu" width="1200" height="1600" loading="lazy"></div>
+  <div class="who__txt">
+    <p class="tag">Cine sunt</p>
+    <h2 id="whoTitle" data-lines>Arhitect. <span>Și omul pe care îl întreabă înainte să toarne placa.</span></h2>
+    <dl class="who__list">
+      <div data-rise><dt>Nișa</dt><dd>Oameni interesați de construcții eficiente energetic. Nu curioși — oameni cu teren, credit și decizii de luat în lunile următoare.</dd></div>
+      <div data-rise><dt>Tipul de conținut</dt><dd>Educațional. Explic lucruri complicate simplu, în clipuri de un minut, fără să vând nimic în primele 50 de secunde.</dd></div>
+      <div data-rise><dt>Ce transmit</dt><dd>Valori de bună practică în arhitectură și construcții. De asta o recomandare de la mine trece drept specificație, nu drept banner.</dd></div>
+      <div data-rise><dt>Autoritatea</dt><dd>Certified Passive House Designer, Passive House Institute Darmstadt. Reperul european pe subiect — nu un curs de weekend.</dd></div>
+    </dl>
   </div>
-  <div class="inside__rail" data-reveal>
-    <figure class="room">
-      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/living_soare.webp" src="assets/video/casa/living_soare.mp4"></video>
-      <figcaption><b>Tâmplărie / ferestre</b><span>Soarele de iarnă intră pe fereastra mare și rămâne în casă.</span><em>liber</em></figcaption>
+</section>
+
+<section class="aud" id="audienta" aria-labelledby="audTitle">
+  <div class="aud__head">
+    <p class="tag">Audiența</p>
+    <h2 id="audTitle" data-lines>Patru platforme, <span>o singură intenție:</span> se construiește.</h2>
+    <p class="aud__lead" data-rise>Nu o audiență de arhitectură contemplativă. Oameni care caută răspunsuri pentru un șantier care începe.</p>
+  </div>
+  <div class="aud__total">
+    <b>+80 K</b>
+    <div><p class="aud__label">Comunitate totală</p><p>Facebook, Instagram, TikTok și YouTube — aceeași persoană, patru locuri în care o găsești.</p></div>
+  </div>
+  <div class="aud__bars">
+    <div class="aud__bar"><div><b>Facebook</b><span>+38 K</span></div><i style="--w:100%"></i></div>
+    <div class="aud__bar"><div><b>TikTok</b><span>+28 K</span></div><i style="--w:74%"></i></div>
+    <div class="aud__bar"><div><b>Instagram</b><span>16.950</span></div><i style="--w:43%"></i></div>
+    <div class="aud__bar"><div><b>YouTube</b><span>+300</span></div><i style="--w:3%"></i></div>
+  </div>
+  <p class="aud__yt" data-rise><b>YouTube e mic intenționat.</b> E canalul unde ducem materialul lung când un partener vrea profunzime tehnică, nu locul din care vine reach-ul.</p>
+  <div class="aud__proof">
+    <figure data-rise>
+      <img src="assets/img/proof/ig-overview-90z.webp" alt="Instagram Insights, ultimele 90 de zile: 476.006 vizionări, +2.807 urmăritori net, 157.143 spectatori unici" width="946" height="1885" loading="lazy">
+      <figcaption><b>90 de zile</b><span>476.006 vizionări · +2.807 urmăritori net · 157.143 oameni distincți. 71,1% din vizionări vin de la non-urmăritori — conținutul iese constant din bula existentă.</span></figcaption>
     </figure>
-    <figure class="room">
-      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/scara.webp" src="assets/video/casa/scara.mp4"></video>
-      <figcaption><b>Structură CLT / lemn</b><span>Scara și peretele de lemn, lăsate la vedere.</span><em>liber</em></figcaption>
-    </figure>
-    <figure class="room">
-      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/dining.webp" src="assets/video/casa/dining.mp4"></video>
-      <figcaption><b>Finisaje / pardoseli</b><span>Stejar pe jos, lumină naturală pe masă.</span><em>liber</em></figcaption>
-    </figure>
-    <figure class="room room--taken">
-      <video muted loop playsinline preload="none" data-play="loop" poster="assets/video/casa/bucatarie.webp" src="assets/video/casa/bucatarie.mp4"></video>
-      <figcaption><b>Ventilație cu recuperare</b><span>Aerul se schimbă fără să deschizi geamul.</span><em>NovingAIR · ocupat</em></figcaption>
+    <figure data-rise>
+      <img src="assets/img/proof/ig-audienta-30z.webp" alt="Instagram Insights, audiență: 16.950 urmăritori, +6,0% în 30 de zile" width="946" height="1885" loading="lazy">
+      <figcaption><b>Creșterea</b><span>16.950 de urmăritori, +6,0% într-o lună. Clipurile care aduc cei mai mulți oameni noi sunt exact cele tehnice — „cel mai ieftin aer condiționat" e pe locul doi.</span></figcaption>
     </figure>
   </div>
+  <p class="aud__src" data-rise>Capturi din Instagram Insights, contul <b>@arh.ionescu</b>, la 8 august 2026. Cifrele de pe Facebook, TikTok și YouTube se pot documenta la fel, la cerere.</p>
 </section>
 
-<!-- ================= 05 · CASA =================
-     Doar casa și un buton. Lista celor douăsprezece categorii a plecat în
-     casa.html: aici e invitația, acolo e inventarul. Imaginea e randată din
-     SVG-ul din casa.html — dacă desenul se schimbă, se regenerează (README). -->
-<section class="section section--casa">
-  <div class="casa-bg" aria-hidden="true">
-    <!-- casa de noapte, orbită lentă din Scene 31 (Inhabit Studio) -->
-    <video class="casa-bg__video" muted playsinline preload="none" data-play="once" poster="assets/video/casa/noapte_orbit.webp" data-end="assets/video/casa/noapte_orbit-final.webp" src="assets/video/casa/noapte_orbit.mp4"></video>
-  </div>
-  <div class="casa-bg__scrim" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>05</b><i></i>Sloturi</span>
-      <h2 data-reveal style="--d:60ms">O casă are <span>douăsprezece decizii.</span> Una singură e luată.</h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Fiecare categorie tehnică dintr-o casă e un slot de parteneriat, și țin
-        <b style="color:var(--ink)">o singură firmă pe categorie</b>. Nu-ți fac reclamă
-        alături de trei concurenți în aceeași lună.
-      </p>
-    </div>
-
-    <div class="casa-cta" data-reveal>
-      <a class="btn btn--primary" href="casa.html">Intră în casă <span class="btn__a">→</span></a>
-      <p>Secțiune printr-o casă pasivă. Dă scroll și camera se oprește la fiecare
-        element tehnic. Acolo vezi toate cele douăsprezece categorii, care e
-        ocupată și cât valorează fiecare.</p>
-    </div>
+<section class="calc" id="calculator" aria-labelledby="calcTitle">
+  <p class="tag">Calculator</p>
+  <h2 id="calcTitle" data-lines>Nu te întreb cât ai buget. <span>Te întreb</span> câte case vinzi.</h2>
+  <div class="calc__eight" aria-hidden="true"><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg><svg viewBox="30 18 105 118" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"><path d="M43 82V106q0 7 7 7H89q7 0 7-7V85a11.5 11.5 0 0 0-23 0v43M74 44l6-5q4-2 8 0l32 22q4 3 4 9v43M74 44 47 62q-4 3-4 8v12"/></svg></div>
+  <div class="calc__foot">
+    <p>La o colaborare pe un an și o marjă de 6.000 € pe vânzare, îți trebuie <b>opt case</b> ca să ieși pe zero. Opt, dintr-o audiență de zeci de mii aflată în piață. Mișcă sliderele cu cifrele tale și vezi singur.</p>
+    <div><a class="btn btn--dark" href="calculator.html">Deschide calculatorul</a><p class="calc__micro">Estimare, nu promisiune</p></div>
   </div>
 </section>
 
-<!-- ================= PROCES ================= -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Producție</span>
-      <h2 data-reveal style="--d:60ms">Procesul <span>unui reel.</span></h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Nu e „filmez ceva și postez". Fiecare clip trece prin nouă pași înainte
-        să ajungă la oameni.
-      </p>
-    </div>
-
-    <div class="flow" data-reveal>
-      <span class="flow__step">Research</span><span class="flow__sep">→</span>
-      <span class="flow__step">Scripting</span><span class="flow__sep">→</span>
-      <span class="flow__step">Storyboard</span><span class="flow__sep">→</span>
-      <span class="flow__step">Filmare</span><span class="flow__sep">→</span>
-      <span class="flow__step">Montaj</span><span class="flow__sep">→</span>
-      <span class="flow__step">Grafică</span><span class="flow__sep">→</span>
-      <span class="flow__step">Aprobare</span><span class="flow__sep">→</span>
-      <span class="flow__step">Publicare</span><span class="flow__sep">→</span>
-      <span class="flow__step flow__step--big">Raport</span>
-    </div>
-
-    <p class="note" style="margin-top:2.2rem" data-reveal>
-      <b>Aprobarea e a ta, înainte de publicare.</b> Nimic nu iese fără ochiul
-      tău pe el. Iar la final primești raportul cu cifrele reale, nu un screenshot.
-    </p>
+<section class="reels" id="formate" aria-labelledby="reelsTitle">
+  <div class="reels__head">
+    <p class="tag">Formate</p>
+    <h2 id="reelsTitle" data-lines>Patru formate. <span>Fiecare cu treaba lui.</span></h2>
   </div>
+  <div class="fan">
+    <a class="fan__card" style="--o:-3;--a:3;--z:7" href="https://www.tiktok.com/@arh.alin.ionescu/video/7635665570024672534" target="_blank" rel="noopener" aria-label="Cât de adâncă trebuie să fie streașina?, 23,3K vizionări pe TikTok">
+      <img src="assets/video/reels/7635665570024672534.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7635665570024672534.mp4" aria-hidden="true"></video>
+      <span class="fan__views">23,3K vizionări</span>
+    </a>
+    <a class="fan__card" style="--o:-2;--a:2;--z:8" href="https://www.tiktok.com/@arh.alin.ionescu/video/7658249328183479574" target="_blank" rel="noopener" aria-label="Oprit în loc!, 37,4K vizionări pe TikTok">
+      <img src="assets/video/reels/7658249328183479574.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7658249328183479574.mp4" aria-hidden="true"></video>
+      <span class="fan__views">37,4K vizionări</span>
+    </a>
+    <a class="fan__card" style="--o:-1;--a:1;--z:9" href="https://www.tiktok.com/@arh.alin.ionescu/video/7649408456515915030" target="_blank" rel="noopener" aria-label="De ce e frig în casă?, 51,6K vizionări pe TikTok">
+      <img src="assets/video/reels/7649408456515915030.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7649408456515915030.mp4" aria-hidden="true"></video>
+      <span class="fan__views">51,6K vizionări</span>
+    </a>
+    <a class="fan__card" style="--o:0;--a:0;--z:10" href="https://www.tiktok.com/@arh.alin.ionescu/video/7569648890723519766" target="_blank" rel="noopener" aria-label="Așează casa cu latura lungă spre sud, 81,2K vizionări pe TikTok">
+      <img src="assets/video/reels/7569648890723519766.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7569648890723519766.mp4" aria-hidden="true"></video>
+      <span class="fan__views">81,2K vizionări</span>
+    </a>
+    <a class="fan__card" style="--o:1;--a:1;--z:9" href="https://www.tiktok.com/@arh.alin.ionescu/video/7571109685684735254" target="_blank" rel="noopener" aria-label="Ce au în comun prispa și engawa?, 68,1K vizionări pe TikTok">
+      <img src="assets/video/reels/7571109685684735254.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7571109685684735254.mp4" aria-hidden="true"></video>
+      <span class="fan__views">68,1K vizionări</span>
+    </a>
+    <a class="fan__card" style="--o:2;--a:2;--z:8" href="https://www.tiktok.com/@arh.alin.ionescu/video/7566283451297582358" target="_blank" rel="noopener" aria-label="Îți poți construi casa fără autorizație?, 47,2K vizionări pe TikTok">
+      <img src="assets/video/reels/7566283451297582358.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7566283451297582358.mp4" aria-hidden="true"></video>
+      <span class="fan__views">47,2K vizionări</span>
+    </a>
+    <a class="fan__card" style="--o:3;--a:3;--z:7" href="https://www.tiktok.com/@arh.alin.ionescu/video/7583736372377177366" target="_blank" rel="noopener" aria-label="Înainte să înțelegi un studiu topo, 30,2K vizionări pe TikTok">
+      <img src="assets/video/reels/7583736372377177366.webp" alt="" width="540" height="960" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="assets/video/reels/7583736372377177366.mp4" aria-hidden="true"></video>
+      <span class="fan__views">30,2K vizionări</span>
+    </a>
+  </div>
+  <dl class="reels__list">
+    <div data-rise><dt>Reels — clipuri educaționale</dt><dd>Formatul principal. Un hook puternic, o idee explicată, un CTA. De aici vine aproape tot reach-ul.</dd></div>
+    <div data-rise><dt>Stories</dt><dd>Contactul zilnic. Întrebări, sondaje, linkuri directe — locul unde audiența răspunde, nu doar privește.</dd></div>
+    <div data-rise><dt>Carusel</dt><dd>Conținut static optimizat pentru salvare. Un carusel bun e citit de trei ori și trimis mai departe.</dd></div>
+    <div data-rise><dt>Broșură / checklist</dt><dd>Lead magnetul. Oamenii îl cer singuri și își lasă contactul — de aici au ieșit cele 170 de cereri din campania NovingAIR.</dd></div>
+  </dl>
 </section>
 
-<!-- ================= SEARA =================
-     Fațada de zi (Scene 28) care ajunge în randarea de noapte (Scene 36):
-     rulează o dată când intră pe ecran și rămâne pe casa aprinsă. -->
-<section class="dusk" aria-label="Aceeași fațadă, de la apus la noapte">
-  <video muted playsinline preload="none" data-play="once" poster="assets/video/casa/zi_noapte-start.webp" data-end="assets/video/casa/zi_noapte-final.webp" src="assets/video/casa/zi_noapte.mp4"></video>
-  <p class="dusk__cap"><b>Aceeași fațadă, de la apus la noapte.</b> Proiect Inhabit Studio.</p>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="section cta">
-  <div class="wrap wrap--narrow">
-    <span class="micro" data-reveal>Hai să fii și tu o parte din casă</span>
-    <h2 style="margin-top:1rem" data-reveal>Spune-mi ce vinzi. <span>Îți spun dacă audiența mea o cumpără.</span></h2>
-    <p style="margin-top:1.1rem" data-reveal>
-      Un mail, două paragrafe. Îți răspund cu o părere sinceră — inclusiv dacă
-      părerea e că nu are sens să lucrăm împreună.
-    </p>
-    <div class="cta__row" data-reveal>
-      <a class="btn btn--dark" href="contact.html">Hai să vorbim <span class="btn__a">→</span></a>
-      <a class="btn btn--ghost" href="calculator.html">Fă-ți întâi socoteala</a>
+<section class="slots" id="sloturi" aria-labelledby="slotsTitle">
+  <video class="slots__bg" muted playsinline preload="none" poster="assets/video/casa/noapte_orbit.webp" src="assets/video/casa/noapte_orbit.mp4" aria-hidden="true"></video>
+  <div class="slots__scrim" aria-hidden="true"></div>
+  <div class="slots__in">
+    <p class="tag">Sloturi</p>
+    <h2 id="slotsTitle" data-lines>O casă are <span>douăsprezece decizii.</span> Una singură e luată.</h2>
+    <div class="slots__foot">
+      <p data-rise>Fiecare categorie tehnică dintr-o casă e un slot de parteneriat, și țin <b>o singură firmă pe categorie</b>. Nu-ți fac reclamă alături de trei concurenți în aceeași lună.</p>
+      <div data-rise>
+        <a class="btn btn--yellow" href="casa.html">Intră în casă</a>
+        <p class="slots__more">Secțiune printr-o casă pasivă. Dă scroll și camera se oprește la fiecare element tehnic. Acolo vezi toate cele douăsprezece categorii, care e ocupată și cât valorează fiecare.</p>
+      </div>
     </div>
+  </div>
+  <div class="mq" aria-hidden="true"><div class="mq__t"><span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span><span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span><span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span><span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span><span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span><span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span></div></div>
+</section>
+
+<section class="proc" id="proces" aria-labelledby="procTitle">
+  <div class="proc__stage">
+    <div class="proc__head">
+      <div><p class="tag">Producție</p>
+      <h2 id="procTitle" data-lines>Procesul <span>unui reel.</span></h2></div>
+      <p data-rise>Nu e „filmez ceva și postez". Fiecare clip trece prin nouă pași înainte să ajungă la oameni.</p>
+    </div>
+    <div class="proc__clip"><ol class="proc__track"><li><small>01</small>Research</li><li><small>02</small>Scripting</li><li><small>03</small>Storyboard</li><li><small>04</small>Filmare</li><li><small>05</small>Montaj</li><li><small>06</small>Grafică</li><li class=is-key><small>07</small>Aprobare</li><li><small>08</small>Publicare</li><li><small>09</small>Raport</li></ol></div>
+    <div class="proc__bar" aria-hidden="true"><i></i></div>
+    <p class="proc__note"><b>Aprobarea e a ta, înainte de publicare.</b> Nimic nu iese fără ochiul tău pe el. Iar la final primești raportul cu cifrele reale, nu un screenshot.</p>
   </div>
 </section>
 
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <a class="brand" href="index.html">
-          <img src="assets/img/inhabit-mark.webp" alt="" width="30">
-          <span><b>INHABIT<i>MEDIA</i></b><small style="display:block">arh. alin ionescu</small></span>
-        </a>
-        <p style="margin-top:1rem;max-width:30ch">
-          De la confuzie la claritate — educație online pentru construcția casei
-          tale eficiente energetic.
-        </p>
-      </div>
-      <div>
-        <h5>Site</h5>
-        <ul>
-          <li><a href="index.html#audienta">Audiența</a></li>
-          <li><a href="rezultate.html">Rezultate</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="pachete.html">Ce conține un parteneriat</a></li>
-          <li><a href="despre.html">Despre Alin</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="casa.html">Bonus: casa interactivă</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Canale</h5>
-        <ul>
-          <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
-          <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Ecosistem</h5>
-        <ul>
-          <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
-          <li><a href="despre.html#buildwise">BuildWise</a></li>
-          <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© <span id="year">2026</span> Inhabit Media · Arh. Ionescu George-Alin</span>
-      <span>Prețurile sunt pe campanie, TVA neinclus.</span>
-    </div>
+<footer class="end" id="contact">
+  <div class="end__top">
+    <p class="tag">Hai să fii și tu o parte din casă</p>
+    <h2 data-lines>Spune-mi ce vinzi. <span>Îți spun dacă audiența mea o cumpără.</span></h2>
   </div>
+  <div class="end__stage">
+    <p class="end__say"><span>Te învăț să construiești o casă caldă,</span><span>luminoasă și ușor de trăit.</span></p>
+    <div class="end__alin">
+      <img src="assets/img/alin-cut.webp" alt="Arhitectul Alin Ionescu" width="1200" height="1010" loading="lazy">
+    </div>
+    <p class="end__by">Din bio-ul <b>@arh.ionescu</b></p>
+  </div>
+  <div class="end__cta">
+    <p>Un mail, două paragrafe. Îți răspund cu o părere sinceră — inclusiv dacă părerea e că nu are sens să lucrăm împreună.</p>
+    <div class="end__btns"><a class="btn btn--dark" href="contact.html">Hai să vorbim</a><a class="btn btn--lineink" href="calculator.html">Fă-ți întâi socoteala</a></div>
+  </div>
+  <div class="end__nav">
+    <nav class="end__col" aria-label="Site"><p>Site</p><ul><li><a href="#audienta">Audiența</a></li><li><a href="rezultate.html">Rezultate</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="pachete.html">Ce conține un parteneriat</a></li><li><a href="despre.html">Despre Alin</a></li><li><a href="contact.html">Contact</a></li><li><a href="casa.html">Bonus: casa interactivă</a></li></ul></nav>
+    <nav class="end__col" aria-label="Canale"><p>Canale</p><ul><li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li><li><a href="despre.html#buildwise">BuildWise</a></li><li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li></ul></nav>
+  </div>
+  <div class="mq mq--night" aria-hidden="true"><div class="mq__t"><span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span><span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span><span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span><span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span><span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span><span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span></div></div>
+  <div class="end__legal"><span>© 2026 Inhabit Media · Arh. Ionescu George-Alin</span><span>Prețurile sunt pe campanie, TVA neinclus.</span></div>
 </footer>
 
-<script type="importmap">
-{ "imports": { "three": "./assets/vendor/three.module.min.js" } }
-</script>
-<script src="assets/js/explozie.js?v=1" defer></script>
-<script src="assets/js/casa-video.js?v=1" defer></script>
-<script src="assets/js/loader.js?v=2" defer></script>
-<script src="assets/js/main.js?v=10" defer></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/SplitText.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/js/cine.js"></script>
+<script src="assets/js/casa-explo.js"></script>
+<script src="assets/js/gl.js"></script>
 </body>
 </html>
