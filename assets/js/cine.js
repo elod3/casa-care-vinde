@@ -183,20 +183,38 @@
   addEventListener('resize', inkNav);
   inkNav();
 
-  /* mișcarea comună: titlul urcă din mască pe rânduri, restul urcă o singură dată */
+  /* textul e trasat, apoi turnat: întâi linia de bază și conturul literelor, ca pe planșă,
+     apoi litera se umple de jos în sus, cum se toarnă betonul în cofraj */
+  var OPEN = 'inset(-.2em -.1em -.28em -.1em)';
   document.fonts.ready.then(function () {
     [].slice.call(document.querySelectorAll('[data-lines]')).forEach(function (t) {
+      t.style.setProperty('--ln', getComputedStyle(t).color);
       SplitText.create(t, {
-        type: 'lines', mask: 'lines', autoSplit: true,
+        type: 'lines', linesClass: 'ln', autoSplit: true,
         onSplit: function (self) {
-          return gsap.from(self.lines, { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: t, start: 'top 85%', once: true } });
+          var tl = gsap.timeline({ scrollTrigger: { trigger: t, start: 'top 85%', once: true } });
+          self.lines.forEach(function (line, i) {
+            var out = document.createElement('div'); out.className = 'ln__out';
+            while (line.firstChild) out.appendChild(line.firstChild);
+            var fill = out.cloneNode(true); fill.className = 'ln__fill'; fill.setAttribute('aria-hidden', 'true');
+            var rule = document.createElement('i'); rule.className = 'ln__rule';
+            line.append(out, fill, rule);
+            var at = i * .14;
+            tl.fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: .7, ease: 'expo.out' }, at)
+              .fromTo(out, { clipPath: 'inset(-.2em 100% -.28em -.1em)' }, { clipPath: OPEN, duration: .8, ease: 'expo.out' }, at)
+              .fromTo(fill, { clipPath: 'inset(115% -.1em -.28em -.1em)' }, { clipPath: OPEN, duration: .75, ease: 'power3.inOut' }, at + .4)
+              .to(rule, { opacity: 0, duration: .3 }, at + 1)
+              .set(out, { visibility: 'hidden' }, at + 1.2);
+          });
+          return tl;
         },
       });
     });
     ScrollTrigger.refresh();
   });
+  /* textul mic e tras cu rigla, de la stânga la dreapta */
   [].slice.call(document.querySelectorAll('[data-rise]')).forEach(function (el) {
-    gsap.from(el, { y: 32, opacity: 0, duration: .9, ease: 'power4.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    gsap.fromTo(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 -2% 0 0)', duration: 1, ease: 'power3.out', clearProps: 'clipPath', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
   });
 
   /* portretul se descoperă de jos în sus */

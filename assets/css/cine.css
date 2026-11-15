@@ -292,6 +292,11 @@ html.anim .camp__stats li, html.anim .camp__hot > * { will-change: auto; }
   .camp__170 { font-size: 34vw; }
 }
 
+/* text trasat, apoi turnat (cine.js) */
+.ln { position: relative; }
+.ln__out { display: block; color: transparent; -webkit-text-stroke: 1px var(--ln, currentColor); }
+.ln__fill { position: absolute; inset: 0; display: block; }
+.ln__rule { position: absolute; left: 0; right: 0; bottom: .06em; height: 1px; background: var(--ln, currentColor); transform-origin: 0 50%; }
 /* titlurile de secțiune */
 .tag { margin: 0 0 14px; font-size: .875rem; font-weight: 600; }
 .who h2, .aud h2, .calc h2 { margin: 0; font-weight: 800; line-height: .98; letter-spacing: -.045em; text-wrap: balance; }
@@ -368,7 +373,7 @@ html.anim .camp__stats li, html.anim .camp__hot > * { will-change: auto; }
 .reels__head { text-align: center; }
 .reels h2 { margin: 0; font-size: clamp(2.5rem, 6vw, 7rem); font-weight: 800; line-height: .98; letter-spacing: -.045em; text-wrap: balance; }
 .reels h2 span { font-weight: 200; }
-.fan { --s: 1; --gap: min(12.6vw, 200px); --w: clamp(150px, 19vw, 300px); position: relative; height: calc(var(--w) * 16 / 9 + 90px); margin: 56px 0 72px; }
+.fan { --s: 1; --gap: min(9.2vw, 146px); --w: clamp(130px, 14vw, 220px); position: relative; height: calc(var(--w) * 16 / 9 + 90px); margin: 56px 0 72px; }
 .fan__card {
   position: absolute; left: 50%; top: 40px; z-index: var(--z); display: block; width: var(--w); aspect-ratio: 9 / 16; margin-left: calc(var(--w) / -2);
   border-radius: 20px; overflow: hidden; background: var(--night); text-decoration: none; color: var(--ink); outline-offset: 4px;
@@ -395,7 +400,7 @@ html.anim .camp__stats li, html.anim .camp__hot > * { will-change: auto; }
   .reels__head { text-align: left; }
   .fan { --s: 0; display: flex; gap: 12px; height: auto; margin: 36px 0 48px; padding: 0 var(--gutter) 8px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
   .fan::-webkit-scrollbar { display: none; }
-  .fan__card { position: relative; left: auto; top: auto; flex: 0 0 62vw; width: auto; margin: 0; scroll-snap-align: start; transform: none; border-radius: 16px; }
+  .fan__card { position: relative; left: auto; top: auto; flex: 0 0 46vw; width: auto; margin: 0; scroll-snap-align: start; transform: none; border-radius: 16px; }
   .fan__card.is-on { --zoom: 1; }
   .fan__views { opacity: 1; transform: none; }
   .reels__list { grid-template-columns: minmax(0, 1fr); gap: 24px; }
