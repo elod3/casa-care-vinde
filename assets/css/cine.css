@@ -172,13 +172,19 @@ a:hover > .flip .b, button:hover > .flip .b { transform: rotateX(0); }
 :is(.nav-ink, .nav-ink2) .nav__links a:not(.btn) .b { color: inherit; }
 
 /* trecerea cu logoul */
-.say { padding: 20svh var(--gutter) 24svh; background: var(--night); color: var(--ink); }
-.say .tag { color: var(--yellow); }
-.say__txt { max-width: 17em; margin: 0; font-size: clamp(2rem, 5.2vw, 5.75rem); font-weight: 200; line-height: 1.04; letter-spacing: -.045em; }
+.say { padding: 22svh var(--gutter) 24svh; background: var(--night); color: var(--ink); }
+/* trei propoziții, trei trepte: fiecare pornește mai din dreapta decât cea dinainte */
+.say__txt { margin: 0; font-size: clamp(2rem, 5.2vw, 5.75rem); font-weight: 200; line-height: 1.04; letter-spacing: -.045em; }
+.say__txt > span { display: block; max-width: 13.5em; }
+.say__txt > span + span { margin-top: .55em; margin-left: 14vw; }
+.say__txt > span:last-child { margin-left: 28vw; }
 .say__txt b { font-weight: 800; }
 .say__txt .hl { color: var(--yellow); }
-.say__by { display: flex; flex-direction: column; gap: 4px; margin: 48px 0 0; font-size: .9375rem; }
-.say__by span { color: var(--ink-soft); font-size: .8125rem; }
+.say__by { margin: 56px 0 0 28vw; padding-top: 16px; border-top: 1px solid var(--line); font-size: .9375rem; font-weight: 600; }
+@media (max-width: 767px) {
+  .say__txt > span + span, .say__txt > span:last-child { margin-left: 0; }
+  .say__by { margin-left: 0; }
+}
 .thru { position: absolute; inset: 0; z-index: 6; width: 100%; height: 100%; pointer-events: none; }
 html.bw-thru .nav__word { visibility: hidden; }
 html.bw-home .nav__word { transform: none !important; animation: bw-land 450ms var(--ease-ui); }
