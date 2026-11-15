@@ -197,7 +197,7 @@
 
   /* după ce s-a pus pin-ul, ca poziția benzii galbene să fie cea reală */
   /* bara trece pe cerneală cât stă peste o secțiune deschisă */
-  var lit = [].slice.call(document.querySelectorAll('.camp__hot, .who__txt, .calc, .reels, .proc, .end'));
+  var lit = [].slice.call(document.querySelectorAll('.camp__hot, .who__txt, .calc, .reels, .proc, .end, .seam--lit'));
   function inkNav() {
     var on = lit.some(function (el) {
       var r = el.getBoundingClientRect();
@@ -231,6 +231,14 @@
   /* ce nu e text (capturile) se descoperă de la stânga la dreapta */
   [].slice.call(document.querySelectorAll('[data-rise]:not(p)')).forEach(function (el) {
     gsap.fromTo(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 -2% 0 0)', duration: 1, ease: 'power3.out', clearProps: 'clipPath', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+  });
+
+  /* cusăturile: culoarea următoare urcă prin cuvânt, iar cuvântul alunecă puțin pe orizontală */
+  [].slice.call(document.querySelectorAll('.seam')).forEach(function (seam) {
+    gsap.fromTo(seam.querySelector('.seam__pour'), { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', ease: 'none',
+      scrollTrigger: { trigger: seam, start: 'top 80%', end: 'top 12%', scrub: true } });
+    gsap.fromTo(seam.querySelectorAll('b'), { xPercent: 5 }, { xPercent: -5, ease: 'none',
+      scrollTrigger: { trigger: seam, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
   /* portretul se descoperă de jos în sus */

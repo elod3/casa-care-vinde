@@ -297,6 +297,13 @@ html.anim .camp__stats li, html.anim .camp__hot > * { will-change: auto; }
 .ln__out { display: block; color: transparent; -webkit-text-stroke: var(--lw, 1px) var(--ln, currentColor); }
 .ln__fill { position: absolute; inset: 0; display: block; }
 .ln__rule { position: absolute; left: 0; right: 0; bottom: .06em; height: 1px; background: var(--ln, currentColor); transform-origin: 0 50%; }
+/* cusătura dintre secțiuni: culoarea următoare se toarnă de jos în sus, prin cuvântul care o anunță */
+.seam { position: relative; display: grid; place-items: center; height: 56svh; overflow: hidden; background: var(--from); }
+.seam b { font-size: min(calc(150vw / var(--n)), 42svh); font-weight: 800; line-height: 1; letter-spacing: -.05em; white-space: nowrap; }
+.seam > b { color: transparent; -webkit-text-stroke: 1.5px var(--to); }
+.seam__pour { position: absolute; inset: 0; display: grid; place-items: center; background: var(--to); color: var(--from); clip-path: inset(50% 0 0 0); }
+html.anim .seam__pour { clip-path: inset(100% 0 0 0); }
+@media (max-width: 767px) { .seam { height: 38svh; } }
 /* titlurile de secțiune */
 .tag { margin: 0 0 14px; font-size: .875rem; font-weight: 600; }
 .who h2, .aud h2, .calc h2 { margin: 0; font-weight: 800; line-height: .98; letter-spacing: -.045em; text-wrap: balance; }
