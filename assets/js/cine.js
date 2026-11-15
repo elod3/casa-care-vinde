@@ -114,6 +114,7 @@
     gsap.timeline()
       .add(pour(title, true).play(), 0)
       .add(lead.play(), .85)
+      .add(function () { [].slice.call(hero.querySelectorAll('.hero__figs :is(b, span)')).forEach(function (el, i) { gsap.delayedCall(i * .05, function () { pour(el, true).play(); }); }); }, .85)
       .to(on, { opacity: 1, duration: 1.2, ease: 'power2.inOut' }, .35)
       .to(rest, { opacity: 1, duration: .7, ease: 'power2.out', stagger: .08 }, .85);
   }
@@ -192,7 +193,6 @@
       .to(head, { y: -60, autoAlpha: 0, ease: 'none', duration: .4 }, .05)
       .to({}, { duration: .3 });
   });
-  gsap.from('.camp__stats li', { y: 40, opacity: 0, duration: .9, ease: 'power4.out', stagger: .1, scrollTrigger: { trigger: '.camp__stats', start: 'top 85%', once: true } });
   gsap.from('.camp__170', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.camp__hot', start: 'top bottom', end: 'top 30%', scrub: true } });
 
   /* după ce s-a pus pin-ul, ca poziția benzii galbene să fie cea reală */
@@ -221,7 +221,7 @@
 
   /* tot textul paginii intră la fel; rămân pe dinafară citatul lui Alin și vorbele din spatele lui */
   document.fonts.ready.then(function () {
-    var all = document.querySelectorAll('main :is(h2, h3, p, dt, dd), main figcaption :is(b, span), .end__top :is(p, h2), .end__cta p');
+    var all = document.querySelectorAll('main :is(h2, h3, p, dt, dd), main figcaption :is(b, span), .end__top :is(p, h2), .end__cta p, .camp__num span, .camp__stats :is(b, span), .camp__170, .aud__total > b, .aud__bar :is(b, span), .proc__track small');
     [].slice.call(all).forEach(function (t) {
       if (t.closest('.say, .hero, .end__say, .mq, .loader') || t.querySelector('img, svg, video, p, div') || !t.textContent.trim() || !t.offsetParent) return;
       pour(t);
